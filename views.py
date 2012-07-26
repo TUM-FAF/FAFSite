@@ -14,6 +14,3 @@ def courses(request):
 
 def about_course(request):
 	return render(request, "about-course.html")
-
-def admission(request):
-	return render(request, "admission.html")
