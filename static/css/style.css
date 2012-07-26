@@ -39,7 +39,7 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			#header_links nav a:hover{text-decoration:underline;}
 			#header_links:hover nav a{border-left:1px solid #333;}
 
-#site_body{width:962px;text-align:left;min-height: 100%;margin:0 auto;position: relative;overflow: hidden; padding-bottom: 43px;}
+#site_body{width:962px;text-align:left;min-height: 100%;margin:0 auto;position: relative;overflow: hidden; padding-bottom: 23px;}
 	.description{margin:30px auto;height:70px;font-family:'Open Sans',sans-serif;font-size:20px;text-shadow:white 1px -1px 1px;line-height:120%;text-align:justify;}
 		.description1, .description2, .description3 {float:left;width:280px;}
 		.description1, .description2{margin-right:30px;padding:0 30px 0 0;border-right: 1px solid gray;}
@@ -57,7 +57,7 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			a.people_logo:hover{background:transparent url('../images/people_color.png') center top no-repeat;}
 	.info-block article .article_body .article_content h3{text-align:center;margin:0;padding:8px 0 15px;color:#2b2b2b;font-weight:400;font-size:22px;}
 	.info-block article .article_body .article_content h3 a{color:#2b2b2b;text-decoration:none;}
-	.courses{margin:30px 0;}
+	.courses{margin:30px 0; overflow: hidden;}
 		.blank_block{width:300px;height:220px;float:left;margin:0 30px 0 0;}
 			.courses h2, h4{font-size:25px;font-weight:normal;}
 			.courses h4{margin:4px 20px;}
@@ -68,8 +68,8 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			.subjects a{color:#1691ba;text-decoration:none;font-size:13px;line-height:1em;}
 			.subjects a:hover{text-decoration:underline;}
 section{}
-#articles{width:auto;float:left;margin:0 0 20px;}
-#course_description{width:650px;float:right;margin:0 0 20px;}
+#articles{width:auto;float:left;margin:0 0 20px; overflow: hidden;}
+#course_description{width:650px;float:right;margin:0 0 20px; overflow: hidden;}
 	#articles, #course_description article{margin:20px 0 20px 0;padding:18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
 		article .article_header{height:23px;border-bottom:1px solid #d7d7d7;font-size:11px;color:#8d8d8d;}
 			article .article_header time{padding:0 9px 0 0;line-height:11px;border-right:1px solid #e0e0e0;}
@@ -103,7 +103,7 @@ section{}
 			#articles .pagination nav a.pagination_end{font-size:11px;}
 		#articles .pagination span.pagination_counter{color:#6e6e6e;}
 			#articles .pagination span.pagination_counter b{color:#229dc7;font-weight:600;}
-#side_menu{width:300px;float:left;margin:0 0 20px;}
+#side_menu{width:300px;float:left;margin:0 0 20px;overflow: hidden;}
 	#side_menu .side_block{margin:20px 0 0;padding:14px 18px 18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
 		#side_menu .side_block .block_title{margin:0;padding:0px 0 3px;color:#1c9dd6;font-weight:400;font-size:18px;border-bottom:1px solid #d7d7d7;}
 		#side_menu li.semester_number{margin:5px 0 5px;padding:5px 18px 7px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;font-size:20px;cursor:pointer;}
@@ -117,7 +117,7 @@ section{}
 		#side_menu .block_content p{}
 
 
-footer{height:43px;width:100%;position:absolute;bottom:0;left:0;border-top:1px solid #2b2b2b;background:#1e1e1e;font-size:11px;color:#5a5a5a;margin-top:0;}
+footer{height:43px;width:100%;position:absolute;bottom:0;left:0;border-top:1px solid #2b2b2b;background:#1e1e1e;font-size:11px;color:#5a5a5a;margin-top: 0;}
 	footer b{font-weight:600;color:#6e6e6e;}
 	footer a{color:#6e6e6e;text-decoration:none;}
 		footer a:hover{text-decoration:underline;}
