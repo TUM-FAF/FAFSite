@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>FAF</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=7"/> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext,latin-ext" rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
+	{% block header %}
+	{% endblock %}
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<!-- <div id="header_top">
+				<form type="post" action="" id="header_search">
+					<a href="http://faf.utm.md">www.FAF.UTM.MD</a>
+					<input type="submit" name="search_submit" id="search_submit" value="Search now" />
+					<input type="text" name="search" id="search_text" value="" placeholder="Write here to search" size="100" />
+				</form>
+			</div> -->
+			<div id='ribbon'>
+				<a href="#"><img src="{{ STATIC_URL }}images/faf_ribbon_red.png" alt="Join FAF now"></a>
+			</div>
+			<div id="header_body">
+				<div class="logo">
+					<a href="/index/"></a>
+				</div>
+				<div id="console">
+					
+				</div>
+			</div>
+			<div id="header_links">
+				<div class="header_links_in">
+					<a href="#" class="fb">Follow us on</a>
+					<nav>
+						<a href="/about/">{{ PROJECT_DIR }}About</a>
+						<a href="#">Admission</a>
+						<a href="#">Achievements</a>
+						<a href="#">Activities</a>
+						<a href="#">People</a>
+						<a href="/courses/">Courses</a>
+						<a href="#">Contact Us</a>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<div id="site_body">
+			{% block content %}
+			{% endblock %}
+		</div>
+		<div class="clr"></div>
+		<footer>
+			<div class="footer_inside">
+				<p class='left'>&copy; 2012 <a href="#">FAF</a> - English taught Honor's Program in Computer Science</p>
+				<p class='right'><a href="http://utm.md/" target='_black'>Technical University of Moldova</a></p>
+				<a href="http://utm.md/" target='_black'><img src="{{ STATIC_URL }}images/utm-logo.png" alt=""></a>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>
