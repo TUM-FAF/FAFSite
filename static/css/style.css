@@ -41,6 +41,8 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			#header_links:hover nav a{border-left:1px solid #333;}
 
 #site_body{width:962px;text-align:left;margin:0 auto;overflow: hidden; padding-bottom: 43px; min-height: 100%;}
+#site_body .right{float:right;}
+#site_body .left{float:left;}
 	.description{margin:30px auto;height:70px;font-family:'Open Sans',sans-serif;font-size:20px;text-shadow:white 1px -1px 1px;line-height:120%;text-align:justify;}
 		.description1, .description2, .description3 {float:left;width:280px;}
 		.description1, .description2{margin-right:30px;padding:0 30px 0 0;border-right: 1px solid gray;}
@@ -69,7 +71,7 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			.subjects a{color:#1691ba;text-decoration:none;font-size:13px;line-height:1em;}
 			.subjects a:hover{text-decoration:underline;}
 section{}
-#articles{width:auto;float:left;margin:0 0 20px;}
+#articles{width:auto;margin:0 0 20px;}
 #course_description{width:650px;float:right;margin:0 0 20px;}
 	#articles, #course_description article{margin:20px 0 20px 0;padding:18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
 		article .article_header{height:23px;border-bottom:1px solid #d7d7d7;font-size:11px;color:#8d8d8d;}
@@ -105,6 +107,7 @@ section{}
 		#articles .pagination span.pagination_counter{color:#6e6e6e;}
 			#articles .pagination span.pagination_counter b{color:#229dc7;font-weight:600;}
 #side_menu{width:300px;float:left;margin:0 0 20px; overflow: hidden;}
+
 	#side_menu .side_block{margin:20px 0 0;padding:14px 18px 18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
 		#side_menu .side_block .block_title{margin:0;padding:0px 0 3px;color:#1c9dd6;font-weight:400;font-size:18px;border-bottom:1px solid #d7d7d7;}
 		#side_menu li.semester_number{margin:5px 0 5px;padding:5px 18px 7px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;font-size:20px;cursor:pointer;}

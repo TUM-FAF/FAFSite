@@ -17,3 +17,6 @@ def about_course(request):
 
 def timeline(request):
 	return render(request, "timeline.html")
+
+def admission(request):
+	return render(request, "admission.html")
