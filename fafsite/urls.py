@@ -11,6 +11,7 @@ urlpatterns = patterns('',
 	url(r'^about/$', about),
 	url(r'^courses/Calculus-1/$', about_course),
 	url(r'^courses/$', courses),
+    url(r'^timeline/$', timeline),
     # Examples:
     # url(r'^$', 'fafsite.views.home', name='home'),
     # url(r'^fafsite/', include('fafsite.foo.urls')),

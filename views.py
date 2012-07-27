@@ -14,3 +14,6 @@ def courses(request):
 
 def about_course(request):
 	return render(request, "about-course.html")
+
+def timeline(request):
+	return render(request, "timeline.html")
