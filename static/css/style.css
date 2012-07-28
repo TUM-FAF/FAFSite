@@ -163,3 +163,57 @@ footer{height:43px;width:100%;position:absolute;bottom:0;left:0;border-top:1px s
 .ribbon img{width: auto;height: 100%;}
 .wrapper header a{text-decoration: none;}
 .wrapper header a div.ribbon:hover{text-decoration: none;box-shadow: 0 0 20px 1px #777;-webkit-box-shadow: 0 0 20px 1px #777;-moz-box-shadow: 0 0 20px 1px #777;-o-box-shadow: 0 0 20px 1px #777;}
+
+article.slide{
+	margin: 12px 0 0 12px;
+	overflow: hidden;
+}
+article.slide .nav_buttons{
+	float: right;
+	position: relative;
+	bottom: 15px;
+}
+article.slide .nav_buttons img{
+	cursor: pointer;
+}
+article.slide .nav_buttons .button{
+	float: right;
+	color: rgb(28,157,215);
+	border: 5px solid rgb(28,157,215);
+	border-radius: 50%;
+	text-align: center;
+	padding: 5px 8px;
+	margin: 0 5px;
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+}
+article.slide .nav_buttons .button:hover{
+	box-shadow: 0 0 9px 2px rgb(28,157,215);
+}
+article.slide .nav_buttons .button.this{
+	background: rgb(28,157,215);
+	color: white;
+}
+article.slide p{
+	overflow: hidden;
+	padding: 0;
+}
+/*
+section.slide_section{
+	width: 962px;
+}
+section.slide_section article.right{
+	height: auto;
+	width: 260px;
+	float: right;
+	overflow: hidden;
+	position: relative;
+}
+section.slide_section article.left{
+	position: relative;
+	width: 630px;
+	float: left;
+	overflow: hidden;
+	padding: 0 20px 0 10px;
+}*/
