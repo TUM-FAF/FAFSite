@@ -8,10 +8,13 @@ RANKINGS = (
 	)
 
 SEMESTERS = (
-	('I', 'First'),
-	('II', 'Second'),
-	('III', 'Third'),
-	('IV', 'Fourth'),
+	(1, 'First'),
+	(2, 'Second'),
+	(3, 'Third'),
+	(4, 'Fourth'),
+	(5, 'Fifth'),
+	(6, 'Sixth'),
+	(7, 'Seventh'),
 	)
 
 LANGUAGES = (
@@ -49,15 +52,16 @@ class Professor(models.Model):
 		return u'%s %s' %(self.name, self.surname)
 
 class Course(models.Model):
-	subject = models.CharField(max_length=50)
-	professors = models.ManyToManyField(Professor, verbose_name="List of teachers")
+	subject_ro = models.CharField(max_length=70)
+	subject_en = models.CharField(max_length=70)
+	professors = models.ManyToManyField(Professor, blank=True,verbose_name="List of teachers")
 	semester = models.IntegerField(choices=SEMESTERS)
 	language = models.CharField(max_length=10,choices=LANGUAGES)
 	proiectDeCurs = models.BooleanField()
 	labs = models.BooleanField()
-	literatura = models.TextField()
-	descriere = models.TextField()
+	literatura = models.TextField(blank=True)
+	descriere = models.TextField(blank=True)
 
 	def __unicode__(self):
-		return self.subject
+		return self.subject_en
 # Create your models here.

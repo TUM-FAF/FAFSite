@@ -14,8 +14,8 @@ class AlumniAdmin(admin.ModelAdmin):
 	search_fields = ('name',)
 
 class CourseAdmin(admin.ModelAdmin):
-	list_display = ('subject', 'semester')
-	search_fields = ('subject',)
+	list_display = ('subject_en', 'subject_ro', 'semester')
+	search_fields = ('semester',)
 
 admin.site.register(Professor, ProfessorAdmin)
 admin.site.register(Student, StudentAdmin)
