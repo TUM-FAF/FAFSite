@@ -6,11 +6,11 @@
 
 {% endblock %}
 {% block content %}
-<section id="articles" class="left" style="width:610px;">
-	<article>
-		<div class="article_body">
+<section id="articles" class="left" style="width:610px; height: 220px; position: relative; overflow: hidden;">
+	<article class="slide">
+		<div class="article_body" style="position: relative; height: 185px;">
 			<h3>Admission steps</h3>	
-			<div class="article_content">
+			<div class="article_content active" data-nr="1" style="position: absolute; width: 610px;">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -18,14 +18,52 @@
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					<img src="../../static/images/slideshow_button.png" width="25px">
+				</p>
+			</div>
+			<div class="article_content right" data-nr="2" style="position: absolute; width: 610px; left: 650px;">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+			<div class="article_content right" data-nr="3" style="position: absolute; width: 610px; left: 650px;">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+			<div class="article_content right" data-nr="4" style="position: absolute; width: 610px; left: 650px;">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>
 			</div>
 		</div>
+		<div class="nav_buttons">
+			<div class="button" data-nr="4">4</div>
+			<div class="button" data-nr="3">3</div>
+			<div class="button" data-nr="2">2</div>
+			<div class="button this" data-nr="1">1</div>
+			<!-- <img src="../../static/images/circle_btn_1.png" data-nr="1" alt="">
+			<img src="../../static/images/circle_btn_2.png" data-nr="2" alt="">
+			<img src="../../static/images/circle_btn_3.png" data-nr="3" alt="">
+			<img src="../../static/images/circle_btn_4.png" data-nr="4" alt=""> -->
+		</div>
 	</article>
 </section>
-<div id="side_menu" class='right'>
-	<section id="articles">
+	<section id="articles" style="float: right; width: 260px;">
 		<article id="article_x">
 			<div class="article_body">
 				<h3><a href="#">Why FAF?</a></h3>
@@ -42,6 +80,41 @@
 			</div>
 		</article>
 	</section>
-</div>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		slideshow = {
+			init: function(){
+				var $article = $('article.slide');
+				var $nav = $('article.slide .nav_buttons');
+				$nav.children('.button').click(function(){
+					var nr = $(this).attr('data-nr');
+					$(this).addClass('this').siblings().removeClass('this');
+					$article.find('.article_content').not('.active').each(function(){
+						if($(this).attr('data-nr') < nr)
+						{
+							$(this).css('left', '-700px').removeClass('right').removeClass('active').addClass('left');
+						} else
+						if($(this).attr('data-nr') > nr)
+						{
+							$(this).css('left', '700px').removeClass('left').removeClass('active').addClass('right');
+						}
+					});
+					var clicked = $article.find('[data-nr = '+nr+']');
+					if(clicked.hasClass('right')){
+						$article.find('.article_content.active').animate({left: '-700px'}, 1500).removeClass('right').removeClass('active').addClass('left');
+						clicked.animate({left: '0px'}, 1400).removeClass('left').removeClass('right').addClass('active');
+						slideshow.init();
+					} else 
+					if(clicked.hasClass('left')){
+						$article.find('.article_content.active').animate({left: '700px'}, 1500).removeClass('left').removeClass('active').addClass('right');
+						clicked.animate({left: '0px'}, 1400).removeClass('left').removeClass('right').addClass('active');
+						slideshow.init();
+					}
+				});
+			}
+		};
+		slideshow.init();
+	});
+</script>
 {% endblock %}
