@@ -110,13 +110,15 @@ section{}
 
 	#side_menu .side_block{margin:20px 0 0;padding:14px 18px 18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
 		#side_menu .side_block .block_title{margin:0;padding:0px 0 3px;color:#1c9dd6;font-weight:400;font-size:18px;border-bottom:1px solid #d7d7d7;}
-		#side_menu li.semester_number{margin:5px 0 5px;padding:5px 18px 7px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;font-size:20px;cursor:pointer;}
-			#side_menu li.semester_number:first-child{margin:20px 0 5px;}
+		#side_menu li.title{margin:5px 0 5px;padding:5px 18px 7px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;font-size:20px;cursor:pointer;}
+		#side_menu .title a{color:#333;}
+			#side_menu li.title:first-child{margin:20px 0 5px;}
 		#side_menu ul{list-style-type:none;margin:0;padding:0;}
-		#side_menu .side_nav ul.semester_courses{border:1px solid #e1e1e1;background:white;}
-		#side_menu .side_nav .semester_courses li{font-size:13px;padding:8px 18px;border-bottom:1px solid #e1e1e1;}
+		#side_menu .side_nav ul.subtitel{border:1px solid #e1e1e1;background:white;}
+		#side_menu .side_nav .subtitel li{font-size:13px;padding:8px 18px;border-bottom:1px solid #e1e1e1;}
 				#side_menu .side_nav a{text-decoration:none;}
-				#side_menu .side_nav a:hover{text-decoration:underline;}			
+				#side_menu .side_nav a:hover{text-decoration:underline;}
+				#side_menu .title a:hover{text-decoration:none;}			
 	#side_menu .block_content{padding:8px 0 0;}
 		#side_menu .block_content p{}
 
@@ -238,18 +240,16 @@ div.ribbon{
 	right: -55px;
 	top: 34px;
 	overflow: hidden;
-	background: rgb(249, 0 , 40);
-	font-size: 13px; 
 	color: white;
 	-webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);
 	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
 	outline: none;
-	box-shadow: 0 0 6px 0.7px white;
-	-webkit-box-shadow: 0 0 6px 0.7px white;
-	-o-box-shadow: 0 0 6px 0.7px white;
-	-moz-box-shadow: 0 0 6px 0.7px white;
+	box-shadow: 0 0 15px 0.4px #555;
+	-webkit-box-shadow: 0 0 15px 0.4px #555;
+	-o-box-shadow: 0 0 15px 0.4px #555;
+	-moz-box-shadow: 0 0 15px 0.4px #555;
 }
 div.ribbon img{
 	width: auto;
@@ -260,8 +260,8 @@ body .wrapper header a{
 }
 body .wrapper header a div.ribbon:hover{
 	text-decoration: none;
-	box-shadow: 0 0 6px 1px white;
-	-webkit-box-shadow: 0 0 6px 1px white;
-	-moz-box-shadow: 0 0 6px 1px white;
-	-o-box-shadow: 0 0 6px 1px white;
+	box-shadow: 0 0 20px 1px #777;
+	-webkit-box-shadow: 0 0 20px 1px #777;
+	-moz-box-shadow: 0 0 20px 1px #777;
+	-o-box-shadow: 0 0 20px 1px #777;
 }

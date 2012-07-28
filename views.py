@@ -20,3 +20,6 @@ def timeline(request):
 
 def admission(request):
 	return render(request, "admission.html")
+
+def people(request):
+	return render(request, "people.html")
