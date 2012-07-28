@@ -1,17 +1,30 @@
 {% extends "index.html" %}
+
+{% block header %}
+<script type="text/javascript" src="../static/js/jquery-1.7.2.js"></script>
+{% endblock %}
 {% block content %}
 <div class="timeline_main">
-	<div class="container_left">
-		<section id="articles" class="content first">
+		<section id="articles" class="content">
 			<article>
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 1</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						</p>
 						<a href="#" class="read_more">Read more »</a>
 					</div>
@@ -30,7 +43,7 @@
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 2</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -56,7 +69,7 @@
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 3</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -82,7 +95,7 @@
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 4</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -101,19 +114,17 @@
 				</div>
 			</article>
 		</section>
-	</div>
 	<div class="mid_line">
 		&nbsp;
 	</div>
-	<div class="container_right">
-		<section id="articles" class="content first">
+		<section id="articles" class="content">
 			<article>
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 5</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						</p>
@@ -134,7 +145,7 @@
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 6</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -168,7 +179,7 @@
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 7</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -194,7 +205,7 @@
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor</h3>
+					<h3>Lorem ipsum dolor 8</h3>
 					<div  class="article_content">
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -213,6 +224,78 @@
 				</div>
 			</article>
 		</section>
-	</div>
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var timeline = {
+			init: function(val){
+				var first = 0;
+				var second = 0;
+				var left = 0;
+				var right = 0;
+				var main = $('.timeline_main');
+				var articles = main.find('section');
+				articles.each(function(){
+					var content = $(this);
+					content.removeClass('right').removeClass('left').removeClass('first').removeClass('second');
+					console.log(val);
+					console.log(content.outerHeight());
+					if(!first)
+					{
+						content.addClass('left').addClass('first');
+						first = 1;
+						left+=content.outerHeight();
+					}
+					else
+						if(!second)
+						{
+							content.addClass('right').addClass('second');
+							second = 1;
+							right+=content.outerHeight();
+						}
+						else
+						{
+							if(left <= right)
+							{
+								content.addClass('left');
+								left+=content.outerHeight();
+							}
+							else
+							{
+								content.addClass('right');
+								right+=content.outerHeight();
+							}
+						}
+					if(val != 1){
+						content.removeClass('long');
+					} else{
+						if(content.hasClass('long'))
+						{
+							left = 0;
+							right = 0;
+							content.removeClass('second');
+						}
+					}
+					if(content.hasClass('first') && content.hasClass('long')){
+						second = 1;
+						left = 0;
+					}
+				});
+				// console.log(articles);
+			},
+			links: function(){
+				var link = $('a.read_more');
+				link.click(function(e){
+					e.preventDefault();
+					$this = $(this).parents('section');
+					timeline.init();
+					$this.removeClass('right').removeClass('left').removeClass('long').removeClass('first').addClass('long').removeClass('second');
+					timeline.init(1);
+				});
+			}
+		};
+		timeline.init();
+		timeline.links();
+	});
+</script>
 {% endblock %}
