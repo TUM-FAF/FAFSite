@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^courses/$', courses),
     url(r'^timeline/$', timeline),
 	url(r'^admission/$', admission),
+    url(r'^people/$', people),
     # Examples:
     # url(r'^$', 'fafsite.views.home', name='home'),
     # url(r'^fafsite/', include('fafsite.foo.urls')),
