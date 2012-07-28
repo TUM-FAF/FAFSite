@@ -51,7 +51,7 @@
 								<div>
 									<h4>Viorel Bostan</h4>
 									<p>Head of Department</br>PhD</p>
-									<p>Courses:</p>
+									<p class='emphasis'>Courses:</p>
 									<ul>
 										<li><a href="#">Calculus I</a></li>
 										<li><a href="#">Calculus II</a></li>
@@ -152,8 +152,9 @@
 
 		$('tbody').on('click', 'tr.person', function() {
 			 $(this)
-			 	.next()
-			 	.slideDown('slow');
+			 	.hide()
+				 	.next()
+				 	.slideDown('slow');
 		});
 	});
 </script>
