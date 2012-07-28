@@ -146,16 +146,4 @@
 		</div>
 	</article>
 </section>
-<script type="text/javascript">
-	$(function() {
-		$('tr.id_card').hide();
-
-		$('tbody').on('click', 'tr.person', function() {
-			 $(this)
-			 	.hide()
-				 	.next()
-				 	.slideDown('slow');
-		});
-	});
-</script>
 {% endblock %}
