@@ -48,7 +48,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, "media")
+MEDIA_ROOT = os.path.join(PROJECT_PATH, ".." ,"media").replace('\\', '/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -67,7 +67,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join( os.path.dirname( __file__ ), '..', 'static' ).replace( '\\', '/' ),
+    os.path.join( PROJECT_PATH, '..', 'static' ).replace( '\\', '/' ),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -121,6 +121,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'academics',
+    'tinymce',
+    'blog',
     # Uncomment the next line to enable the admin:
 ##	'grappelli',
     'django.contrib.admin',
@@ -156,3 +158,27 @@ LOGGING = {
         },
     }
 }
+
+TINYMCE_JS_URL = STATIC_URL + 'jscripts/tiny_mce/tiny_mce.js'
+
+TINYMCE_JS_ROOT = STATIC_URL + 'jscripts/tiny_mce/'
+
+TINYMCE_DEFAULT_CONFIG = { 
+    'mode': "textareas", 
+    'plugins': "advimage,media,advhr", 
+    'theme': "advanced", 
+    'convert_urls' : False, 
+    'relative_urls' : False, 
+    'cleanup_on_startup': True, 
+    'force_p_newlines' : True, 
+    'remove_linebreaks' : True, 
+    'remove_trailing_nbsp' : True, 
+    'theme_advanced_buttons1' : "bold,italic,underline,strikethrough,|,sub,sup,|,formatselect,|,bullist,numlist,link,unlink,code", 
+    'theme_advanced_buttons1_add': 'image, media',
+    'theme_advanced_buttons2' : 'undo,redo,preview,zoom,|,advhr,removeformat,visualaid', 
+    'theme_advanced_buttons3' : '', 
+    'theme_advanced_toolbar_align' : "center", 
+    'valid_elements' : "a,sup,sub,strong,b,br,i,u,p,ul,ol,li,h1,h2,h3,h4,h5,@[align],object[data|type|align|width|height],param[name|value],embed[src|type|wmode|width|height,img[src|alt]],img[!src|border:0|alt|title|width|height|style],a[name|href|target|title|onclick]",
+    'editor_deselector' : "mceNoEditor",
+    'extended_valid_elements': "hr[class|width|size|noshade],img[!src|border:0|alt|title|width|height|style]"
+    } 

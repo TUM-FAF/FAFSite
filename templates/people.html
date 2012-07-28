@@ -19,23 +19,143 @@
 
 		<li class='title'>Alumni</li>
 		<ul class='subtitel'>
-			<li>Calculus</li>
-			<li>Mechanics</li>
-			<li>Probability Theory</li>
-			<li>Computer Programming</li>
-			<li>English</li>
+			<li><a href="#">FAF-071</a></li>
+			<li><a href="#">FAF-061</a></li>
+			<li><a href="#">FAF-051</a></li>
+			<li><a href="#">FAF-041</a></li>
 		</ul>
 	</ul>
 </div>
-<section id="course_description">
+<section id="articles" class='table_block'>
 	<article>
 		<div class="article_body">
 			<h3><a href="#">Professors</a></h3>	
 			<div class="article_content">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<table>
+					<thead>
+						<tr>
+							<th class='name'>Name</th>
+							<th class='degree'>Degree</th>
+							<th>Courses</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class='person'>
+							<td class='name'>Viorel Bostan</td>
+							<td class='degree'>PhD.</td>
+							<td>Calculus I, Calculus II</td>
+						</tr>
+						<tr class='id_card'>
+							<td colspan="3">
+								<div><img src="../static/images/bostan.jpg" alt=""></div>
+								<div>
+									<h4>Viorel Bostan</h4>
+									<p>Head of Department</br>PhD</p>
+									<p class='emphasis'>Courses:</p>
+									<ul>
+										<li><a href="#">Calculus I</a></li>
+										<li><a href="#">Calculus II</a></li>
+										<li><a href="#">Probability and Information Theory</a></li>
+										<li><a href="#">Discrete Mathematics</a></li>
+										<li><a href="#">Numerical Analysis</a></li>
+										<li><a href="#">Optimization Technics</a></li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+								<a href="#" class="hide_btn">Hide</a>					
+							</td>
+						</tr>
+						<tr class='person'>
+							<td class='name'>Viorica Sudacevschi </td>
+							<td class='degree'>PhD.</td>
+							<td><a href="#">Calculus I</a>, Calculus II</td>
+						</tr>
+						<tr class='id_card'>
+							<td colspan="3">
+								<div><img src="../static/images/bostan.jpg" alt=""></div>
+								<div>
+									<h4>Viorel Bostan</h4>
+									<p>Head of Department</br>PhD</p>
+									<p>Courses:</p>
+									<ul>
+										<li><a href="#">Calculus I</a></li>
+										<li><a href="#">Calculus II</a></li>
+										<li><a href="#">Probability and Information Theory</a></li>
+										<li><a href="#">Discrete Mathematics</a></li>
+										<li><a href="#">Numerical Analysis</a></li>
+										<li><a href="#">Optimization Technics</a></li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+								<a href="#" class="hide_btn">Hide</a>					
+							</td>
+						</tr>
+						<tr class='person'>
+							<td class='name'>Viorel Bostan</td>
+							<td class='degree'>PhD.</td>
+							<td>Calculus I, Calculus II</td>
+						</tr>
+						<tr class='id_card'>
+							<td colspan="3">
+								<div><img src="../static/images/bostan.jpg" alt=""></div>
+								<div>
+									<h4>Viorel Bostan</h4>
+									<p>Head of Department</br>PhD</p>
+									<p>Courses:</p>
+									<ul>
+										<li><a href="#">Calculus I</a></li>
+										<li><a href="#">Calculus II</a></li>
+										<li><a href="#">Probability and Information Theory</a></li>
+										<li><a href="#">Discrete Mathematics</a></li>
+										<li><a href="#">Numerical Analysis</a></li>
+										<li><a href="#">Optimization Technics</a></li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+								<a href="#" class="hide_btn">Hide</a>					
+							</td>
+						</tr>
+						<tr class='person'>
+							<td class='name'>Viorel Bostan</td>
+							<td class='degree'>PhD.</td>
+							<td>Calculus I, Calculus II</td>
+						</tr>
+						<tr class='id_card'>
+							<td colspan="3">
+								<div><img src="../static/images/bostan.jpg" alt=""></div>
+								<div>
+									<h4>Viorel Bostan</h4>
+									<p>Head of Department</br>PhD</p>
+									<p>Courses:</p>
+									<ul>
+										<li><a href="#">Calculus I</a></li>
+										<li><a href="#">Calculus II</a></li>
+										<li><a href="#">Probability and Information Theory</a></li>
+										<li><a href="#">Discrete Mathematics</a></li>
+										<li><a href="#">Numerical Analysis</a></li>
+										<li><a href="#">Optimization Technics</a></li>
+									</ul>
+								</div>
+								<div class="clr"></div>
+								<a href="#" class="hide_btn">Hide</a>					
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</article>
 </section>
+<script type="text/javascript">
+	$(function() {
+		$('tr.id_card').hide();
+
+		$('tbody').on('click', 'tr.person', function() {
+			 $(this)
+			 	.hide()
+				 	.next()
+				 	.slideDown('slow');
+		});
+	});
+</script>
 {% endblock %}

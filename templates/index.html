@@ -40,13 +40,9 @@
 				<div class="header_links_in">
 					<a href="#" class="fb">Follow us on</a>
 					<nav>
-						<a href="/about/">{{ PROJECT_DIR }}About</a>
-						<a href="/admission/">Admission</a>
-						<a href="#">Achievements</a>
-						<a href="#">Activities</a>
-						<a href="/people">People</a>
-						<a href="/courses/">Courses</a>
-						<a href="#">Contact Us</a>
+						{% for item in list %}
+						<a href="{{ item.0 }}" class="{{ item.1 }}">{{ item.2 }}</a>
+						{% endfor %}
 					</nav>
 				</div>
 			</div>
