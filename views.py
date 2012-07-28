@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from academics.models import Course
 
 
 def index(request):
@@ -34,7 +34,9 @@ def courses(request):
 		('/people/', '', 'People'),
 		('/courses/', 'active', 'Courses'),
 		('#', '', 'Contact Us')]
-	return render(request, "courses.html", {"list": item})
+	cont = Course.objects.all()
+	y = ['I','II','III','IV','V','VI','VII']
+	return render(request, "courses.html", {"list": item, "academic": cont, "y": y})
 
 def about_course(request):
 	item = [
