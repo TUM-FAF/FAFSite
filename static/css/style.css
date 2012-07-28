@@ -39,6 +39,7 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			#header_links nav a{padding:7px 19px;border-left:1px solid #222;display:block;float:left;font-size:13px;text-decoration:none;color:#c3c3c3;font-weight:600;}
 			#header_links nav a:hover{text-decoration:underline;}
 			#header_links:hover nav a{border-left:1px solid #333;}
+				#header_links nav a.active{text-decoration:underline;}
 
 #site_body{width:962px;text-align:left;margin:0 auto;overflow: hidden; padding-bottom: 43px; min-height: 100%;}
 	.description{margin:30px auto;height:70px;font-family:'Open Sans',sans-serif;font-size:20px;text-shadow:white 1px -1px 1px;line-height:120%;text-align:justify;}

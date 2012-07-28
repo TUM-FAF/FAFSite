@@ -4,22 +4,78 @@ from django.http import HttpResponse
 
 
 def index(request):
-	return render(request, "mainpage.html")
+	item = [
+		('/about/', '' ,'About'),
+		('/admission/', '', 'Admission'),
+		('#', '', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', '', 'People'),
+		('/courses/', '', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "mainpage.html", {"list": item})
 
 def about(request):
-	return render(request, "about.html")
+	item = [
+		('/about/', 'active' ,'About'),
+		('/admission/', '', 'Admission'),
+		('#', '', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', '', 'People'),
+		('/courses/', '', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "about.html", {"list": item})
 
 def courses(request):
-	return render(request, "courses.html")
+	item = [
+		('/about/', '' ,'About'),
+		('/admission/', '', 'Admission'),
+		('#', '', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', '', 'People'),
+		('/courses/', 'active', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "courses.html", {"list": item})
 
 def about_course(request):
-	return render(request, "about-course.html")
+	item = [
+		('/about/', '' ,'About'),
+		('/admission/', '', 'Admission'),
+		('#', '', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', '', 'People'),
+		('/courses/', 'active', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "about-course.html", {"list": item})
 
 def timeline(request):
-	return render(request, "timeline.html")
+	item = [
+		('/about/', '' ,'About'),
+		('/admission/', '', 'Admission'),
+		('#', 'active', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', '', 'People'),
+		('/courses/', '', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "timeline.html", {"list": item})
 
 def admission(request):
-	return render(request, "admission.html")
+	item = [
+		('/about/', '' ,'About'),
+		('/admission/', 'active', 'Admission'),
+		('#', '', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', '', 'People'),
+		('/courses/', '', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "admission.html", {"list": item})
 
 def people(request):
-	return render(request, "people.html")
+	item = [
+		('/about/', 'active' ,'About'),
+		('/admission/', '', 'Admission'),
+		('#', '', 'Achievements'),
+		('#', '', 'Activities'),
+		('/people/', 'active', 'People'),
+		('/courses/', '', 'Courses'),
+		('#', '', 'Contact Us')]
+	return render(request, "people.html", {"list": item})
