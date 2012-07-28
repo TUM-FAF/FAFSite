@@ -69,6 +69,7 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			.subjects a{color:#1691ba;text-decoration:none;font-size:13px;line-height:1em;}
 			.subjects a:hover{text-decoration:underline;}
 section{}
+
 #articles{width:auto;float:left;margin:0 0 20px;}
 #course_description{width:650px;float:right;margin:0 0 20px;}
 	#articles, #course_description article{margin:20px 0 20px 0;padding:18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
@@ -104,6 +105,30 @@ section{}
 			#articles .pagination nav a.pagination_end{font-size:11px;}
 		#articles .pagination span.pagination_counter{color:#6e6e6e;}
 			#articles .pagination span.pagination_counter b{color:#229dc7;font-weight:600;}
+
+#articles.table_block{width:612px;float:right;}
+	article table{width:100%;border:1px solid #eee;font-size:13px;vertical-align:middle;table-layout:fixed;margin-bottom:20px;}
+		article table tr{border-bottom:1px solid #eee;}
+			article table th, td{border-left:1px solid #eee;padding:8px;line-height:1.5em;}
+			article table th.name, td.name{width:160px;}
+			article table th.degree, td.degree{width:100px;}
+				article table thead tr{background:whiteSmoke;}
+				article table tbody tr.person{cursor:pointer;}	
+				article table tbody tr.person:hover{background:whiteSmoke;}
+					article table a{text-decoration:none;}
+					article table a:hover{text-decoration:underline;}
+			article table tr.id_card div{float:left;padding:7px;}
+				article table tr.id_card h4{font-size:15px;margin:0 0 10px;}
+				article table tr.id_card p{line-height:1.2em;}
+				article table tr.id_card ul{margin-top:0;}
+					article table tr.id_card li{list-style-type:square;}
+			article table tr.id_card a.hide_btn{padding:2px 15px 3px;background:#777;border:1px solid #555;border-radius:2px;font-size:12px;color:#fff;text-decoration:none;font-weight:600;float:right;margin-right:15px;
+										background: -webkit-gradient(radial, center center, 0, center center, 47, from(#777), to(#555));
+										background: -webkit-radial-gradient(circle, #777, #555);
+										background: -moz-radial-gradient(circle, #777, #555);
+										background: -ms-radial-gradient(circle, #777, #555);
+										}
+	
 #side_menu{width:300px;float:left;margin:0 0 20px; overflow: hidden;}
 	#side_menu .side_block{margin:20px 0 0;padding:14px 18px 18px;border:1px solid #e1e1e1;background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;}
 		#side_menu .side_block .block_title{margin:0;padding:0px 0 3px;color:#1c9dd6;font-weight:400;font-size:18px;border-bottom:1px solid #d7d7d7;}
