@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from academics.models import Course
+# from academics.models import Course
 
 
 def index(request):
@@ -10,7 +10,7 @@ def index(request):
 		('#', '', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', '', 'People'),
-		('/courses/', '', 'Courses'),
+		('#', '', 'Courses'),
 		('#', '', 'Contact Us')]
 	return render(request, "mainpage.html", {"list": item})
 
@@ -21,7 +21,7 @@ def about(request):
 		('#', '', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', '', 'People'),
-		('/courses/', '', 'Courses'),
+		('#', '', 'Courses'),
 		('#', '', 'Contact Us')]
 	return render(request, "about.html", {"list": item})
 
@@ -32,7 +32,7 @@ def courses(request):
 		('#', '', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', '', 'People'),
-		('/courses/', 'active', 'Courses'),
+		('#', 'active', 'Courses'),
 		('#', '', 'Contact Us')]
 	cont = Course.objects.all()
 	y = ['I','II','III','IV','V','VI','VII']
@@ -45,7 +45,7 @@ def about_course(request):
 		('#', '', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', '', 'People'),
-		('/courses/', 'active', 'Courses'),
+		('#', 'active', 'Courses'),
 		('#', '', 'Contact Us')]
 	return render(request, "about-course.html", {"list": item})
 
@@ -56,7 +56,7 @@ def timeline(request):
 		('#', 'active', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', '', 'People'),
-		('/courses/', '', 'Courses'),
+		('#', '', 'Courses'),
 		('#', '', 'Contact Us')]
 	return render(request, "timeline.html", {"list": item})
 
@@ -67,7 +67,7 @@ def admission(request):
 		('#', '', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', '', 'People'),
-		('/courses/', '', 'Courses'),
+		('#', '', 'Courses'),
 		('#', '', 'Contact Us')]
 	return render(request, "admission.html", {"list": item})
 
@@ -78,6 +78,6 @@ def people(request):
 		('#', '', 'Achievements'),
 		('#', '', 'Activities'),
 		('/people/', 'active', 'People'),
-		('/courses/', '', 'Courses'),
+		('#', '', 'Courses'),
 		('#', '', 'Contact Us')]
 	return render(request, "people.html", {"list": item})

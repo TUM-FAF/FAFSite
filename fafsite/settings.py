@@ -10,6 +10,8 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
+GRAPPELLI_ADMIN_TITLE = 'FAF website'
+
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -107,7 +109,7 @@ ROOT_URLCONF = 'fafsite.urls'
 WSGI_APPLICATION = 'fafsite.wsgi.application'
 
 TEMPLATE_DIRS = (
-	os.path.join( os.path.dirname( __file__ ), '..', 'templates' ).replace( '\\', '/' ),
+    os.path.join( os.path.dirname( __file__ ), '..', 'templates' ).replace( '\\', '/' ),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -124,7 +126,7 @@ INSTALLED_APPS = (
     'tinymce',
     'blog',
     # Uncomment the next line to enable the admin:
-##	'grappelli',
+    'grappelli',
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',

@@ -19,16 +19,18 @@ $(function() {
 
 	// show and hide ID card of a person
 	function showHide() {
+		var tbody = $('tbody');
+
 		$('tr.id_card').hide();
 
-		$('tbody').on('click', 'tr.person', function() {
+		tbody.on('click', 'tr.person', function() {
 			$(this)
 			 	.hide()
 				 	.next()
 				 	.fadeIn('slow');
 		});
 
-		$('tbody').on('click', 'a.hide_btn', function() {
+		tbody.on('click', 'a.hide_btn', function() {
 			$(this)
 				.parents('tr.id_card')
 				.hide()
