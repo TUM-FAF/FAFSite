@@ -2,82 +2,43 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # from academics.models import Course
 
+menu_items = {
+		'about': ('/about/', 'About')
+		,'admission': ('/admission/', 'Admission')
+		,'achievements': ('#', 'Achievements')
+		,'activities': ('#', 'Activities')
+		,'people': ('/people/', 'People')
+		,'timeline': ('/timeline/', 'Timeline')
+		,'courses': ('#', 'Courses')
+		,'contact_us': ('#', 'Contact Us')
+	}
 
 def index(request):
-	item = [
-		('/about/', '' ,'About'),
-		('/admission/', '', 'Admission'),
-		('#', '', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', '', 'People'),
-		('#', '', 'Courses'),
-		('#', '', 'Contact Us')]
-	return render(request, "mainpage.html", {"list": item})
+	global menu_items
+	return render(request, "mainpage.html", {"page": "index", "menu": menu_items})
 
 def about(request):
-	item = [
-		('/about/', 'active' ,'About'),
-		('/admission/', '', 'Admission'),
-		('#', '', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', '', 'People'),
-		('#', '', 'Courses'),
-		('#', '', 'Contact Us')]
-	return render(request, "about.html", {"list": item})
+	global menu_items
+	return render(request, "about.html", {"page": "about", "menu": menu_items})
 
 def courses(request):
-	item = [
-		('/about/', '' ,'About'),
-		('/admission/', '', 'Admission'),
-		('#', '', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', '', 'People'),
-		('#', 'active', 'Courses'),
-		('#', '', 'Contact Us')]
+	global menu_items
 	cont = Course.objects.all()
 	y = ['I','II','III','IV','V','VI','VII']
-	return render(request, "courses.html", {"list": item, "academic": cont, "y": y})
+	return render(request, "courses.html", {"page": "courses", "menu": menu_items, "academic": cont, "y": y})
 
 def about_course(request):
-	item = [
-		('/about/', '' ,'About'),
-		('/admission/', '', 'Admission'),
-		('#', '', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', '', 'People'),
-		('#', 'active', 'Courses'),
-		('#', '', 'Contact Us')]
-	return render(request, "about-course.html", {"list": item})
+	global menu_items
+	return render(request, "about-course.html", {"page": "about", "menu": menu_items})
 
 def timeline(request):
-	item = [
-		('/about/', '' ,'About'),
-		('/admission/', '', 'Admission'),
-		('#', 'active', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', '', 'People'),
-		('#', '', 'Courses'),
-		('#', '', 'Contact Us')]
-	return render(request, "timeline.html", {"list": item})
+	global menu_items
+	return render(request, "timeline.html", {"page": "timeline", "menu": menu_items})
 
 def admission(request):
-	item = [
-		('/about/', '' ,'About'),
-		('/admission/', 'active', 'Admission'),
-		('#', '', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', '', 'People'),
-		('#', '', 'Courses'),
-		('#', '', 'Contact Us')]
-	return render(request, "admission.html", {"list": item})
+	global menu_items
+	return render(request, "admission.html", {"page": "admission", "menu": menu_items})
 
 def people(request):
-	item = [
-		('/about/', 'active' ,'About'),
-		('/admission/', '', 'Admission'),
-		('#', '', 'Achievements'),
-		('#', '', 'Activities'),
-		('/people/', 'active', 'People'),
-		('#', '', 'Courses'),
-		('#', '', 'Contact Us')]
-	return render(request, "people.html", {"list": item})
+	global menu_items
+	return render(request, "people.html", {"page": "people", "menu": menu_items})
