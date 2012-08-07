@@ -2,12 +2,12 @@ html, body{margin:0;padding:0;width:100%;height:100%;min-height:100%;max-width: 
 html, body{font:12px 'Open Sans',Tahoma, Arial, sans-serif;font-weight:400;color:#333; overflow-x: hidden;}
 html{background:#eee;position:relative;height: 100%;}
 body{text-align:center;}
-.wrapper{min-height:100%;padding-bottom:0;position: relative;}
+.wrapper{min-height:100%;padding-bottom:0;position: relative; height: auto; overflow: hidden;}
 
 
 table{border-collapse: collapse}
 html,body,td,tr,p,div,form{margin:0;padding:0;}
-body{position: relative;}
+body{position: relative; height:auto; overflow: hidden;}
 a,img{border:0;color: #fff;}
 a{text-decoration:underline;color:#555;}
 a:hover{text-decoration:none;}
@@ -125,7 +125,7 @@ section{}
 				article table tr.id_card p.emphasis{font-size:15px;font-weight:600;}
 				article table tr.id_card ul{margin-top:0;}
 					article table tr.id_card li{list-style-type:square;}
-			article table tr.id_card a.hide_btn{padding:2px 15px 3px;background:#777;border:1px solid #555;border-radius:2px;font-size:12px;color:#fff;text-decoration:none;font-weight:600;float:right;margin-right:15px;
+			/**/ a.hide_btn{padding:2px 15px 3px;background:#777;border:1px solid #555;border-radius:2px;font-size:12px;color:#fff;text-decoration:none;font-weight:600;float:right;margin-right:15px;
 										background: -webkit-gradient(radial, center center, 0, center center, 47, from(#777), to(#555));
 										background: -webkit-radial-gradient(circle, #777, #555);
 										background: -moz-radial-gradient(circle, #777, #555);
@@ -210,14 +210,17 @@ article.slide .nav_buttons .button{
 	border: 5px solid rgb(28,157,215);
 	border-radius: 50%;
 	text-align: center;
-	padding: 5px 8px;
+	min-height: 20px;
+	min-width: 20px;
+	padding: 4px 5px;
 	margin: 0 5px;
 	cursor: pointer;
 	font-size: 13px;
 	font-weight: bold;
+	box-shadow: 1px 2px 2px gray;
 }
 article.slide .nav_buttons .button:hover{
-	box-shadow: 0 0 9px 2px rgb(28,157,215);
+	box-shadow: 0 0 3px 2px rgb(28,157,215);
 }
 article.slide .nav_buttons .button.this{
 	background: rgb(28,157,215);

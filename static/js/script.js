@@ -1,7 +1,7 @@
 $(function() {
 
 	sliding();
-	showHide();
+// 	showHide();
 
 	// slide up and down items of the sidebar
 	function sliding() {
@@ -17,26 +17,60 @@ $(function() {
 		});
 	}
 
-	// show and hide ID card of a person
-	function showHide() {
-		var tbody = $('tbody');
+// 	// show and hide ID card of a person
+// 	function showHide() {
+// 		var tbody = $('tbody');
 
-		$('tr.id_card').hide();
+// 		$('tr.id_card').hide();
 
-		tbody.on('click', 'tr.person', function() {
-			$(this)
-			 	.hide()
-				 	.next()
-				 	.fadeIn('slow');
-		});
+// 		tbody.on('click', 'tr.person', function() {
+// 			$(this)
+// 			 	.hide()
+// 				 	.next()
+// 				 	.fadeIn('slow');
+// 		});
 
-		tbody.on('click', 'a.hide_btn', function() {
-			$(this)
-				.parents('tr.id_card')
-				.hide()
-					.prev()
-					.show();
+// 		tbody.on('click', 'a.hide_btn', function() {
+// 			$(this)
+// 				.parents('tr.id_card')
+// 				.hide()
+// 					.prev()
+// 					.show();
 
-		});
-	}
-}); 
+// 		});
+// 	}
+// }); 
+
+// $(function() {
+	$tbody = $('body');
+	var people = {
+		init: function(){
+			 $tbody.find('tr.person').unbind().click(function(){
+				$this = $(this);
+				people.hide('all');
+				people.show('all');
+				$this.hide().next().show();
+				 $tbody
+				 	.find('tr.id_card .hide_btn').click(function(){
+					 	$(this)
+					 		.parents('tr.id_card').hide();
+					 	people.show('all');
+					 })
+			});
+		},
+		hide: function(val){
+			if(val == 'all')
+				$tbody.find('tr.id_card').hide();
+			else
+				val.hide();
+		},
+		show: function(val){
+			if(val == 'all')
+				$tbody.find('tr.person').show();
+			else
+				val.show();
+		}
+	};
+people.hide('all');
+people.init();
+});
