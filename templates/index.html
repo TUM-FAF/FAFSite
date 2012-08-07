@@ -40,8 +40,8 @@
 				<div class="header_links_in">
 					<a href="#" class="fb">Follow us on</a>
 					<nav>
-						{% for item_key, item_value in menu.items %}
-							<a href="{{ item_value.0 }}" {% if page == item_key %}class="active"{% endif %}>{{ item_value.1 }}</a>
+						{% for link, page_title in menu %}
+							<a href="{{ link }}" {% if page == page_title %}class="active"{% endif %}>{{ page_title }}</a>
 						{% endfor %}
 					</nav>
 				</div>
@@ -55,7 +55,7 @@
 	</div>
 	<footer>
 		<div class="footer_inside">
-			<p class='left'>&copy; 2012 <a href="#">FAF</a> - English taught Honor's Program in Computer Science</p>
+			<p class='left'>&copy; 2012 <a href="/index/">FAF</a> - English taught Honor's Program in Computer Science</p>
 			<p class='right'><a href="http://utm.md/" target='_black'>Technical University of Moldova</a></p>
 			<a href="http://utm.md/" target='_black'><img src="{{ STATIC_URL }}images/utm-logo.png" alt=""></a>
 		</div>
