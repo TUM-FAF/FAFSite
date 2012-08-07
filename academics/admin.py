@@ -6,10 +6,10 @@ class UserAdmin(admin.ModelAdmin):
 	search_fields = ('name', 'surname')
 
 class UserMetaKeyAdmin(admin.ModelAdmin):
-	list_display = ('meta_key', 'meta_type', 'meta_data')
+	list_display = ('key', 'type', 'data')
 
 class UserMetaAdmin(admin.ModelAdmin):
-	list_display = ('key', 'value')
+	list_display = ('user', 'meta', 'value')
 
 
 # class ProfessorAdmin(admin.ModelAdmin):
