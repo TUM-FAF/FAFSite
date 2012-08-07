@@ -6,7 +6,7 @@
 {% block content %}
 <div class="timeline_main">
 		<section id="articles" class="content">
-			<article>
+			<article data-id="1">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -40,7 +40,7 @@
 			</div>
 		</section>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="2">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -69,7 +69,7 @@
 			</div>
 		</section>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="3">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -98,7 +98,7 @@
 			</div>
 		</section>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="4">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -130,7 +130,7 @@
 		&nbsp;
 	</div>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="5">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -154,7 +154,7 @@
 			</div>
 		</section>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="6">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -191,7 +191,7 @@
 			</div>
 		</section>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="7">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -220,7 +220,7 @@
 			</div>
 		</section>
 		<section id="articles" class="content">
-			<article>
+			<article data-id="8">
 				<div class="article_header">
 					<time>27.07.2012</time>
 					<a href="#" class="article_comments">0 comments</a>
@@ -262,8 +262,8 @@
 				articles.each(function(){
 					var content = $(this);
 					content.removeClass('right').removeClass('left').removeClass('first').removeClass('second');
-					console.log(val);
-					console.log(content.outerHeight());
+					// console.log(val);
+					// console.log(content.outerHeight());
 					if(!first)
 					{
 						content.addClass('left').addClass('first');
@@ -309,17 +309,45 @@
 			},
 			links: function(){
 				var link = $('a.read_more');
-				link.click(function(e){
+				link.unbind().click(function(e){
 					e.preventDefault();
+					$('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
 					$this = $(this).parents('section');
+					$(this).removeClass('read_more').addClass('hide_btn').text('Hide').click(function(){
+						window.location.hash = "";
+						$this.removeClass('right').removeClass('left').removeClass('first').removeClass('long').removeClass('second');
+						timeline.init();
+						$(this).removeClass('hide_btn').addClass('read_more').text('Read more »');
+						timeline.links();
+					});
+					$id = $(this).parents('article').attr('data-id');
+					window.location.hash = $id;
+					console.log('id = '+$id);
 					timeline.init();
-					$this.removeClass('right').removeClass('left').removeClass('long').removeClass('first').addClass('long').removeClass('second');
+					$this.removeClass('right').removeClass('left').removeClass('first').addClass('long').removeClass('second');
 					timeline.init(1);
+					$this.siblings().find('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
+					if($id != null)
+						$position = $this.position().top + $this.parent().position().top - $(window).height()/2 + $this.outerHeight()/2 +20;
+					else
+						$position = 0;
+					console.log($position);
+					$('body').delay(300).animate({scrollTop: $position}, 1500);
+					timeline.links();
 				});
+			},
+			hash: function(){
+				var $hash = window.location.hash;
+				$hash = $hash.substring(1);
+				if($hash.length > 0){
+					$('[data-id="'+$hash+'"]').find('a.read_more').click();
+					timeline.init(1);
+				}
 			}
 		};
 		timeline.init();
 		timeline.links();
+		timeline.hash();
 	});
 </script>
 {% endblock %}
