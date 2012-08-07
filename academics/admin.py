@@ -1,11 +1,11 @@
 from django.contrib import admin 
-from academics.models import User, UserMetaKey, UserMeta
+from academics.models import User, UserMetaType, UserMeta
 
 class UserAdmin(admin.ModelAdmin):
 	list_display = ('name', 'surname')
 	search_fields = ('name', 'surname')
 
-class UserMetaKeyAdmin(admin.ModelAdmin):
+class UserMetaTypeAdmin(admin.ModelAdmin):
 	list_display = ('key', 'type', 'data')
 
 class UserMetaAdmin(admin.ModelAdmin):
@@ -13,5 +13,5 @@ class UserMetaAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User, UserAdmin)
-admin.site.register(UserMetaKey, UserMetaKeyAdmin)
+admin.site.register(UserMetaType, UserMetaTypeAdmin)
 admin.site.register(UserMeta, UserMetaAdmin)

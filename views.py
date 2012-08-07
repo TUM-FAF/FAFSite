@@ -40,5 +40,20 @@ def admission(request):
 	return render(request, "admission.html", {"page": "admission", "menu": menu_items})
 
 def people(request):
+	from academics.models import *
 	global menu_items
+
+	'''
+	DEMO
+
+	user = UserExtended(1)
+	print user.type
+	user.type = "student"
+	print user.type
+	user.save()
+
+	#del user.age
+
+	'''
+
 	return render(request, "people.html", {"page": "people", "menu": menu_items})
