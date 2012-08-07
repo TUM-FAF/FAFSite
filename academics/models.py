@@ -95,7 +95,7 @@ class UserMetaKey(models.Model):
 		return u'%s' % (self.meta_key)
 
 class UserMeta(models.Model):
-	user_id = models.ForeignKey(User)
+	user = models.ForeignKey(User)
 	key = models.ForeignKey(UserMetaKey)
 	value = models.TextField()
 
@@ -104,13 +104,3 @@ class UserMeta(models.Model):
 
 
 
-class Person():
-	def __init__(self, name, surname, email, group):
-		user = User(name=name, surname=surname, email=email, group=group)
-		user.save()
-
-	def __getattr__(self, key):
-		try:
-			print key
-		except (AttributeError, TypeError):
-			print 'no such key'
