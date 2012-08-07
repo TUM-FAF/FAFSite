@@ -1,5 +1,4 @@
 from django.db import models
-import sys
 
 KEYS = (
 	('USER_TYPE', 'User type'),
@@ -46,8 +45,11 @@ class UserMeta(models.Model):
 =	Load empty user 		user = UserExtended()
 
 =	Get user attributes		user.age
-					returns:string (if not multiple meta)
+	returns:				string (if not multiple meta)
 							array of strings (if multiple meta)
+
+=	Chech if some attribute user.hasattr('type')
+	is defined
 
 =	Update user attributes	user.age = 25
 							user.type = ['student', 'mentor'] (if multiple meta)
@@ -93,14 +95,24 @@ class UserExtended():
 		# delete all attributes
 		UserMeta.objects.filter(user=self.user).delete()
 
+	def hasattr(self, key):
+		if hasattr(self.user, key):
+			return True
+		else:
+			try:
+				getattr(self, key)
+				return True
+			except:
+				return False
+
 	#TODO: check for meta_type filters
 	def setMeta(self, key, value, unique = True):
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 		except UserMetaType.DoesNotExist:
-			print "no such meta type"
+			raise AttributeError("such meta key not defined")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 
 		if meta_type.multiple:
 			delattr(self, key)	# delete all meta of this type
@@ -115,7 +127,7 @@ class UserExtended():
 			except UserMeta.DoesNotExist:
 				user_meta = UserMeta(user=self.user, meta=meta_type)	# new meta
 			except:
-				print "error"
+				raise AttributeError("unknown error")
 				
 			user_meta.value = value
 			user_meta.save()		
@@ -124,9 +136,9 @@ class UserExtended():
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 		except UserMetaType.DoesNotExist:
-			print "no such meta type"
+			raise AttributeError("such meta key not defined")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 
 		user_meta = UserMeta(user=self.user, meta=meta_type, value=value)
 		user_meta.save()
@@ -135,9 +147,9 @@ class UserExtended():
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 		except UserMetaType.DoesNotExist:
-			print "no such meta type"
+			raise AttributeError("no such meta type")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 
 		try:
 			if not meta_type.multiple:
@@ -151,11 +163,11 @@ class UserExtended():
 				return result
 
 		except UserMeta.DoesNotExist:
-			print "no such meta"
+			raise AttributeError("no such meta")
 		except UserMeta.MultipleObjectsReturned:
-			print "multiple objects returned"
+			raise AttributeError("multiple objects returned")
 		except:
-			print "error", sys.exc_info()[0]
+			raise AttributeError("unknown error")
 		
 		raise AttributeError()
 
@@ -168,3 +180,5 @@ class UserExtended():
 				return False
 		except:
 			return False
+
+	
