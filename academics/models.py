@@ -87,16 +87,16 @@ class User(models.Model):
 		return u'%s %s' % (self.name, self.surname)
 
 class UserMetaKey(models.Model):
-	meta_key = models.TextField()
-	meta_type = models.TextField()
-	meta_data = models.TextField(blank=True)
+	key = models.TextField()
+	type = models.TextField()
+	data = models.TextField(blank=True)
 
 	def __unicode__(self):
 		return u'%s' % (self.meta_key)
 
 class UserMeta(models.Model):
 	user = models.ForeignKey(User)
-	key = models.ForeignKey(UserMetaKey)
+	meta = models.ForeignKey(UserMetaKey)
 	value = models.TextField()
 
 	def __unicode__(self):
