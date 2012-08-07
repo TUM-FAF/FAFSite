@@ -86,31 +86,116 @@ class User(models.Model):
 	def __unicode__(self):
 		return u'%s %s' % (self.name, self.surname)
 
-class UserMetaKey(models.Model):
-	meta_key = models.TextField()
-	meta_type = models.TextField()
-	meta_data = models.TextField(blank=True)
+class UserMetaType(models.Model):
+	key = models.TextField()
+	type = models.TextField()
+	data = models.TextField(blank=True)
 
 	def __unicode__(self):
-		return u'%s' % (self.meta_key)
+		return u'%s' % (self.key)
 
 class UserMeta(models.Model):
-	user_id = models.ForeignKey(User)
-	key = models.ForeignKey(UserMetaKey)
+	user = models.ForeignKey(User)
+	meta = models.ForeignKey(UserMetaType)
 	value = models.TextField()
 
 	def __unicode__(self):
-		return u'%s - %s' % (self.key, self.value)
+		return u'%s - %s' % (self.meta, self.value)
 
 
+class UserExtended():
+	def __init__(self, user_id=0):
+		if user_id <= 0:
+			self.user = User()
+		else:
+			try:
+				self.user = User.objects.get(id=user_id)
+			except User.DoesNotExist:
+				self.user = User()
+			
+	def save(self):
+		self.user.save()
 
-class DataInput():
-	def __init__(self, name, surname, email, group):
-		user = User(name=name, surname=surname, email=email, group=group)
-		user.save()
+	def delete(self):
+		self.user.delete()
 
-	# def __getattr__(self, key):
-	# 	try:
-	# 		UserMetaKey.objects.get(meta_key=key)
-	# 	except UserMetaKey.DoesNotExist:
-	# 		print 'This key does not exist in the db'
+	def __setattr__(self, key, value):
+		if key == "user":
+			self.__dict__[key] = value
+		elif hasattr(self.user, key):
+			return setattr(self.user, key, value)
+		else:
+			return self.setMeta(key, value)
+
+	def __getattr__(self, key):
+		if hasattr(self.user, key):
+			return getattr(self.user, key)
+		else:
+			return self.getMeta(key)
+
+	def __delattr__(self, key):
+		if key == "user":
+			del self.__dict__[key]
+		else:
+			self.delMeta(key)
+
+
+	def setMeta(self, key, value, unique = True):
+		try:
+			meta_type = UserMetaType.objects.get(key=key)
+		except UserMetaType.DoesNotExist:
+			print "no such meta type"
+		except:
+			print "error"
+
+		try:
+			user_meta = UserMeta.objects.get(user=self.user, meta=meta_type)
+		except UserMeta.DoesNotExist:
+			user_meta = UserMeta()
+			user_meta.user = self.user
+			user_meta.meta = meta_type
+		except:
+			print "error"
+
+		print user_meta.id
+
+		#TODO: check for meta_type filters
+		user_meta.value = value
+		user_meta.save()
+
+	#TODO: add unique handling
+	def getMeta(self, key, unique = True):
+		try:
+			meta_type = UserMetaType.objects.get(key=key)
+		except UserMetaType.DoesNotExist:
+			print "no such meta type"
+		except:
+			print "error"
+
+		try:
+			meta = UserMeta.objects.get(user=self.user, meta=meta_type)
+			return meta.value
+		except UserMeta.DoesNotExist:
+			print "no such meta"
+		except:
+			print "error"
+		
+		raise AttributeError()
+
+	def delMeta(self, key):
+		try:
+			meta_type = UserMetaType.objects.get(key=key)
+			try:
+				meta = UserMeta.objects.get(user=self.user, meta=meta_type)
+				return meta.delete()
+			except:
+				return False
+		except:
+			return False
+
+		
+	
+
+ 
+
+
