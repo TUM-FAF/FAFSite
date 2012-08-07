@@ -78,7 +78,7 @@ section{}
 			article .article_header time{padding:0 9px 0 0;line-height:11px;border-right:1px solid #e0e0e0;}
 			article .article_header a{text-decoration:none;}
 				article .article_header a:hover{text-decoration:underline;}
-			article .article_header a.article_category{color:#626262;padding:0 0 0 5px;font-weight:600;}
+			article .article_header a.article_author{color:#8f8f8f;padding:0 0 0 5px;font-weight:600;}
 			article .article_header a.article_comments{float:right;color:#8f8f8f;}
 		article .article_body{}
 			article .article_body h3{margin:0;padding:8px 0 15px;color:#1c9dd6;font-weight:400;font-size:24px;}
