@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# from academics.models import Course
+from django.template import RequestContext
+from blog.models import Article
 
 menu_items = {
 		'about': ('/about/', 'About')
@@ -13,6 +13,8 @@ menu_items = {
 		,'contact_us': ('#', 'Contact Us')
 	}
 
+
+
 def index(request):
 	global menu_items
 	return render(request, "mainpage.html", {"page": "index", "menu": menu_items})
@@ -23,9 +25,9 @@ def about(request):
 
 def courses(request):
 	global menu_items
-	cont = Course.objects.all()
+	courses = Course.objects.all()
 	y = ['I','II','III','IV','V','VI','VII']
-	return render(request, "courses.html", {"page": "courses", "menu": menu_items, "academic": cont, "y": y})
+	return render(request, "courses.html", {"page": "courses", "menu": menu_items, "academic": courses, "y": y})
 
 def about_course(request):
 	global menu_items
@@ -33,7 +35,8 @@ def about_course(request):
 
 def timeline(request):
 	global menu_items
-	return render(request, "timeline.html", {"page": "timeline", "menu": menu_items})
+	articles = Article.objects.all()
+	return render(request, "timeline.html", {"page": "timeline", "menu": menu_items, "articles": articles})
 
 def admission(request):
 	global menu_items

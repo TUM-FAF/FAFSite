@@ -5,27 +5,20 @@
 {% endblock %}
 {% block content %}
 <div class="timeline_main">
+		<div class="mid_line">
+			&nbsp;
+		</div>
+		{% for article in articles %}
 		<section id="articles" class="content">
 			<article>
 				<div class="article_header">
-					<time>27.07.2012</time>
+					<time>{{ article.date }}</time>
 					<a href="#" class="article_comments">0 comments</a>
 				</div>
 				<div class="article_body">
-					<h3>Lorem ipsum dolor 1</h3>
+					<h3>{{ article.title }}</h3>
 					<div  class="article_content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
+							{{ article.preview|safe }}
 						<a href="#" class="read_more">Read more &raquo;</a>
 					</div>
 				</div>
@@ -39,7 +32,8 @@
 				&nbsp;
 			</div>
 		</section>
-		<section id="articles" class="content">
+		{% endfor %}
+		<!-- <section id="articles" class="content">
 			<article>
 				<div class="article_header">
 					<time>27.07.2012</time>
@@ -125,11 +119,9 @@
 			<div class="arrow_inside">
 				&nbsp;
 			</div>
-		</section>
-	<div class="mid_line">
-		&nbsp;
-	</div>
-		<section id="articles" class="content">
+		</section> -->
+
+		<!-- <section id="articles" class="content">
 			<article>
 				<div class="article_header">
 					<time>27.07.2012</time>
@@ -247,7 +239,7 @@
 			<div class="arrow_inside">
 				&nbsp;
 			</div>
-		</section>
+		</section> -->
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
