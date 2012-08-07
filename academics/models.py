@@ -104,13 +104,13 @@ class UserMeta(models.Model):
 
 
 
-class DataInput():
+class Person():
 	def __init__(self, name, surname, email, group):
 		user = User(name=name, surname=surname, email=email, group=group)
 		user.save()
 
-	# def __getattr__(self, key):
-	# 	try:
-	# 		UserMetaKey.objects.get(meta_key=key)
-	# 	except UserMetaKey.DoesNotExist:
-	# 		print 'This key does not exist in the db'
+	def __getattr__(self, key):
+		try:
+			print key
+		except (AttributeError, TypeError):
+			print 'no such key'
