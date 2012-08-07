@@ -1,71 +1,5 @@
 from django.db import models
 
-# RANKINGS = (
-# 	('LECT', 'Lecturer'),
-# 	('LECT_SUP', 'Superior lecturer'),
-# 	('PHD', 'PhD'),
-# 	('SEN_LECT', 'Senior Lecturer'),
-
-# 	)
-
-# SEMESTERS = (
-# 	(1, 'I'),
-# 	(2, 'II'),
-# 	(3, 'III'),
-# 	(4, 'IV'),
-# 	(5, 'V'),
-# 	(6, 'VI'),
-# 	(7, 'VII'),
-# 	)
-
-# LANGUAGES = (
-# 	('EN', 'English'),
-# 	('RO', 'Romanian'),
-# 	)
-
-# class Student(models.Model):
-# 	name = models.CharField(max_length=15)
-# 	surname = models.CharField(max_length=20)
-# 	group = models.CharField(max_length=10)
-# 	photo = models.ImageField(blank=True, upload_to="photos")
-	
-# 	def __unicode__(self):
-# 		return u'%s %s' %(self.name, self.surname)
-
-# class Alumni(models.Model):
-# 	name = models.CharField(max_length=15)
-# 	surname = models.CharField(max_length=20)
-# 	group = models.CharField(max_length=10)
-# 	job = models.CharField(blank=True, max_length=50)
-# 	licenta = models.TextField(blank=True)
-# 	photo = models.ImageField(blank=True, upload_to="photos")
-
-# 	def __unicode__(self):
-# 		return u'%s %s' %(self.name, self.surname)
-
-# class Professor(models.Model):
-# 	name = models.CharField(max_length=15)
-# 	surname = models.CharField(max_length=20)
-# 	rank = models.CharField(max_length=30,choices=RANKINGS)
-# 	photo = models.ImageField(blank=True,upload_to="photos")
-
-# 	def __unicode__(self):
-# 		return u'%s %s' %(self.name, self.surname)
-
-# class Course(models.Model):
-# 	subject_ro = models.CharField(max_length=70)
-# 	subject_en = models.CharField(max_length=70)
-# 	professors = models.ManyToManyField(Professor, blank=True,verbose_name="List of teachers")
-# 	semester = models.IntegerField(choices=SEMESTERS)
-# 	language = models.CharField(max_length=10,choices=LANGUAGES)
-# 	proiectDeCurs = models.BooleanField()
-# 	labs = models.BooleanField()
-# 	literatura = models.TextField(blank=True)
-# 	# description = models.TextField(blank=True)
-
-# 	def __unicode__(self):
-# 		return self.subject_en
-
 KEYS = (
 	('USER_TYPE', 'User type'),
 	('PHOTO', 'Photo'),
@@ -90,6 +24,7 @@ class UserMetaType(models.Model):
 	key = models.TextField()
 	type = models.TextField()
 	data = models.TextField(blank=True)
+	multiple = models.BooleanField()
 
 	def __unicode__(self):
 		return u'%s' % (self.key)
@@ -102,7 +37,28 @@ class UserMeta(models.Model):
 	def __unicode__(self):
 		return u'%s - %s' % (self.meta, self.value)
 
+'''
+====Proxy Object for User class and it's attributes====
 
+=	Load user 				user = UserExtended(user_id)
+
+=	Load empty user 		user = UserExtended()
+
+=	Get user attributes		user.age
+	returns:				string (if not multiple meta)
+							array of strings (if multiple meta)
+
+=	Chech if some attribute user.hasattr('type')
+	is defined
+
+=	Update user attributes	user.age = 25
+							user.type = ['student', 'mentor'] (if multiple meta)
+
+=	Delete user attributes	del user.age
+
+=	Delete user and all		del user
+	its meta
+'''
 class UserExtended():
 	def __init__(self, user_id=0):
 		if user_id <= 0:
@@ -112,18 +68,13 @@ class UserExtended():
 				self.user = User.objects.get(id=user_id)
 			except User.DoesNotExist:
 				self.user = User()
-			
-	def save(self):
-		self.user.save()
-
-	def delete(self):
-		self.user.delete()
 
 	def __setattr__(self, key, value):
 		if key == "user":
 			self.__dict__[key] = value
 		elif hasattr(self.user, key):
-			return setattr(self.user, key, value)
+			setattr(self.user, key, value)
+			salf.user.save()
 		else:
 			return self.setMeta(key, value)
 
@@ -139,46 +90,84 @@ class UserExtended():
 		else:
 			self.delMeta(key)
 
+	def __del__(self):
+		self.user.delete()
+		# delete all attributes
+		UserMeta.objects.filter(user=self.user).delete()
 
-	def setMeta(self, key, value, unique = True):
+	def hasattr(self, key):
+		if hasattr(self.user, key):
+			return True
+		else:
+			try:
+				getattr(self, key)
+				return True
+			except:
+				return False
+
+	#TODO: check for meta_type filters
+	def setMeta(self, key, value):
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 		except UserMetaType.DoesNotExist:
-			print "no such meta type"
+			raise AttributeError("such meta key not defined")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 
+		if meta_type.multiple:
+			delattr(self, key)	# delete all meta of this type
+			if type(value) == type([]) or type(value) == type(list()):
+				for value_one in value:
+					self.addMeta(key, value_one)
+			else:
+				self.addMeta(key, value)
+		else:
+			try:
+				user_meta = UserMeta.objects.get(user=self.user, meta=meta_type)
+			except UserMeta.DoesNotExist:
+				user_meta = UserMeta(user=self.user, meta=meta_type)	# new meta
+			except:
+				raise AttributeError("unknown error")
+				
+			user_meta.value = value
+			user_meta.save()		
+		
+	def addMeta(self, key, value):
 		try:
-			user_meta = UserMeta.objects.get(user=self.user, meta=meta_type)
-		except UserMeta.DoesNotExist:
-			user_meta = UserMeta()
-			user_meta.user = self.user
-			user_meta.meta = meta_type
+			meta_type = UserMetaType.objects.get(key=key)
+		except UserMetaType.DoesNotExist:
+			raise AttributeError("such meta key not defined")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 
-		print user_meta.id
-
-		#TODO: check for meta_type filters
-		user_meta.value = value
+		user_meta = UserMeta(user=self.user, meta=meta_type, value=value)
 		user_meta.save()
 
-	#TODO: add unique handling
-	def getMeta(self, key, unique = True):
+	def getMeta(self, key):
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 		except UserMetaType.DoesNotExist:
-			print "no such meta type"
+			raise AttributeError("no such meta type")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 
 		try:
-			meta = UserMeta.objects.get(user=self.user, meta=meta_type)
-			return meta.value
+			if not meta_type.multiple:
+				meta = UserMeta.objects.get(user=self.user, meta=meta_type)
+				return meta.value
+			else:
+				# return array of values
+				result = []
+				for meta in UserMeta.objects.filter(user=self.user, meta=meta_type):
+					result.append(meta.value)
+				return result
+
 		except UserMeta.DoesNotExist:
-			print "no such meta"
+			raise AttributeError("no such meta")
+		except UserMeta.MultipleObjectsReturned:
+			raise AttributeError("multiple objects returned")
 		except:
-			print "error"
+			raise AttributeError("unknown error")
 		
 		raise AttributeError()
 
@@ -186,16 +175,10 @@ class UserExtended():
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 			try:
-				meta = UserMeta.objects.get(user=self.user, meta=meta_type)
-				return meta.delete()
+				return UserMeta.objects.filter(user=self.user, meta=meta_type).delete()
 			except:
 				return False
 		except:
 			return False
 
-		
 	
-
- 
-
-
