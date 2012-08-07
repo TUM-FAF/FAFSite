@@ -106,7 +106,7 @@ class UserExtended():
 				return False
 
 	#TODO: check for meta_type filters
-	def setMeta(self, key, value, unique = True):
+	def setMeta(self, key, value):
 		try:
 			meta_type = UserMetaType.objects.get(key=key)
 		except UserMetaType.DoesNotExist:
