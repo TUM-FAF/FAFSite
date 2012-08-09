@@ -1,7 +1,7 @@
 # Django settings for fafsite project.
 import os
 gettext = lambda s: s
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+PROJECT_PATH = os.path.join( os.path.abspath(os.path.dirname(__file__)), '..').replace( '\\', '/' )
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -17,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join( os.path.dirname( __file__ ), '..', 'db', 'fafdb.db' ).replace( '\\', '/' ),                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join( PROJECT_PATH, 'db', 'fafdb.db' ).replace( '\\', '/' ),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -50,12 +50,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, ".." ,"media").replace('\\', '/')
+MEDIA_ROOT = os.path.join( PROJECT_PATH ,"media" ).replace('\\', '/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -69,7 +69,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join( PROJECT_PATH, '..', 'static' ).replace( '\\', '/' ),
+    os.path.join( PROJECT_PATH, 'static' ).replace( '\\', '/' ),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -109,7 +109,7 @@ ROOT_URLCONF = 'fafsite.urls'
 WSGI_APPLICATION = 'fafsite.wsgi.application'
 
 TEMPLATE_DIRS = (
-    os.path.join( os.path.dirname( __file__ ), '..', 'templates' ).replace( '\\', '/' ),
+    os.path.join( PROJECT_PATH, 'templates' ).replace( '\\', '/' ),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
