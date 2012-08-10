@@ -69,4 +69,5 @@ def people(request):
 
 	'''
 
+
 	return render(request, "people.html", {"page": "people", "menu": menu_items})
