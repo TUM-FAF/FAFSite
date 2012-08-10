@@ -1,15 +1,12 @@
 from django.db import models
+import json
 
-KEYS = (
-	('USER_TYPE', 'User type'),
-	('PHOTO', 'Photo'),
-	('CURRENT_JOB', 'Current job'),
-	)
+# user_type = str
+# user_type_data = json.dumps(['Students', 'Professor', 'Alumni'])]
 
-TYPES = (
-	('CharField(max_length=63)', 'Char Field'),
-	('TextField()', 'Text Field'),
-	)
+
+
+
 
 class User(models.Model):
 	name = models.CharField(max_length=15)
@@ -46,12 +43,14 @@ class UserMeta(models.Model):
 
 =	Get user attributes		user.age
 	returns:				string (if not multiple meta)
-							array of strings (if multiple meta)
+							list of strings (if multiple meta)
 
-=	Chech if some attribute user.hasattr('type')
+=	Check if some attribute user.hasattr('type')
 	is defined
 
 =	Update user attributes	user.age = 25
+							user.type = ['student']
+							or
 							user.type = ['student', 'mentor'] (if multiple meta)
 
 =	Delete user attributes	del user.age
@@ -74,7 +73,7 @@ class UserExtended():
 			self.__dict__[key] = value
 		elif hasattr(self.user, key):
 			setattr(self.user, key, value)
-			salf.user.save()
+			self.user.save()
 		else:
 			return self.setMeta(key, value)
 
@@ -113,6 +112,31 @@ class UserExtended():
 			raise AttributeError("such meta key not defined")
 		except:
 			raise AttributeError("unknown error")
+		if meta_type.type == 'number':
+			value = str(value)
+			if isinstance(value, int) and value > 0:
+				pass
+			else:
+				raise ValueError("Should be an integer")
+		elif meta_type.type == 'string':
+			if isinstance(value, str):
+				pass
+			else:
+				raise AttributeError("Should be a string")
+		elif meta_type.type == 'choice':
+			try:
+				data = json.loads(meta_type.data)
+				if isinstance(value, list):
+					# check is list value is contained in list data
+					if set(value).issubset(set(data)):
+						pass
+					else:
+						raise AttributeError('No such choice/choises')
+				else:
+					raise AttributeError('Should be a list')
+			except ValueError:
+				raise ValueError("Should be a valid JSON file")
+
 
 		if meta_type.multiple:
 			delattr(self, key)	# delete all meta of this type
@@ -153,17 +177,22 @@ class UserExtended():
 
 		try:
 			if not meta_type.multiple:
-				meta = UserMeta.objects.get(user=self.user, meta=meta_type)
-				return meta.value
+				try:
+					meta = UserMeta.objects.get(user=self.user, meta=meta_type)
+					return meta.value
+				except:
+					return None
 			else:
 				# return array of values
 				result = []
 				for meta in UserMeta.objects.filter(user=self.user, meta=meta_type):
 					result.append(meta.value)
+				if result == []:
+					return None
 				return result
 
 		except UserMeta.DoesNotExist:
-			raise AttributeError("no such meta")
+			raise AttributeError("No such meta")
 		except UserMeta.MultipleObjectsReturned:
 			raise AttributeError("multiple objects returned")
 		except:
