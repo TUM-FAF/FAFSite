@@ -1,0 +1,435 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Alireza Savand <alireza.savand@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: django-filebrowser\n"
+"Report-Msgid-Bugs-To: https://github.com/sehmaschine/django-filebrowser/issues\n"
+"POT-Creation-Date: 2011-10-06 15:00+0200\n"
+"PO-Revision-Date: 2012-07-02 06:58+0000\n"
+"Last-Translator: Alireza Savand <alireza.savand@gmail.com>\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/django-filebrowser/language/fa/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: actions.py:51
+#, python-format
+msgid "Action applied successfully to '%s'"
+msgstr "عملیات با موفقیت انجام شد برای '%s'"
+
+#: actions.py:56 forms.py:21
+msgid "Flip horizontal"
+msgstr "جابجایی افقی"
+
+#: actions.py:62 forms.py:22
+msgid "Flip vertical"
+msgstr "جابجایی عمودی"
+
+#: actions.py:68 forms.py:23
+msgid "Rotate 90° CW"
+msgstr "چرخش ۹۰ درجه در جهت ساعت"
+
+#: actions.py:74 forms.py:24
+msgid "Rotate 90° CCW"
+msgstr "چرخش ۹۰ درجه در خلاف جهت ساعت"
+
+#: actions.py:80 forms.py:25
+msgid "Rotate 180°"
+msgstr "چرخش ۱۹۰ درجه"
+
+#: decorators.py:23
+msgid ""
+"Error finding Upload-Folder (MEDIA_ROOT + DIRECTORY). Maybe it does not "
+"exist?"
+msgstr "خطا در یافتن پوشه آپلود (MEDIA_ROOT + DIRECTORY). شاید وجود ندارد ؟"
+
+#: decorators.py:25
+msgid "The requested Folder does not exist."
+msgstr "پوشه درخواستی وجود ندارد."
+
+#: decorators.py:41
+msgid "The requested File does not exist."
+msgstr "فایل درخواستی وجود ندارد."
+
+#: decorators.py:47
+msgid "You do not have permission to access this file!"
+msgstr "اجازه دسترسی به این فایل ندارید!"
+
+#: fields.py:65
+#, python-format
+msgid "Extension %(ext)s is not allowed. Only %(allowed)s is allowed."
+msgstr "پسوند %(ext)s مجاز نیست. فقط %(allowed)s مجاز است."
+
+#: forms.py:39 forms.py:58
+msgid "Name"
+msgstr "نام"
+
+#: forms.py:39 forms.py:45 forms.py:58 forms.py:79
+msgid "Only letters, numbers, underscores, spaces and hyphens are allowed."
+msgstr "فقط حروف، عدد، زیرخط،فاصله‌ها و خط‌ربط مجاز هستند."
+
+#: forms.py:48 forms.py:82
+msgid "The Folder already exists."
+msgstr "پوشه وجود دارد."
+
+#: forms.py:57
+msgid "Actions"
+msgstr "عملیات‌ها"
+
+#: forms.py:84
+msgid "The File already exists."
+msgstr "پوشه"
+
+#: settings.py:111 templates/filebrowser/include/tableheader.html:21
+#: templates/filebrowser/include/tableheader.html:22
+msgid "Folder"
+msgstr "پوشه"
+
+#: settings.py:112
+msgid "Image"
+msgstr "تصویر"
+
+#: settings.py:113
+msgid "Video"
+msgstr "ویدئو"
+
+#: settings.py:114
+msgid "Document"
+msgstr "سند"
+
+#: settings.py:115
+msgid "Audio"
+msgstr "صوت"
+
+#: sites.py:269 templates/filebrowser/include/breadcrumbs.html:8
+#: templates/filebrowser/include/breadcrumbs.html:10
+msgid "FileBrowser"
+msgstr "فایل‌بروز"
+
+#: sites.py:298
+#, python-format
+msgid "The Folder %s was successfully created."
+msgstr "پوشه %s  با موفقیت ایجاد شد."
+
+#: sites.py:303
+msgid "Permission denied."
+msgstr "اجازه رد شد."
+
+#: sites.py:305
+msgid "Error creating folder."
+msgstr "خطا در ایجاد پوشه."
+
+#: sites.py:312 sites.py:315 templates/filebrowser/index.html:79
+msgid "New Folder"
+msgstr "پوشه جدید"
+
+#: sites.py:329
+msgid "Select files to upload"
+msgstr "انتخاب فایل‌ها برای آپلود"
+
+#: sites.py:332 templates/filebrowser/index.html:80
+msgid "Upload"
+msgstr "آپلود"
+
+#: sites.py:363 sites.py:366
+msgid "Confirm delete"
+msgstr "تأیید حذف"
+
+#: sites.py:388
+#, python-format
+msgid "Successfully deleted %s"
+msgstr "با موفقیت حذف شد %s"
+
+#: sites.py:433
+msgid "Renaming was successful."
+msgstr "تغییر نام با موفقیت انجام شد."
+
+#: sites.py:442
+msgid "Error."
+msgstr "خطا."
+
+#: widgets.py:19 widgets.py:52
+msgid "Currently"
+msgstr "کنونی"
+
+#: widgets.py:20 widgets.py:53
+#: templates/filebrowser/include/filelisting.html:130
+msgid "Change"
+msgstr "تغییر"
+
+#: widgets.py:21 widgets.py:54
+msgid "Clear"
+msgstr "پاک"
+
+#: templates/filebrowser/createdir.html:24
+#: templates/filebrowser/detail.html:48 templates/filebrowser/rename.html:24
+msgid "Please correct the following errors."
+msgstr "خطاهای زیر را اصلاح کنید."
+
+#: templates/filebrowser/createdir.html:33
+#: templates/filebrowser/upload.html:131
+msgid ""
+"The Name will be converted to lowercase. Spaces will be replaced with "
+"underscores."
+msgstr "نام به حروف کوچک تبدیل خواهد شد، فاصله‌ها به زیر خط جاگذاری خواهند شد."
+
+#: templates/filebrowser/createdir.html:40
+#: templates/filebrowser/rename.html:38
+msgid "Submit"
+msgstr "ارسال"
+
+#: templates/filebrowser/custom_field.html:26
+#: templates/filebrowser/widgets/clearablefileinput.html:11
+#: templates/filebrowser/widgets/fileinput.html:11
+msgid "File not found"
+msgstr "فایل پیدا نشد"
+
+#: templates/filebrowser/delete_confirm.html:29
+#, python-format
+msgid ""
+"Are you sure you want to delete \"%(escaped_object)s\"? All of the following"
+" items will be deleted:"
+msgstr "آیا مطمئن هستید به حذف \"%(escaped_object)s\"؟ تمامی اقلام ذیل حذف خواهند شد:"
+
+#: templates/filebrowser/delete_confirm.html:42
+#, python-format
+msgid "... and %(escaped_object)s more Files."
+msgstr "... و  %(escaped_object)s فایل‌های بیشتر."
+
+#: templates/filebrowser/delete_confirm.html:48
+#: templates/filebrowser/upload.html:45
+msgid "Cancel"
+msgstr "لغو"
+
+#: templates/filebrowser/delete_confirm.html:49
+msgid "Yes, I'm sure"
+msgstr "بله، من مطمئن هستم."
+
+#: templates/filebrowser/detail.html:61
+msgid "Edit"
+msgstr "ویرایش"
+
+#: templates/filebrowser/detail.html:74
+msgid "Folder Information"
+msgstr "اطلاعات پوشه"
+
+#: templates/filebrowser/detail.html:76 templates/filebrowser/detail.html:105
+#: templates/filebrowser/include/tableheader.html:28
+#: templates/filebrowser/include/tableheader.html:29
+msgid "Date"
+msgstr "تاریخ"
+
+#: templates/filebrowser/detail.html:87
+msgid "File Information"
+msgstr "اطلاعات فایل"
+
+#: templates/filebrowser/detail.html:89
+msgid "URL"
+msgstr "آدرس"
+
+#: templates/filebrowser/detail.html:97
+msgid "Filesize"
+msgstr "اندازه فایل"
+
+#: templates/filebrowser/detail.html:114
+#: templates/filebrowser/include/tableheader.html:25
+#: templates/filebrowser/include/tableheader.html:26
+msgid "Size"
+msgstr "اندازه"
+
+#: templates/filebrowser/detail.html:126
+msgid "Image Versions"
+msgstr "نسخه‌های تصویر"
+
+#: templates/filebrowser/detail.html:129
+#: templates/filebrowser/include/tableheader.html:15
+msgid "Thumbnail"
+msgstr "بند انگشتی"
+
+#: templates/filebrowser/detail.html:131
+#: templates/filebrowser/include/filelisting.html:100
+msgid "View Image"
+msgstr "دیدن تصویر"
+
+#: templates/filebrowser/detail.html:151
+msgid "Delete"
+msgstr "حذف"
+
+#: templates/filebrowser/detail.html:152
+msgid "Save"
+msgstr "ذخیره"
+
+#: templates/filebrowser/detail.html:153
+msgid "Save and continue editing"
+msgstr "ذخیره و ادامه ویرایش"
+
+#: templates/filebrowser/upload.html:46
+msgid "Failed"
+msgstr "شکست"
+
+#: templates/filebrowser/upload.html:60
+msgid "{file} has invalid extension. Only {extensions} are allowed."
+msgstr "{file} پسوند غیر مجاز دارد. فقط {extensions} مجاز هستند."
+
+#: templates/filebrowser/upload.html:61
+msgid "{file} is too large, maximum file size is {sizeLimit}."
+msgstr "{file} خیلی بزرگ است، حداکثر اندازه فایل {sizeLimit}."
+
+#: templates/filebrowser/upload.html:62
+msgid "{file} is too small, minimum file size is {minSizeLimit}."
+msgstr "{file} خیلی کوچک است, حداقل اندازه فایل {minSizeLimit}."
+
+#: templates/filebrowser/upload.html:63
+msgid "{file} is empty, please select files again without it."
+msgstr "{file} خالی است, دوباره فایل را انتخاب کنید بدون اون."
+
+#: templates/filebrowser/upload.html:64
+msgid ""
+"The files are being uploaded, if you leave now the upload will be cancelled."
+msgstr "فایل‌ها در حال دانلود شدن هستند، اگر ترک کنید لغو خواهند شد."
+
+#: templates/filebrowser/upload.html:110
+msgid "Please enable Javascript to upload files."
+msgstr "جاوااسکریپت را فعال کنید برای آپلود فایل‌ها."
+
+#: templates/filebrowser/upload.html:115
+msgid "Help"
+msgstr "کمک"
+
+#: templates/filebrowser/upload.html:119
+msgid "Allowed"
+msgstr "مجاز"
+
+#: templates/filebrowser/upload.html:125
+msgid "Max. Filesize"
+msgstr "حداکثر اندازه فایل"
+
+#: templates/filebrowser/include/breadcrumbs.html:5
+msgid "Home"
+msgstr "خانه"
+
+#: templates/filebrowser/include/filelisting.html:18
+#: templates/filebrowser/include/filelisting.html:44
+#: templates/filebrowser/include/filelisting.html:69
+msgid "Select"
+msgstr "انتخاب"
+
+#: templates/filebrowser/include/filelisting.html:22
+#: templates/filebrowser/include/filelisting.html:48
+#: templates/filebrowser/include/filelisting.html:73
+msgid "Versions"
+msgstr "نسخه‌ها"
+
+#: templates/filebrowser/include/filter.html:4
+msgid "Filter"
+msgstr "فیلتر"
+
+#: templates/filebrowser/include/filter.html:7
+msgid "By Date"
+msgstr "توسط تاریخ"
+
+#: templates/filebrowser/include/filter.html:9
+msgid "Any Date"
+msgstr "هر تاریخی"
+
+#: templates/filebrowser/include/filter.html:10
+msgid "Today"
+msgstr "امروز"
+
+#: templates/filebrowser/include/filter.html:11
+msgid "Past 7 days"
+msgstr "۷ روز گذشته"
+
+#: templates/filebrowser/include/filter.html:12
+msgid "This Month"
+msgstr "این ماه"
+
+#: templates/filebrowser/include/filter.html:13
+msgid "This year"
+msgstr "این سال"
+
+#: templates/filebrowser/include/filter.html:17
+msgid "By Type"
+msgstr "توسط نوع"
+
+#: templates/filebrowser/include/filter.html:19
+msgid "All"
+msgstr "همه"
+
+#: templates/filebrowser/include/paginator.html:5
+msgid "result"
+msgstr "نتیجه"
+
+#: templates/filebrowser/include/paginator.html:5
+msgid "results"
+msgstr "نتیجه‌ها"
+
+#: templates/filebrowser/include/paginator.html:9
+#: templates/filebrowser/include/paginator.html:11
+msgid "total"
+msgstr "کل"
+
+#: templates/filebrowser/include/tableheader.html:12
+#: templates/filebrowser/include/tableheader.html:13
+msgid "Type"
+msgstr "نوع"
+
+#: templates/filebrowser/include/tableheader.html:17
+#: templates/filebrowser/include/tableheader.html:18
+msgid "Filename"
+msgstr "نام فایل"
+
+#: templates/filebrowser/include/toolbar.html:6
+msgid "Results"
+msgstr "نتیجه‌ها"
+
+#: templates/filebrowser/include/toolbar.html:8
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] "%(counter)s نتیجه‌ها"
+
+#: templates/filebrowser/include/toolbar.html:9
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr "%(full_result_count)s کلی"
+
+#: templates/filebrowser/include/toolbar.html:16
+msgid "Search"
+msgstr "جستجو"
+
+#~ msgid "BROWSE"
+#~ msgstr "BROWSE"
+
+#~ msgid "An Error occured"
+#~ msgstr "An Error occured"
+
+#~ msgid "Completed"
+#~ msgstr "Completed"
+
+#~ msgid "Do you want to replace the file"
+#~ msgstr "Do you want to replace the file"
+
+#~ msgid "KB"
+#~ msgstr "KB"
+
+#~ msgid "MB"
+#~ msgstr "MB"
+
+#~ msgid "Clear Queue"
+#~ msgstr "Clear Queue"
+
+#~ msgid "Flip/Rotate"
+#~ msgstr "Flip/Rotate"
+
+#~ msgid "Transposing was successful."
+#~ msgstr "Transposing was successful."
+
+#~ msgid "SELECT FILES"
+#~ msgstr "SELECT FILES"

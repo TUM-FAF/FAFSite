@@ -93,6 +93,13 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.i18n",
+    'django.contrib.messages.context_processors.messages',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -115,6 +122,17 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    'django.contrib.messages.context_processors.messages',
+)
+
+GRAPPELLI_INDEX_DASHBOARD = 'fafsite.dashboard.CustomIndexDashboard'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,6 +144,7 @@ INSTALLED_APPS = (
     'tinymce',
     'blog',
     # Uncomment the next line to enable the admin:
+    'grappelli.dashboard',
     'grappelli',
     'filebrowser',
     'django.contrib.admin',

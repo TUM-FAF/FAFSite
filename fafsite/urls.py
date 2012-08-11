@@ -19,6 +19,7 @@ urlpatterns = patterns('',
 	url(r'^courses/$', courses),
 	url(r'^people/$', people),
 	url(r'^tinymce/', include('tinymce.urls')),
+	# url(r'^admin/academics/user/add/$', 'admin_views.metakeys'),
 	# Examples:
 	# url(r'^$', 'fafsite.views.home', name='home'),
 	# url(r'^fafsite/', include('fafsite.foo.urls')),

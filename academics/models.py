@@ -1,10 +1,13 @@
 from django.db import models
 import json
 
-# user_type = str
-# user_type_data = json.dumps(['Students', 'Professor', 'Alumni'])]
 
-
+META_TYPES = (
+	('number', 'Number'),
+	('string', 'String'),
+	('choice', 'Multiple Choice'),
+	('url', 'URL'),
+	)
 
 
 
@@ -13,13 +16,14 @@ class User(models.Model):
 	surname = models.CharField(max_length=31)
 	email = models.EmailField()
 	group = models.CharField(blank=True, max_length=15)
+	photo = models.ImageField(blank=True, upload_to="photos")
 
 	def __unicode__(self):
 		return u'%s %s' % (self.name, self.surname)
 
 class UserMetaType(models.Model):
-	key = models.TextField()
-	type = models.TextField()
+	key = models.CharField(max_length=31)
+	type = models.CharField(max_length=31, choices=META_TYPES)
 	data = models.TextField(blank=True)
 	multiple = models.BooleanField()
 
