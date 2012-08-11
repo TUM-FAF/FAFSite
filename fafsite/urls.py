@@ -18,6 +18,7 @@ urlpatterns = patterns('',
 	url(r'^courses/Calculus-1/$', about_course),
 	url(r'^courses/$', courses),
 	url(r'^people/$', people),
+	url(r'^contact-us/$', contact_us),
 	url(r'^tinymce/', include('tinymce.urls')),
 	# url(r'^admin/academics/user/add/$', 'admin_views.metakeys'),
 	# Examples:

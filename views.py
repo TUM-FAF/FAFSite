@@ -9,7 +9,7 @@ menu_items = [
         ('/activities/', 'Activities'),
         ('/people/', 'People'),
         ('#', 'Courses'),
-        ('#', 'Contact Us')
+        ('/contact-us/', 'Contact Us')
     ]
 
 
@@ -21,36 +21,36 @@ def index(request):
 def about(request):
     global menu_items
     return render(request, "about.html", 
-        {"page": "about", "menu": menu_items})
+        {"page": "About", "menu": menu_items})
 
 def courses(request):
     global menu_items
     courses = Course.objects.all()
     y = ['I','II','III','IV','V','VI','VII']
     return render(request, "courses.html", 
-        {"page": "courses", "menu": menu_items, "academic": courses, "y": y})
+        {"page": "Courses", "menu": menu_items, "academic": courses, "y": y})
 
 def about_course(request):
     global menu_items
     return render(request, "about-course.html", 
-        {"page": "about", "menu": menu_items})
+        {"page": "About", "menu": menu_items})
 
 def achievements(request):
     global menu_items
     articles = Article.objects.filter(category='ACH').order_by('-date')
     return render(request, "timeline.html", 
-        {"page": "timeline", "menu": menu_items, "articles": articles})
+        {"page": "Achievements", "menu": menu_items, "articles": articles})
 
 def activities(request):
     global menu_items
     articles = Article.objects.filter(category='ACT').order_by('-date')
     return render(request, "timeline.html", 
-        {"page": "timeline", "menu": menu_items, "articles": articles})
+        {"page": "Activities", "menu": menu_items, "articles": articles})
 
 def admission(request):
     global menu_items
     return render(request, "admission.html", 
-        {"page": "admission", "menu": menu_items})
+        {"page": "Admission", "menu": menu_items})
 
 def people(request):
     from academics.models import *
@@ -70,7 +70,12 @@ def people(request):
     '''
 
 
-    return render(request, "people.html", {"page": "people", "menu": menu_items})
+    return render(request, "people.html", {"page": "People", "menu": menu_items})
+
+def contact_us(request):
+    global menu_items
+    return render(request, "contact-us.html", 
+        {"page": "Contact Us", "menu": menu_items})
 
 def metakeys(request):
     fieldset = ['aaaaaaaa', 'bbbbbbbbb', 'cccccccccc']
