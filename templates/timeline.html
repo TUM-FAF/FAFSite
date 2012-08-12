@@ -313,26 +313,23 @@
 					e.preventDefault();
 					$('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
 					$this = $(this).parents('section');
+					$id = $(this).parents('article').attr('data-id');
+					window.location.hash = $id;
+					timeline.init();
+					$this.removeClass('right').removeClass('left').removeClass('first').addClass('long').removeClass('second');
+					timeline.init(1);
+					$this.siblings().find('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
+					$position = $this.position().top + $this.parent().position().top - $(window).height()/2 + $this.outerHeight()/2 +20;
+					console.log($position);
+					$('body').delay(300).animate({scrollTop: $position}, 1500);
 					$(this).removeClass('read_more').addClass('hide_btn').text('Hide').click(function(){
-						window.location.hash = "";
+						// window.location.hash = "0";
+						history.replaceState("#", "Timeline", "/timeline/");
 						$this.removeClass('right').removeClass('left').removeClass('first').removeClass('long').removeClass('second');
 						timeline.init();
 						$(this).removeClass('hide_btn').addClass('read_more').text('Read more »');
 						timeline.links();
 					});
-					$id = $(this).parents('article').attr('data-id');
-					window.location.hash = $id;
-					console.log('id = '+$id);
-					timeline.init();
-					$this.removeClass('right').removeClass('left').removeClass('first').addClass('long').removeClass('second');
-					timeline.init(1);
-					$this.siblings().find('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
-					if($id != null)
-						$position = $this.position().top + $this.parent().position().top - $(window).height()/2 + $this.outerHeight()/2 +20;
-					else
-						$position = 0;
-					console.log($position);
-					$('body').delay(300).animate({scrollTop: $position}, 1500);
 					timeline.links();
 				});
 			},
