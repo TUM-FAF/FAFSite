@@ -194,7 +194,7 @@ footer{height:43px;width:100%;position:absolute;bottom:0;left:0;border-top:1px s
 .wrapper header a div.ribbon:hover{text-decoration: none;box-shadow: 0 0 20px 1px #777;-webkit-box-shadow: 0 0 20px 1px #777;-moz-box-shadow: 0 0 20px 1px #777;-o-box-shadow: 0 0 20px 1px #777;}
 
 article.slide{
-	margin: 12px 0 0 12px;
+	margin: 0;
 	overflow: hidden;
 }
 article.slide .nav_buttons{
@@ -219,6 +219,14 @@ article.slide .nav_buttons .button{
 	font-size: 13px;
 	font-weight: bold;
 	box-shadow: 1px 2px 2px gray;
+}
+section#articles article.slide div.article_body div.article_content{
+	width: 2480px;
+}
+section#articles article.slide div.article_body div.article_content p{
+	width: 610px;
+	float: left;
+	margin-right: 10px;
 }
 article.slide .nav_buttons .button:hover{
 	box-shadow: 0 0 3px 2px rgb(28,157,215);
