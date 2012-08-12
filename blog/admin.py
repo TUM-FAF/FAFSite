@@ -1,8 +1,8 @@
 from django.contrib import admin 
-from blog.models import Content
+from blog.models import Article
 
-class ContentAdmin(admin.ModelAdmin):
-	list_display = ('title', 'date')
-	search_fields = ('title',)
+class ArticleAdmin(admin.ModelAdmin):
+	list_display = ('category', 'title', 'date')
+	search_fields = ('category', 'title',)
 
-admin.site.register(Content, ContentAdmin)
+admin.site.register(Article, ArticleAdmin)

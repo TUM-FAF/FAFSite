@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="contact">
+	<p>If you have any questions or proposals don't hesitate to contact us.</p>
+	<form action="#">
+		<!-- <ul> -->
+			<!-- <li> -->
+				<label for="name">Name: </label>
+	 			<input name="name" id="name">
+			<!-- </li> -->
+
+			<!-- <li> -->
+				<label for="email">Email: </label>
+		 		<input name="email" id="email">
+			<!-- </li> -->
+
+			<!-- <li> -->
+				<label for="comments">Message: </label>
+				<textarea name="comments" id="comments" cols="30" rows="7"></textarea>
+			<!-- </li> -->
+			<!-- <li> -->
+				<input type="submit" value="Submit">
+			<!-- </li> -->
+		<!-- </ul> -->
+	</form>
+</div>
+	
+{% endblock %}

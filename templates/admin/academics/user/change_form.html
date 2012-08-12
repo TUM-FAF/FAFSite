@@ -1,0 +1,64 @@
+{% extends "admin/change_form.html" %}
+
+{% block after_field_sets %}
+    <!-- Field set for Meta -->
+    <h1>Meta</h1>
+
+    {% for fieldset in usermetakey %}
+        {% include "admin/includes/fieldset.html" %}
+    {% endfor %}
+
+    <!-- <fieldset class="grp-module ">
+        <div class="grp-row grp-cells-1 name ">
+            <div class="l-2c-fluid l-d-4">
+                <div class="c-1">
+                    <label for="id_name" class="required">Key</label>
+                </div>
+                <div class="c-2">
+                    <input id="id_name" type="text" class="vTextField" name="name" maxlength="31" />
+                </div>
+            </div>
+        </div>
+
+        <div class="grp-row grp-cells-1 surname ">
+            <div class="l-2c-fluid l-d-4">
+                <div class="c-1">
+                    <label for="id_surname" class="required">Type</label>
+                </div>
+                <div class="c-2">
+                    <input id="id_surname" type="text" class="vTextField" name="surname" maxlength="31" />
+                </div>
+            </div>
+        </div>
+
+        <div class="grp-row grp-cells-1 type ">
+            <div class="l-2c-fluid l-d-4">
+                <div class="c-1">
+                    <label for="id_type" class="required">Multiple</label>
+                </div>
+                <div class="c-2">
+                    <select name="type" id="id_type">
+                        <option value="" selected="selected">---------</option>
+                        <option value="number">Number</option>
+                        <option value="string">String</option>
+                        <option value="choice">Multiple Choice</option>
+                        <option value="url">URL</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="grp-row grp-cells-1 group ">
+            <div class="l-2c-fluid l-d-4">
+                <div class="c-1">
+                    <label for="id_group">Data</label>
+                </div>
+                <div class="c-2">
+                    <input id="id_group" type="text" class="vTextField" name="group" maxlength="15" />
+                </div>
+            </div>
+        </div>
+
+    </fieldset> -->
+
+{% endblock %}

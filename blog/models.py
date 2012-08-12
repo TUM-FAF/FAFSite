@@ -1,18 +1,19 @@
 from django.db import models
 from tinymce.models import HTMLField
 
-CONTENT_TAGS = (
+CATEGORY = (
 	('ACT', 'Activities'),
 	('ACH', 'Achievements'),
 	)
 
-class Content(models.Model):
+class Article(models.Model):
 	date = models.DateField()
-	title = models.CharField(max_length=20)
-	desc = HTMLField()
-	tag = models.CharField(max_length=15, choices=CONTENT_TAGS)
-
+	title = models.CharField(max_length=127)
+	author = models.CharField(max_length=63)
+	category = models.CharField(max_length=15, choices=CATEGORY)
+	preview = HTMLField()
+	content = HTMLField()
+	
 	def __unicode__(self):
-		return self.title
+		return u'%s: "%s" by %s' % (self.category, self.title, self.author)
 
-# Create your models here.
