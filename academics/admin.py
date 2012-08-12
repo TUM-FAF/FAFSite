@@ -21,13 +21,22 @@ class UserAdminForm(forms.ModelForm):
 			new_form.setMeta(self.userExtended.getAttributes())
 			return new_form.as_p()
 
+	'''
+	UserMetaType.objects.all()				all meta types 
+	self.userExtended.getAttributes()		user attributes (dict)
+
+	TODO:
+		use this function instead of getAdditionalMeta
+		by doing this, getAdditionalMeta method and metaForm class
+		try to use admin/includes/fieldset.html from change_form.html file
+	'''
 	def getAdditionalFieldsets(self):
-		# TODO: use this function instead of getAdditionalMeta and erase metaForm class
 		return None
 
 class metaForm(forms.ModelForm):
 	class Meta:
 		model = Empty
+
 	def __init__(self, *args, **kwargs):
 		super(metaForm, self).__init__(*args, **kwargs)
 
@@ -53,6 +62,9 @@ class UserAdmin(admin.ModelAdmin):
 	def save_model(self, request, obj, form, change):
 		obj.save()	# User save
 		# handling additional parameters
+		# TODO: also check in here those attributes that allready do not exist for that
+		#	user (meta data that is no longer needed for that user, will be deleted from
+		#	template by JS and will be no longer in POST)
 		userExtended = UserExtended(obj.id)
 		for userMetaType in UserMetaType.objects.all():
 			if userMetaType.key in request.POST:

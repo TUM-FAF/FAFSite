@@ -8,61 +8,20 @@
         {% include "admin/includes/fieldset.html" %}
     {% endfor %}
 
+    <!--
+    TODO:
+        erase following fieldset as all fields should be added by upper include
+
+        - add in here a JS array/dict of all available meta types
+        - using JS find those that are allready used
+        - provide a plus button that after clicking will:
+            - provide ability to choose type of new meta data (only from those existent and that where not added allready)
+            - by choosing meta type, user will have either text input or select list (depending on meta type)
+        - near metatypes there will be x(delete) buttons to be able to erase unnecessary meta fields
+        - there is no need in AJAX
+    -->
     <fieldset class="module aligned">
         {{adminform.form.getAdditionalMeta}}
     </fieldset>
-
-    <!-- <fieldset class="grp-module ">
-        <div class="grp-row grp-cells-1 name ">
-            <div class="l-2c-fluid l-d-4">
-                <div class="c-1">
-                    <label for="id_name" class="required">Key</label>
-                </div>
-                <div class="c-2">
-                    <input id="id_name" type="text" class="vTextField" name="name" maxlength="31" />
-                </div>
-            </div>
-        </div>
-
-        <div class="grp-row grp-cells-1 surname ">
-            <div class="l-2c-fluid l-d-4">
-                <div class="c-1">
-                    <label for="id_surname" class="required">Type</label>
-                </div>
-                <div class="c-2">
-                    <input id="id_surname" type="text" class="vTextField" name="surname" maxlength="31" />
-                </div>
-            </div>
-        </div>
-
-        <div class="grp-row grp-cells-1 type ">
-            <div class="l-2c-fluid l-d-4">
-                <div class="c-1">
-                    <label for="id_type" class="required">Multiple</label>
-                </div>
-                <div class="c-2">
-                    <select name="type" id="id_type">
-                        <option value="" selected="selected">---------</option>
-                        <option value="number">Number</option>
-                        <option value="string">String</option>
-                        <option value="choice">Multiple Choice</option>
-                        <option value="url">URL</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <div class="grp-row grp-cells-1 group ">
-            <div class="l-2c-fluid l-d-4">
-                <div class="c-1">
-                    <label for="id_group">Data</label>
-                </div>
-                <div class="c-2">
-                    <input id="id_group" type="text" class="vTextField" name="group" maxlength="15" />
-                </div>
-            </div>
-        </div>
-
-    </fieldset> -->
 
 {% endblock %}
