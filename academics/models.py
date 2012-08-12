@@ -62,6 +62,7 @@ class UserMeta(models.Model):
 =	Delete user and all		del user
 	its meta
 '''
+# TODO: add __dir__ method
 class UserExtended():
 	def __init__(self, user_id=0):
 		if user_id <= 0:
