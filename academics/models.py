@@ -218,9 +218,9 @@ class UserExtended():
 
 	def getAttributes(self):
 		userMeta = UserMeta.objects.filter(user=self.user)
-		result = []
+		result = {}
 		for meta in userMeta:
-			result.append((meta.meta.key, meta.value))
+			result[meta.meta.key] = {'value': meta.value, 'type': meta.meta.type, 'data': meta.meta.data}
 		return result
 
 

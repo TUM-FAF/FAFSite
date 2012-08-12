@@ -32,7 +32,9 @@ class metaForm(forms.ModelForm):
 		super(metaForm, self).__init__(*args, **kwargs)
 
 	def setMeta(self, _meta):
-		for meta_key, meta_value in _meta:
+		for meta in _meta:
+			meta_key = meta
+			meta_value = _meta[meta]['value']
 
 			test_form = forms.CharField(max_length=31, required = False)
 
