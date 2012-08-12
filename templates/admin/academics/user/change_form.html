@@ -4,9 +4,13 @@
     <!-- Field set for Meta -->
     <h1>Meta</h1>
 
-    {% for fieldset in usermetakey %}
+    {% for fieldset in adminform.form.getAdditionalFieldsets %}
         {% include "admin/includes/fieldset.html" %}
     {% endfor %}
+
+    <fieldset class="module aligned">
+        {{adminform.form.getAdditionalMeta}}
+    </fieldset>
 
     <!-- <fieldset class="grp-module ">
         <div class="grp-row grp-cells-1 name ">
