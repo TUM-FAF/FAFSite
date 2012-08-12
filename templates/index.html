@@ -40,8 +40,8 @@
 				<div class="header_links_in">
 					<a href="#" class="fb">Follow us on</a>
 					<nav>
-						{% for link, page_title in menu %}
-							<a href="{{ link }}" {% if page == page_title %}class="active"{% endif %}>{{ page_title }}</a>
+						{% for link, page in menu %}
+							<a href="{{ link }}" {% if activepage == page %}class="active"{% endif %}>{{ page }}</a>
 						{% endfor %}
 					</nav>
 				</div>

@@ -252,7 +252,9 @@ section.slide_section article.left{
 
 /****** contact us *********/
 div.contact{margin: 30px 0 15px 0;background:url("../images/phone.png") no-repeat right top;}
-.contact p{font-size:16px;text-shadow:white 1px -1px 1px;margin-bottom:30px;}
+.contact p{font-size:16px;text-shadow:white 1px -1px 1px;}
+.contact p.response{font-size:13px;}
+.contact form{margin-top:30px;}
 .contact ul{list-style-type:none;padding:0;}
 	.contact li{list-style: none;margin-bottom: 1em;}
 		.contact label {display:block;text-align:left;font-size:17px;padding:3px 0;text-shadow:white 1px -1px 1px;}

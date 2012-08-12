@@ -19,6 +19,7 @@ urlpatterns = patterns('',
 	url(r'^courses/$', courses),
 	url(r'^people/$', people),
 	url(r'^contact-us/$', contact_us),
+	url(r'^contact-us/submit/$', submit),
 	url(r'^tinymce/', include('tinymce.urls')),
 	# url(r'^admin/academics/user/add/$', 'admin_views.metakeys'),
 	# Examples:
