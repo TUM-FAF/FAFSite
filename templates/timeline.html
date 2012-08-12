@@ -102,7 +102,6 @@
 					$this = $(this).parents('section');
 					$id = $(this).parents('article').attr('data-id');
 					window.location.hash = $id;
-					console.log('id = '+$id);
 					timeline.init();
 					$this.removeClass('right').removeClass('left').removeClass('first').addClass('long').removeClass('second');
 					timeline.init(1);
@@ -111,9 +110,16 @@
 					console.log($position);
 					$('body').delay(300).animate({scrollTop: $position}, 1500);
 					$(this).removeClass('read_more').addClass('hide_btn').text('Hide').click(function(){
+<<<<<<< HEAD
+						// window.location.hash = "0";
+						history.replaceState("#", "Timeline", "/timeline/");
+						$this.removeClass('right').removeClass('left').removeClass('first').removeClass('long').removeClass('second');
+						timeline.init();
+=======
 						window.location.hash = "";
 						$this.removeClass('right').removeClass('left').removeClass('first').removeClass('long').removeClass('second');
 						// timeline.init();
+>>>>>>> 7641d4491bc4c569f446c224267cfa941040cbe3
 						$(this).removeClass('hide_btn').addClass('read_more').text('Read more »');
 						timeline.links();
 					});

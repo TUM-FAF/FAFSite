@@ -2,35 +2,27 @@
 {% block content %}
 <div class="contact">
 	<p>If you have any questions or proposals don't hesitate to contact us.</p>
-	<!-- {% if result %}
-		<p>{{result}}</p>
-	{% endif %} -->
-	<p class='response'>Thank you. We will consider your message as soon as possible and contact you.</p>
-
-	<form action="/contact-us/submit/" method="POST">
-		{% csrf_token %}
-		<ul>
-			<li>
-
-				<label for="name" type="text" name="name">Your name: </label>
+	<form action="#">
+		<!-- <ul> -->
+			<!-- <li> -->
+				<label for="name">Name: </label>
 	 			<input name="name" id="name">
-			</li>
+			<!-- </li> -->
 
-			<li>
-				<label for="email" type="text" name="email">Your email: </label>
+			<!-- <li> -->
+				<label for="email">Email: </label>
 		 		<input name="email" id="email">
-			</li>
+			<!-- </li> -->
 
-			<li>
-				<label for="message" name="message">Message: </label>
-				<textarea name="message" id="message" cols="30" rows="7"></textarea>
-			</li>
-			<li>
+			<!-- <li> -->
+				<label for="comments">Message: </label>
+				<textarea name="comments" id="comments" cols="30" rows="7"></textarea>
+			<!-- </li> -->
+			<!-- <li> -->
 				<input type="submit" value="Submit">
-			</li>
-		</ul>
+			<!-- </li> -->
+		<!-- </ul> -->
 	</form>
-
 </div>
-	
+
 {% endblock %}
