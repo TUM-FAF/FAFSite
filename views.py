@@ -85,7 +85,7 @@ def contact_us(request):
 
 # @csrf_exempt
 def submit(request):
-    result = ''
+    response = ''
     # if 'name' in request.POST:
     #     result = "Your name is %s" % request.POST['name']
     if not request.POST:
@@ -98,7 +98,7 @@ def submit(request):
         message = '\n\nFROM: ' + email + '\n\nName: ' + name + '\n\nMessage: ' + message
         try:
             send_mail('[FAF]Contact us', message, email, ['ana.balica@gmail.com'], fail_silently=False)
-            result = 'Thank you.\nWe will consider your message as soon as possible and contact you.'
+            response = '<span>*</span> Thank you. We will consider your message as soon as possible and contact you.'
         except:
             return HttpResponse('Invalid header found.')
         """
@@ -109,4 +109,4 @@ def submit(request):
     else:
         if not email:
             pass
-    return render(request, "contact-us.html", {"activepage": "Contact Us", "menu": menu_items, "result": result})
+    return render(request, "contact-us.html", {"activepage": "Contact Us", "menu": menu_items, "response": response})

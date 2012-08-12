@@ -252,31 +252,31 @@ section.slide_section article.left{
 
 /****** contact us *********/
 div.contact{margin: 30px 0 15px 0;background:url("../images/phone.png") no-repeat right top;min-height: 475px; }
-.contact p{font-size:16px;text-shadow:white 1px -1px 1px;margin-bottom:30px;}
-/*.contact ul{list-style-type:none;padding:0;}
-	.contact li{list-style: none;margin-bottom: 1em;}*/
-	.contact form{max-width: 400px; padding: 0; margin: 0;}
-		.contact label {display:block;text-align:left;font-size:17px;padding:3px 0;text-shadow:white 1px -1px 1px; margin-bottom:2px; width: 100%;}
-		.contact input{height:20px; margin-bottom: 4px;}
-		.contact input, textarea {width: 100%;line-height: 1em;display:block;border: 1px solid #c3c3c3;
-			-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-			-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-			-o-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-			box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);}
-		.contact textarea {margin-bottom:10px;}
-		.contact textarea:focus, input:focus {outline: none;
-			border:1px solid #76ACC4;
-			-webkit-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
-			-moz-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
-			-o-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
-			box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.3);}
-		.contact input[type=submit] {width:auto;padding:5px 15px 17px;background:#1c93bb;border:1px solid #1387ac;
-			border-radius:2px;font-size:13px;color:#fff;text-decoration:none;font-weight:600;cursor:pointer;
-			background: -webkit-gradient(radial, center center, 0, center center, 47, from(#20a7d6), to(#1691ba));
-			background: -webkit-radial-gradient(circle, #20a7d6, #1691ba);
-			background: -moz-radial-gradient(circle, #20a7d6, #1691ba);
-			background: -ms-radial-gradient(circle, #20a7d6, #1691ba);
-			background: -o-radial-gradient(circle, #20a7d6, #1691ba);}
+.contact p{font-size:16px;text-shadow:white 1px -1px 1px;}
+.contact p.response{font-size:14px;font-style:italic;margin-top:8px;}
+.contact span{color:#1c9dd6;font-size:20px;font-weight:700px;}
+.contact form{max-width: 400px; padding: 0; margin: 30px 0 0 0;}
+	.contact label {display:block;text-align:left;font-size:17px;padding:3px 0;text-shadow:white 1px -1px 1px; margin-bottom:2px; width: 100%;}
+	.contact input{height:20px; margin-bottom: 4px;}
+	.contact input, textarea {width: 100%;line-height: 1em;display:block;border: 1px solid #c3c3c3;
+		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		-o-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);}
+	.contact textarea {margin-bottom:10px;}
+	.contact textarea:focus, input:focus {outline: none;
+		border:1px solid #76ACC4;
+		-webkit-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
+		-moz-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
+		-o-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
+		box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.3);}
+	.contact input[type=submit] {width:auto;padding:5px 15px 17px;background:#1c93bb;border:1px solid #1387ac;
+		border-radius:2px;font-size:13px;color:#fff;text-decoration:none;font-weight:600;cursor:pointer;
+		background: -webkit-gradient(radial, center center, 0, center center, 47, from(#20a7d6), to(#1691ba));
+		background: -webkit-radial-gradient(circle, #20a7d6, #1691ba);
+		background: -moz-radial-gradient(circle, #20a7d6, #1691ba);
+		background: -ms-radial-gradient(circle, #20a7d6, #1691ba);
+		background: -o-radial-gradient(circle, #20a7d6, #1691ba);}
 
 		
 
