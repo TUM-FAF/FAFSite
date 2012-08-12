@@ -133,6 +133,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 GRAPPELLI_INDEX_DASHBOARD = 'fafsite.dashboard.CustomIndexDashboard'
 
+# Email Service
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'wbexample@gmail.com'
+EMAIL_HOST_PASSWORD = 'megapass'
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
