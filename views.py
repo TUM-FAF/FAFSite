@@ -85,7 +85,7 @@ def contact_us(request):
 
 # @csrf_exempt
 def submit(request):
-    response = ''
+    response, noemail, nomessage = '', '', ''
     # if 'name' in request.POST:
     #     result = "Your name is %s" % request.POST['name']
     if not request.POST:
@@ -108,5 +108,10 @@ def submit(request):
         """
     else:
         if not email:
-            pass
-    return render(request, "contact-us.html", {"activepage": "Contact Us", "menu": menu_items, "response": response})
+            noemail = '* Please provide your Email Address'
+            # nomessage = '* Please leave us a message'
+        if not message:
+            nomessage = '* Please leave us a message'
+    return render(request, "contact-us.html", 
+        {"activepage": "Contact Us", "menu": menu_items, "response": response,
+        "noemail": noemail, "nomessage": nomessage})

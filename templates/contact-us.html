@@ -12,9 +12,11 @@
 		<input name="name" id="name">
 
 		<label for="email" type="text" name="email">Your email: </label>
+		<p class='error-msg'>{{ noemail }}</p>
  		<input name="email" id="email">
 
 		<label for="message" name="message">Message: </label>
+		<p class='error-msg'>{{ nomessage }}</p>
 		<textarea name="message" id="message" cols="30" rows="7"></textarea>
 
 		<input type="submit" value="Submit">

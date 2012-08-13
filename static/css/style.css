@@ -256,6 +256,7 @@ div.contact{margin: 30px 0 15px 0;background:url("../images/phone.png") no-repea
 .contact p.response{font-size:14px;font-style:italic;margin-top:8px;}
 .contact span{color:#1c9dd6;font-size:20px;font-weight:700px;}
 .contact form{max-width: 400px; padding: 0; margin: 30px 0 0 0;}
+	.contact p.error-msg{font-size:11px;color:#F83939;margin-bottom: 3px;}
 	.contact label {display:block;text-align:left;font-size:17px;padding:3px 0;text-shadow:white 1px -1px 1px; margin-bottom:2px; width: 100%;}
 	.contact input{height:20px; margin-bottom: 4px;}
 	.contact input, textarea {width: 100%;line-height: 1em;display:block;border: 1px solid #c3c3c3;
