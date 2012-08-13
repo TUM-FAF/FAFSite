@@ -40,9 +40,10 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 			#header_links nav a:hover{color:white;}
 			#header_links:hover nav a{border-left:1px solid #333;}
 				#header_links nav a.active{color:white;}
+				#header_links .header_select{display: none; height: 42px; padding: 10px 0; width: auto;}
 
 #site_body{width:962px;text-align:left;margin:0 auto;overflow: hidden; padding-bottom: 43px; min-height: 100%;}
-	.info-block{height:300px;}
+	.info-block{height:auto;}
 		.achievements, .activities, .students{float:left;width:280px;}
 		.achievements, .activities{margin-right:30px;padding:0 30px 0 0;}
 			.achievements_logo, .activities_logo, .people_logo{height:76px; display:block;}
@@ -207,16 +208,27 @@ section#articles article.slide .nav_buttons .button:hover{box-shadow: inset 0 0 
 section#articles article.slide .nav_buttons .button.this{background: red;box-shadow: inset 0px 0px 15px 0 white, 0 0 5px 4px red;color: white;}
 
 /********** Media Control ***********/
-@media (max-width: 900px){
-	#site_body{width: auto;overflow:auto;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;}
+@media (max-device-width: 480px), (max-width: 900px){
+	div#site_body div.contact section#articles{box-sizing: border-box; min-width: 480px;}
+	div#site_body div.contact section#articles article{max-width: 210px; overflow: hidden;box-sizing: border-box; }
+	body, html, .wrapper{margin: auto; max-width: 100%;}
+	#site_body{width: 100%;overflow:hidden;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;-o-box-sizing:border-box;}
 	#site_body section#articles, #site_body section#articles.table_block, #site_body section#articles.right, #site_body div#side_menu, #site_body div.contact form, #site_body div.contact section#articles.right, #site_body div.info-block article{float: none;margin-left: auto;margin-right: auto;}
 	#site_body .contact > p{text-align: center;}
 	#site_body div.info-block article .description{border: none;}
+	#site_body div.info-block article {border-bottom: 1px solid gray; padding: 30px 0; margin: auto;}
 	div.arrow, div.arrow_inside{display: none;}
 	div.timeline_main{width: auto;}
 	div.timeline_main section#articles, div.timeline_main section#articles.content, div.timeline_main section#articles.content.left, div.timeline_main section#articles.content.right{margin: 20px 0;}
 	div.timeline_main section#articles.content.long{width: 433px;height: auto;overflow: hidden;}
+	#header_links .header_links_in{display: none;}
+	.wrapper header div#header_links div.header_select{display: block;}
 }
+@media (max-width: 320px){
+	html, body, div, section, article, p{
+		max-width: 320px;
+	}
+	}
 
 /****** contact us *********/
 div.contact{margin: 30px 0 15px 0;} /*background:url("../images/phone.png") no-repeat center top;*/
@@ -253,5 +265,8 @@ div.contact{margin: 30px 0 15px 0;} /*background:url("../images/phone.png") no-r
 		background: -o-radial-gradient(circle, #20a7d6, #1691ba);}
 	.contact ul.errorlist {margin:0 0 4px 0;padding:0;}
 		.contact .errorlist li{list-style-type:none;font-size:11px;color:#D80F0F;}
-.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}
-	#articles.right{float: right;}
+
+.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}=======
+	.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}
+	.contact #articles article{float: left; max-width: 280px;}
+		#articles.right{float: right;}

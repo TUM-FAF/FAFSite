@@ -4,6 +4,7 @@
 	<title>FAF</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=7"/> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+	<meta name="viewport" content="width=device-width, initial-scale=0.6">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext,latin-ext" rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
 	<!--<script type="text/javascript" src="../static/js/jquery-1.7.2.js"></script>-->
@@ -44,6 +45,15 @@
 							<a href="{{ link }}" {% if activepage == page %}class="active"{% endif %}>{{ page }}</a>
 						{% endfor %}
 					</nav>
+				</div>
+
+				<div class="header_select">
+					<select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
+						{% for link, page in menu %}
+							<option value="{{ link }}" {% if activepage == page %}selected="selected"{% endif %}>{{ page }}</option>
+						{% endfor %}
+						<option value="#">Follow us on</option>
+					</select>
 				</div>
 			</div>
 		</header>
