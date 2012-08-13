@@ -1,14 +1,16 @@
 {% extends "index.html" %}
 {% block content %}
 <div class="contact">
-	<p>If you have any questions or proposals don't hesitate to contact us.</p>
 	{% if response %}
 		<p class='response'>{{ response|safe }}</p>
+	{% else %}
+		<p>If you have any questions or proposals don't hesitate to get in touch with us.</p>
 	{% endif %}
 
-	<form action="/contact-us/submit/" method="POST">
+	<form action="/contact-us/" method="POST">
 		{% csrf_token %}
-		<label for="name" type="text" name="name">Your name: </label>
+		{{ form }}
+		<!-- <label for="name" type="text" name="name">Your name: </label>
 		<input name="name" id="name">
 
 		<label for="email" type="text" name="email">Your email: </label>
@@ -17,9 +19,9 @@
 
 		<label for="message" name="message">Message: </label>
 		<p class='error-msg'>{{ nomessage }}</p>
-		<textarea name="message" id="message" cols="30" rows="7"></textarea>
+		<textarea name="message" id="message" cols="30" rows="7"></textarea>-->
 
-		<input type="submit" value="Submit">
+		<input type="submit" value="Submit"> 
 
 	</form>
 
@@ -28,8 +30,8 @@
 	</iframe>
 	<article style="float: left; max-width: 280px;">
 		<dl>
-			<dt><p>Adress:</p></dt>
-			<dd>9/8 Studentilor str., Chisinau, Moldova</dd>
+			<dt><p>Address:</p></dt>
+			<dd>7, Studentilor St., block of study No. 3, Chisinau, Moldova</dd>
 			<dt><p>Phone:</p></dt>
 			<dd>(+373)(22)xxxxxx</dd>
 			<dt><p>Info:</p></dt>

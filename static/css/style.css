@@ -214,18 +214,18 @@ section#articles article.slide .nav_buttons .button.this{background: red;box-sha
 	#site_body div.info-block article .description{border: none;}
 	div.arrow, div.arrow_inside{display: none;}
 	div.timeline_main{width: auto;}
-	div.timeline_main section#articles, div.timeline_main section#articles.content, div.timeline_main section#articles.content.left, div.timeline_main section#articles.content.right{margin: 20px 0 20px;}
+	div.timeline_main section#articles, div.timeline_main section#articles.content, div.timeline_main section#articles.content.left, div.timeline_main section#articles.content.right{margin: 20px 0;}
 	div.timeline_main section#articles.content.long{width: 433px;height: auto;overflow: hidden;}
 }
 
 /****** contact us *********/
-div.contact{margin: 30px 0 15px 0;ackground:url("../images/phone.png") no-repeat center top;in-height: 420px;}
+div.contact{margin: 30px 0 15px 0;} /*background:url("../images/phone.png") no-repeat center top;*/
 @media (min-height: 685px){div.contact {min-height: 475px;}}
 
 .contact p{font-size:16px;text-shadow:white 1px -1px 1px;}
-.contact p.response{font-size:14px;font-style:italic;margin-top:8px;}
+.contact p.response{font-size:14px;font-style:italic;}
 .contact span{color:#1c9dd6;font-size:20px;font-weight:700px;}
-.contact form{width: 350px; padding: 0; margin: 30px 0 0 0; float: left;}
+.contact form{width: 350px; padding: 0; margin: 20px 0; float: left;}
 	.contact label {display:block;text-align:left;font-size:17px;padding:3px 0;text-shadow:white 1px -1px 1px; margin: 7px 0 4px; width: auto; max-width: 100px; background: #eee; box-sizing: border-box;}
 	.contact input{height:20px; margin-bottom: 4px;}
 	.contact input, textarea {width: 100%;line-height: 1em;display:block;border: 1px solid #c3c3c3;
@@ -251,7 +251,7 @@ div.contact{margin: 30px 0 15px 0;ackground:url("../images/phone.png") no-repeat
 		background: -moz-radial-gradient(circle, #20a7d6, #1691ba);
 		background: -ms-radial-gradient(circle, #20a7d6, #1691ba);
 		background: -o-radial-gradient(circle, #20a7d6, #1691ba);}
-	.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}
-#articles.right{float: right;}
-		
-
+	.contact ul.errorlist {margin:0 0 4px 0;padding:0;}
+		.contact .errorlist li{list-style-type:none;font-size:11px;color:#D80F0F;}
+.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}
+	#articles.right{float: right;}
