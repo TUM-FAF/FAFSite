@@ -21,6 +21,7 @@ class User(models.Model):
 	def __unicode__(self):
 		return u'%s %s' % (self.name, self.surname)
 
+
 class UserMetaType(models.Model):
 	key = models.CharField(max_length=31)
 	type = models.CharField(max_length=31, choices=META_TYPES)
@@ -37,6 +38,10 @@ class UserMeta(models.Model):
 
 	def __unicode__(self):
 		return u'%s - %s' % (self.meta, self.value)
+
+class Empty(models.Model):
+	def __unicode__(self):
+		return u'this is empty class'
 
 '''
 ====Proxy Object for User class and it's attributes====
@@ -94,10 +99,11 @@ class UserExtended():
 		else:
 			self.delMeta(key)
 
-	def __del__(self):
-		self.user.delete()
-		# delete all attributes
-		UserMeta.objects.filter(user=self.user).delete()
+	# removed this as AdminModel was erasing this data
+	# def __del__(self):
+	# 	self.user.delete()
+	# 	# delete all attributes
+	# 	UserMeta.objects.filter(user=self.user).delete()
 
 	def hasattr(self, key):
 		if hasattr(self.user, key):
@@ -117,18 +123,13 @@ class UserExtended():
 			raise AttributeError("such meta key not defined")
 		except:
 			raise AttributeError("unknown error")
+
 		if meta_type.type == 'number':
-			value = str(value)
-			if isinstance(value, int) and value > 0:
-				pass
-			else:
-				raise ValueError("Should be an integer")
+			value = int(value)
 		elif meta_type.type == 'string':
-			if isinstance(value, str):
-				pass
-			else:
-				raise AttributeError("Should be a string")
+			value = str(value)
 		elif meta_type.type == 'choice':
+			# TODO: refactor to use not only lists/arrays
 			try:
 				data = json.loads(meta_type.data)
 				if isinstance(value, list):
@@ -214,5 +215,13 @@ class UserExtended():
 				return False
 		except:
 			return False
+
+	def getAttributes(self):
+		userMeta = UserMeta.objects.filter(user=self.user)
+		result = {}
+		for meta in userMeta:
+			result[meta.meta.key] = {'value': meta.value, 'type': meta.meta.type, 'data': meta.meta.data}
+		return result
+
 
 	
