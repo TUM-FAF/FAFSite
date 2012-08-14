@@ -137,8 +137,8 @@ GRAPPELLI_INDEX_DASHBOARD = 'fafsite.dashboard.CustomIndexDashboard'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'wbexample@gmail.com'
-EMAIL_HOST_PASSWORD = 'megapass'
+EMAIL_HOST_USER = 'faf.utm@gmail.com'
+EMAIL_HOST_PASSWORD = 'vlad123qw'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
