@@ -135,14 +135,13 @@ class UserExtended():
 			# TODO: refactor to use not only lists/arrays
 			try:
 				data = json.loads(meta_type.data)
-				if isinstance(value, list):
-					# check is list value is contained in list data
-					if set(value).issubset(set(data)):
-						pass
-					else:
-						raise AttributeError('No such choice/choises')
+				if not isinstance(value, list):
+					value = [value]
+				# check is list value is contained in list data
+				if set(value).issubset(set(data)):
+					pass
 				else:
-					raise AttributeError('Should be a list')
+					raise AttributeError('No such choice/choises')
 			except ValueError:
 				raise ValueError("Should be a valid JSON file")
 
