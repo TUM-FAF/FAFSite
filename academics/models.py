@@ -125,7 +125,10 @@ class UserExtended():
 			raise AttributeError("unknown error")
 
 		if meta_type.type == 'number':
-			value = int(value)
+			try:
+				value = int(value)
+			except:
+				raise AttributeError('Should be a number')
 		elif meta_type.type == 'string':
 			value = str(value)
 		elif meta_type.type == 'choice':

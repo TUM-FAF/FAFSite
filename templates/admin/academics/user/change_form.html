@@ -1,12 +1,23 @@
 {% extends "admin/change_form.html" %}
 
+{% block javascripts %}
+    {{ block.super }}
+    <script type="text/javascript">
+    (function(){
+
+        metatypes = ["Type", "Programming Skills", "Projects involved", "Current Job"];
+
+    })();
+    </script>
+{% endblock %}
+
 {% block after_field_sets %}
     <!-- Field set for Meta -->
     <h1>Meta</h1>
 
-    {% for fieldset in adminform.form.getAdditionalFieldsets %}
+    <!-- {% for fieldset in adminform.form.getAdditionalMeta %}
         {% include "admin/includes/fieldset.html" %}
-    {% endfor %}
+    {% endfor %} -->
 
     <!--
     TODO:
@@ -20,8 +31,14 @@
         - near metatypes there will be x(delete) buttons to be able to erase unnecessary meta fields
         - there is no need in AJAX
     -->
-    <fieldset class="module aligned">
-        {{adminform.form.getAdditionalMeta}}
+    <fieldset class="grp-module">
+        <div class="grp-row grp-cells-1">
+            <div class="l-2c-fluid l-d-4">
+                <div class="c-1">
+                    {{adminform.form.getAdditionalMeta}}
+                </div>
+            </div>
+        </div>
     </fieldset>
 
 {% endblock %}

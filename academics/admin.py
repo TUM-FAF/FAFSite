@@ -1,14 +1,13 @@
 from django.contrib import admin 
 from academics.models import User, UserMetaType, UserMeta, UserExtended, Empty
 from django import forms
-from django.forms import ModelForm, Textarea
 
 class UserAdminForm(forms.ModelForm):
 	userExtended = None
 	class Meta:
 		model = User
 
-	def __init__(self, *args, **kwargs):
+	def __init__(self, *args, **kwargs): # * - tuple, ** - dictionary
 		super(UserAdminForm, self).__init__(*args, **kwargs)
 	 	# Set the form fields based on the model object
 		if kwargs.has_key('instance'):
@@ -19,6 +18,7 @@ class UserAdminForm(forms.ModelForm):
 		if self.userExtended != None:
 			new_form = metaForm()
 			new_form.setMeta(self.userExtended.getAttributes())
+			# print self.userExtended.getAttributes()
 			return new_form.as_p()
 
 	'''
@@ -42,16 +42,25 @@ class metaForm(forms.ModelForm):
 
 	def setMeta(self, _meta):
 		for meta in _meta:
+			# import pdb
+			# pdb.set_trace()
 			meta_key = meta
 			meta_value = _meta[meta]['value']
+			meta_type = _meta[meta]['type']
+			meta_data = _meta[meta]['data']
 
-			test_form = forms.CharField(max_length=31, required = False)
+			if meta_type == 'number':
+				form = forms.IntegerField()
+			elif meta_type == 'string':
+				form = forms.Textarea()
+			# elif meta_type == 'choice':
+			# 	form = forms.CharField(max_length=31, choices=meta_data)
 
-			self.fields[meta_key] = test_form
+			self.fields[meta_key] = form
 			self.initial[meta_key] = meta_value
 			self.changed_data.append(meta_key)
-			self.base_fields[meta_key] = test_form
-			self.declared_fields[meta_key] = test_form
+			self.base_fields[meta_key] = form
+			self.declared_fields[meta_key] = form
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -68,7 +77,9 @@ class UserAdmin(admin.ModelAdmin):
 		userExtended = UserExtended(obj.id)
 		for userMetaType in UserMetaType.objects.all():
 			if userMetaType.key in request.POST:
+				print request.POST[userMetaType.key]
 				setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])
+				userExtended.save()
 
 class UserMetaTypeAdmin(admin.ModelAdmin):
 	list_display = ('key', 'type', 'multiple', 'data')
