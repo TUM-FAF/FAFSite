@@ -2,6 +2,13 @@ from django.contrib import admin
 from academics.models import User, UserMetaType, UserMeta, UserExtended, Empty
 from django import forms
 
+TYPES = (
+	('student', 'Student'),
+	('alumni', 'Alumni'),
+	('professor', 'Professor'),
+	)
+
+
 class UserAdminForm(forms.ModelForm):
 	userExtended = None
 	class Meta:
@@ -42,19 +49,20 @@ class metaForm(forms.ModelForm):
 
 	def setMeta(self, _meta):
 		for meta in _meta:
-			# import pdb
-			# pdb.set_trace()
 			meta_key = meta
 			meta_value = _meta[meta]['value']
 			meta_type = _meta[meta]['type']
 			meta_data = _meta[meta]['data']
+			print meta_data
 
 			if meta_type == 'number':
 				form = forms.IntegerField()
 			elif meta_type == 'string':
 				form = forms.Textarea()
-			# elif meta_type == 'choice':
-			# 	form = forms.CharField(max_length=31, choices=meta_data)
+			elif meta_type == 'choice':
+				# TODO set the initial for the checkbox
+				# also set choices from the meta_data
+				form = forms.MultipleChoiceField(choices=TYPES, widget=forms.CheckboxSelectMultiple)
 
 			self.fields[meta_key] = form
 			self.initial[meta_key] = meta_value
@@ -77,8 +85,10 @@ class UserAdmin(admin.ModelAdmin):
 		userExtended = UserExtended(obj.id)
 		for userMetaType in UserMetaType.objects.all():
 			if userMetaType.key in request.POST:
-				print request.POST[userMetaType.key]
-				setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])
+				if userMetaType.multiple:
+					setattr(userExtended, userMetaType.key, request.POST.getlist(userMetaType.key))
+				else:
+					setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])					
 				userExtended.save()
 
 class UserMetaTypeAdmin(admin.ModelAdmin):

@@ -1,3 +1,5 @@
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 from django.db import models
 import json
 
@@ -125,25 +127,27 @@ class UserExtended():
 			raise AttributeError("unknown error")
 
 		if meta_type.type == 'number':
-			try:
-				value = int(value)
-			except:
-				raise AttributeError('Should be a number')
+			value = int(value)
 		elif meta_type.type == 'string':
 			value = str(value)
 		elif meta_type.type == 'choice':
 			# TODO: refactor to use not only lists/arrays
 			try:
 				data = json.loads(meta_type.data)
-				if not isinstance(value, list):
-					value = [value]
-				# check is list value is contained in list data
+				# # check is list value is contained in list data
 				if set(value).issubset(set(data)):
+					# for item in input_data:
 					pass
 				else:
 					raise AttributeError('No such choice/choises')
 			except ValueError:
 				raise ValueError("Should be a valid JSON file")
+		elif meta_type.type == 'url':
+			val = URLValidator()
+			try:
+				val(value)
+			except ValidationError, error:
+				print error
 
 
 		if meta_type.multiple:
@@ -218,11 +222,17 @@ class UserExtended():
 		except:
 			return False
 
+	# TODO several multiple meta handle
 	def getAttributes(self):
 		userMeta = UserMeta.objects.filter(user=self.user)
+		userExtended = UserExtended(self.user.id)
 		result = {}
 		for meta in userMeta:
-			result[meta.meta.key] = {'value': meta.value, 'type': meta.meta.type, 'data': meta.meta.data}
+			if meta.meta.multiple:
+				if not meta.meta.key in result:
+					result[meta.meta.key] = {'value': userExtended.type, 'type': meta.meta.type, 'data': meta.meta.data}
+			else:
+				result[meta.meta.key] = {'value': meta.value, 'type': meta.meta.type, 'data': meta.meta.data}
 		return result
 
 
