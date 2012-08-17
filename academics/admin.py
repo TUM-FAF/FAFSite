@@ -16,7 +16,7 @@ class UserAdminForm(forms.ModelForm):
 
 	def __init__(self, *args, **kwargs): # * - tuple, ** - dictionary
 		super(UserAdminForm, self).__init__(*args, **kwargs)
-	 	# Set the form fields based on the model object
+		# Set the form fields based on the model object
 		if kwargs.has_key('instance'):
 			instance = kwargs['instance']	# User instance
 			self.userExtended = UserExtended(kwargs['instance'].id)
@@ -25,8 +25,7 @@ class UserAdminForm(forms.ModelForm):
 		if self.userExtended != None:
 			new_form = metaForm()
 			new_form.setMeta(self.userExtended.getAttributes())
-			# print self.userExtended.getAttributes()
-			return new_form.as_p()
+			return new_form.as_table()
 
 	'''
 	UserMetaType.objects.all()				all meta types 
@@ -53,23 +52,21 @@ class metaForm(forms.ModelForm):
 			meta_value = _meta[meta]['value']
 			meta_type = _meta[meta]['type']
 			meta_data = _meta[meta]['data']
-			print meta_data
 
 			if meta_type == 'number':
 				form = forms.IntegerField()
 			elif meta_type == 'string':
-				form = forms.Textarea()
+				form = forms.CharField(widget=forms.Textarea)
 			elif meta_type == 'choice':
-				# TODO set the initial for the checkbox
-				# also set choices from the meta_data
 				form = forms.MultipleChoiceField(choices=TYPES, widget=forms.CheckboxSelectMultiple)
+			elif meta_type == 'url':
+				form = forms.URLField()
 
 			self.fields[meta_key] = form
 			self.initial[meta_key] = meta_value
 			self.changed_data.append(meta_key)
 			self.base_fields[meta_key] = form
 			self.declared_fields[meta_key] = form
-
 
 class UserAdmin(admin.ModelAdmin):
 	list_display = ('name', 'surname')

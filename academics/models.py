@@ -222,7 +222,6 @@ class UserExtended():
 		except:
 			return False
 
-	# TODO several multiple meta handle
 	def getAttributes(self):
 		userMeta = UserMeta.objects.filter(user=self.user)
 		userExtended = UserExtended(self.user.id)

@@ -1,21 +1,60 @@
 {% extends "admin/change_form.html" %}
 
+{% block stylesheets %}
+    {{ block.super }}
+    <style type="text/css">
+        .grp-module li{list-style-type:none;}
+    </style>
+{% endblock %}
+
 {% block javascripts %}
     {{ block.super }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
-    (function(){
 
-        metatypes = ['type', 'age', 'facebook'];
+        $(function() {
+        metatypes = ['type', 'age', 'facebook', 'programming_skills'];
 
-    })();
+        // style the forms
+        var fieldset = $('fieldset.meta');
+        fieldset.children("label").wrap('<div class="c-1" />');
+        fieldset.children("input").wrap('<div class="c-2" />');
+        fieldset.children("ul").wrap('<div class="c-2" />');
+        // $('fieldset.meta>li').css("display", "table");
+        // $('fieldset.meta>li').wrap('<div class="l-2c-fluid l-d-4" />');
+        // $('fieldset.meta>li').css("display", "table");
+        // $('fieldset.meta>div.l-d-4').wrap('<div class="grp-row grp-cells-1" />');
+        
+
+        });
+
     </script>
 {% endblock %}
 
-{% block after_field_sets %}
+{% block after_related_objects %}
     <!-- Field set for Meta -->
     <h1>Meta</h1>
 
-    <!-- {% for fieldset in adminform.form.getAdditionalMeta %}
+<!--     <fieldset class="grp-module">
+        <div class="grp-row grp-cells-1">
+            <div class="l-2c-fluid l-d-4">
+                <li style="display: table;">
+                    <div class="c-1">
+                        <label for="type" class="required">Type</label>
+                    </div>
+                    <div class="c-2">
+                        <input name="type" value="blablabla test" class="vTextField" maxlength="15" type="text" id="type">
+                    </div>
+                </li>
+            </div>
+        </div>
+    </fieldset> -->
+
+
+    <fieldset class="grp-module meta">
+        {{adminform.form.getAdditionalMeta}}
+    </fieldset>
+    <!-- {% for fieldset in adminform.form.getAdditionalFieldsets %}
         {% include "admin/includes/fieldset.html" %}
     {% endfor %} -->
 
@@ -31,14 +70,8 @@
         - near metatypes there will be x(delete) buttons to be able to erase unnecessary meta fields
         - there is no need in AJAX
     -->
-    <fieldset class="grp-module">
-        <div class="grp-row grp-cells-1">
-            <div class="l-2c-fluid l-d-4">
-                <div class="c-1">
-                    {{adminform.form.getAdditionalMeta}}
-                </div>
-            </div>
-        </div>
-    </fieldset>
+
+
+    <!-- {{adminform.form.getAdditionalMeta}} -->
 
 {% endblock %}
