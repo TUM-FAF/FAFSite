@@ -1,12 +1,18 @@
 from django.contrib import admin 
-from academics.models import User, UserMetaType, UserMeta, UserExtended, Empty
+from academics.models import User, UserMetaType, UserMeta, UserExtended
 from django import forms
+import json
 
-TYPES = (
-	('student', 'Student'),
-	('alumni', 'Alumni'),
-	('professor', 'Professor'),
-	)
+def getMetaTypes():
+	result = {}
+	meta_types = UserMetaType.objects.all()
+	for meta in meta_types:
+		try:
+			data = json.loads(meta.data)
+		except:
+			data = meta.data
+		result[meta.key] = {'type': meta.type, 'data': data, 'value': ''}
+	return result
 
 
 class UserAdminForm(forms.ModelForm):
@@ -21,52 +27,20 @@ class UserAdminForm(forms.ModelForm):
 			instance = kwargs['instance']	# User instance
 			self.userExtended = UserExtended(kwargs['instance'].id)
 
-	def getAdditionalMeta(self):
-		if self.userExtended != None:
-			new_form = metaForm()
-			new_form.setMeta(self.userExtended.getAttributes())
-			return new_form.as_table()
-
-	'''
-	UserMetaType.objects.all()				all meta types 
-	self.userExtended.getAttributes()		user attributes (dict)
-
-	TODO:
-		use this function instead of getAdditionalMeta
-		by doing this, getAdditionalMeta method and metaForm class
-		try to use admin/includes/fieldset.html from change_form.html file
-	'''
 	def getAdditionalFieldsets(self):
-		return None
+		if self.userExtended != None:
+			meta_types = getMetaTypes()
+			user_meta_types = self.userExtended.getAttributes()
+			result = {}
+			for key in meta_types:
+				if key in user_meta_types:
+					result[key] = user_meta_types[key]
+				else:
+					result[key] = meta_types[key]
+			return result
+		else:
+			return getMetaTypes()
 
-class metaForm(forms.ModelForm):
-	class Meta:
-		model = Empty
-
-	def __init__(self, *args, **kwargs):
-		super(metaForm, self).__init__(*args, **kwargs)
-
-	def setMeta(self, _meta):
-		for meta in _meta:
-			meta_key = meta
-			meta_value = _meta[meta]['value']
-			meta_type = _meta[meta]['type']
-			meta_data = _meta[meta]['data']
-
-			if meta_type == 'number':
-				form = forms.IntegerField()
-			elif meta_type == 'string':
-				form = forms.CharField(widget=forms.Textarea)
-			elif meta_type == 'choice':
-				form = forms.MultipleChoiceField(choices=TYPES, widget=forms.CheckboxSelectMultiple)
-			elif meta_type == 'url':
-				form = forms.URLField()
-
-			self.fields[meta_key] = form
-			self.initial[meta_key] = meta_value
-			self.changed_data.append(meta_key)
-			self.base_fields[meta_key] = form
-			self.declared_fields[meta_key] = form
 
 class UserAdmin(admin.ModelAdmin):
 	list_display = ('name', 'surname')
@@ -75,10 +49,6 @@ class UserAdmin(admin.ModelAdmin):
 
 	def save_model(self, request, obj, form, change):
 		obj.save()	# User save
-		# handling additional parameters
-		# TODO: also check in here those attributes that allready do not exist for that
-		#	user (meta data that is no longer needed for that user, will be deleted from
-		#	template by JS and will be no longer in POST)
 		userExtended = UserExtended(obj.id)
 		for userMetaType in UserMetaType.objects.all():
 			if userMetaType.key in request.POST:
@@ -86,7 +56,9 @@ class UserAdmin(admin.ModelAdmin):
 					setattr(userExtended, userMetaType.key, request.POST.getlist(userMetaType.key))
 				else:
 					setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])					
-				userExtended.save()
+				# userExtended.save()
+			else:
+				userExtended.delMeta(userMetaType.key)
 
 class UserMetaTypeAdmin(admin.ModelAdmin):
 	list_display = ('key', 'type', 'multiple', 'data')

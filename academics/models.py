@@ -1,5 +1,6 @@
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from django.utils.datastructures import SortedDict
 from django.db import models
 import json
 
@@ -9,6 +10,7 @@ META_TYPES = (
 	('string', 'String'),
 	('choice', 'Multiple Choice'),
 	('url', 'URL'),
+	('textarea', 'TextArea'),
 	)
 
 
@@ -22,7 +24,6 @@ class User(models.Model):
 
 	def __unicode__(self):
 		return u'%s %s' % (self.name, self.surname)
-
 
 class UserMetaType(models.Model):
 	key = models.CharField(max_length=31)
@@ -41,9 +42,6 @@ class UserMeta(models.Model):
 	def __unicode__(self):
 		return u'%s - %s' % (self.meta, self.value)
 
-class Empty(models.Model):
-	def __unicode__(self):
-		return u'this is empty class'
 
 '''
 ====Proxy Object for User class and it's attributes====
@@ -60,15 +58,16 @@ class Empty(models.Model):
 	is defined
 
 =	Update user attributes	user.age = 25
-							user.type = ['student']
+							user.type = 'student'
 							or
-							user.type = ['student', 'mentor'] (if multiple meta)
+							user.type = 'student, alumni' (if multiple meta)
 
 =	Delete user attributes	del user.age
 
 =	Delete user and all		del user
 	its meta
 '''
+
 # TODO: add __dir__ method
 class UserExtended():
 	def __init__(self, user_id=0):
@@ -131,7 +130,6 @@ class UserExtended():
 		elif meta_type.type == 'string':
 			value = str(value)
 		elif meta_type.type == 'choice':
-			# TODO: refactor to use not only lists/arrays
 			try:
 				data = json.loads(meta_type.data)
 				# # check is list value is contained in list data
@@ -225,13 +223,15 @@ class UserExtended():
 	def getAttributes(self):
 		userMeta = UserMeta.objects.filter(user=self.user)
 		userExtended = UserExtended(self.user.id)
-		result = {}
+		result = SortedDict()
 		for meta in userMeta:
-			if meta.meta.multiple:
-				if not meta.meta.key in result:
-					result[meta.meta.key] = {'value': userExtended.type, 'type': meta.meta.type, 'data': meta.meta.data}
-			else:
-				result[meta.meta.key] = {'value': meta.value, 'type': meta.meta.type, 'data': meta.meta.data}
+			if not meta.meta.key in result:
+				value = getattr(userExtended, meta.meta.key)
+				try:
+					data = json.loads(meta.meta.data)
+				except:
+					data = meta.meta.data
+				result[meta.meta.key] = {'value': value, 'type': meta.meta.type, 'data': data}
 		return result
 
 

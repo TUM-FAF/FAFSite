@@ -1,9 +1,12 @@
 {% extends "admin/change_form.html" %}
+{% load academics_tags %}
 
 {% block stylesheets %}
     {{ block.super }}
     <style type="text/css">
-        .grp-module li{list-style-type:none;}
+        .close-btn{position:absolute;right:4px;top:6px;cursor:pointer;color:#BF3030;font-size:15px;}
+        .add-meta p{cursor:pointer;margin:2px 0;}
+        .all-meta{display:none;}
     </style>
 {% endblock %}
 
@@ -12,51 +15,138 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
 
-        $(function() {
-        metatypes = ['type', 'age', 'facebook', 'programming_skills'];
+    $(function() {
 
-        // style the forms
-        var fieldset = $('fieldset.meta');
-        fieldset.children("label").wrap('<div class="c-1" />');
-        fieldset.children("input").wrap('<div class="c-2" />');
-        fieldset.children("ul").wrap('<div class="c-2" />');
-        // $('fieldset.meta>li').css("display", "table");
-        // $('fieldset.meta>li').wrap('<div class="l-2c-fluid l-d-4" />');
-        // $('fieldset.meta>li').css("display", "table");
-        // $('fieldset.meta>div.l-d-4').wrap('<div class="grp-row grp-cells-1" />');
-        
-
+        // remove a field from Meta and add it's meta key to the Add Meta section
+        $('.meta-container').on('click', '.close-btn', function() {
+            var meta_key = $(this).siblings('.c-1').children().text();
+            $('<p></p>').text(meta_key).appendTo('.add-meta');
+            $(this).closest('.grp-row').remove();
         });
+
+        // find the clicked metas and add them to the meta fieldset
+        $('.add-meta').on('click', 'p', function() {
+            var key_title = $(this).text();
+            console.log(key_title);
+            var meta_key = $(".all-meta p:contains('"+ key_title +"')").next();
+            var meta_type = $(meta_key).next();
+            var meta_data = $(meta_type).next();
+
+            meta_key = $(meta_key).text();
+            meta_type = $(meta_type).text();
+            meta_data = $(meta_data).text();
+            // console.log( meta_key, meta_type, meta_data );
+
+            // appending to the DOM
+            $('<div/>', {
+                class: 'grp-row grp-cells-1 ' + meta_key,
+            }).appendTo( $('.meta-container') );
+
+            $('<div class="l-2c-fluid l-d-4"><div class="c-1"></div></div>')
+                .appendTo( $('.meta-container .grp-row:last-child') );
+            $('<label/>', {
+                for: meta_key,
+                text: key_title,
+            }).appendTo( $('.meta-container .c-1:last-child') );
+            $('<div/>', {
+                class: "c-2",
+            }).appendTo( $('.meta-container .grp-row:last-child .l-d-4') );
+            if (meta_type == 'choice') {
+                $('<ul/>').appendTo( $('.meta-container .grp-row:last-child .c-2') )
+                meta_data = meta_data.match(/'\w+'/g);
+                // console.log(meta_data);
+                for (var i = 0; i < meta_data.length; i++) {
+                    var choice = meta_data[i].replace(/'/g, '');
+                    $('<li></li>')
+                        .appendTo( $('.meta-container .grp-row:last-child ul') );
+                    $('.meta-container .grp-row:last-child li:last-child')
+                        .html('<label for='+ choice +'></label>')
+                    $('.meta-container .grp-row:last-child li:last-child label')
+                        .html('<input type="checkbox" name="' + meta_key + '" value="' + choice + '" id="' + choice + '"> '+ choice.charAt(0).toUpperCase() + choice.slice(1))
+                }
+            }
+            else if (meta_type == 'textarea') {
+                $('<textarea/>', {
+                    cols: "20",
+                    id: meta_key
+                }).appendTo( $('.meta-container .grp-row:last-child .c-2') );
+            }
+            else {
+                $('<input/>', {
+                    name: meta_key,
+                    class: "vTextField",
+                    type: "text",
+                    id: meta_key
+                }).appendTo( $('.meta-container .grp-row:last-child .c-2') );
+            }
+            $('<span/>', {
+                class: "close-btn",
+                text: 'X'
+            }).appendTo( $('.meta-container .grp-row:last-child .c-2')  );
+        });
+
+    });
 
     </script>
 {% endblock %}
 
-{% block after_related_objects %}
+{% block field_sets %}
+    {{ block.super }}
     <!-- Field set for Meta -->
     <h1>Meta</h1>
 
-<!--     <fieldset class="grp-module">
-        <div class="grp-row grp-cells-1">
-            <div class="l-2c-fluid l-d-4">
-                <li style="display: table;">
+    <fieldset class="grp-module meta-container">
+    {% for key, meta in adminform.form.getAdditionalFieldsets.items %}
+        {% if meta.value != '' %}
+            <div class="grp-row grp-cells-1 {{ key }}">
+                <div class="l-2c-fluid l-d-4">
                     <div class="c-1">
-                        <label for="type" class="required">Type</label>
+                        <label for="{{ key }}">{{ key|normalize }}</label>
                     </div>
                     <div class="c-2">
-                        <input name="type" value="blablabla test" class="vTextField" maxlength="15" type="text" id="type">
-                    </div>
-                </li>
+                        {% if meta.type == 'choice' %} 
+                            <ul>
+                                {% for data in meta.data %}
+                                    <li>
+                                        <label for="{{ data }}">
+                                            {% if data in meta.value %}
+                                                <input type="checkbox" checked="checked" name="{{ key }}" value="{{ data }}" id="{{ data }}"> {{ data|normalize }}
+                                            {% else %}
+                                                <input type="checkbox" name="{{ key }}" value="{{ data }}" id="{{ data }}"> {{ data|normalize }}
+                                            {% endif %}
+                                        </label>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% elif meta.type == 'textarea' %}
+                            <textarea cols="20" id="{{ key }}">{{ meta.value }}</textarea>
+                        {% else %}
+                            <input name="{{ key }}" value="{{ meta.value }}" class="vTextField" type="text" id="{{ key }}">
+                        {% endif %}
+                    </div> <span class="close-btn">X</span>
+                </div>
             </div>
-        </div>
-    </fieldset> -->
-
-
-    <fieldset class="grp-module meta">
-        {{adminform.form.getAdditionalMeta}}
+        {% endif %}
+    {% endfor %}
     </fieldset>
-    <!-- {% for fieldset in adminform.form.getAdditionalFieldsets %}
-        {% include "admin/includes/fieldset.html" %}
-    {% endfor %} -->
+
+    <h1>Add Meta</h1>
+    <fieldset class='add-meta'>
+        {% for key, meta in adminform.form.getAdditionalFieldsets.items %}
+            {% if meta.value == '' %}
+                <p>{{ key|normalize }}</p>
+                {% endif %}
+        {% endfor %}
+    </fieldset>
+
+    <div class='all-meta'>
+        {% for key, meta in adminform.form.getAdditionalFieldsets.items %}
+            <p>{{ key|normalize }}</p>
+            <p>{{ key }}</p>
+            <p>{{ meta.type }}</p>
+            <p>{{ meta.data }}</p>
+        {% endfor %}
+    </div> 
 
     <!--
     TODO:
@@ -70,8 +160,4 @@
         - near metatypes there will be x(delete) buttons to be able to erase unnecessary meta fields
         - there is no need in AJAX
     -->
-
-
-    <!-- {{adminform.form.getAdditionalMeta}} -->
-
 {% endblock %}
