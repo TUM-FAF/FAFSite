@@ -4,7 +4,6 @@ from django.utils.datastructures import SortedDict
 from django.db import models
 import json
 
-
 META_TYPES = (
 	('number', 'Number'),
 	('string', 'String'),

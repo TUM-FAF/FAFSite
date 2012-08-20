@@ -77,9 +77,32 @@ class UserMetaTypeAdmin(admin.ModelAdmin):
 class UserMetaAdmin(admin.ModelAdmin):
 	list_display = ('user', 'meta', 'value')
 
+class CourseForm(forms.ModelForm):
+	class Meta:
+		model = Course
+	def __init__(self, *args, **kwargs):
+		super(CourseForm, self).__init__(*args, **kwargs)
+		users = User.objects.all()
+		usersExtended = []
+		for user in users:
+			usersExtended.append(UserExtended(user.id))
+
+		filter = ['professor']
+		choices = []
+		for userExtended in usersExtended:
+			type = userExtended.type
+			if set(filter).issubset(set(type)):
+				userId = User.objects.get(id=userExtended.id)
+				choices.append((userId.id, userId))
+		w = self.fields['professors'].widget
+		w.choices = choices
+
 class CourseAdmin(admin.ModelAdmin):
 	list_display = ('subject_en', 'subject_ro', 'semester')
 	search_fields = ('subject',)
+	form = CourseForm
+
+
 
 admin.site.register(User, UserAdmin)
 admin.site.register(UserMetaType, UserMetaTypeAdmin)
