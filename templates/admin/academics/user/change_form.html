@@ -21,7 +21,12 @@
         $('.meta-container').on('click', '.close-btn', function() {
             var meta_key = $(this).siblings('.c-1').children().text();
             $('<p></p>').text(meta_key).appendTo('.add-meta');
-            $(this).closest('.grp-row').hide();
+            console.log($(this));
+            var grp_row = $(this).closest('.grp-row')
+            $(grp_row).find('input').val('');
+            $(grp_row).find('textarea').val('');
+            $(grp_row).find('input').removeAttr('checked');
+            $(grp_row).hide();
         });
 
         // find the clicked metas and add them to the meta fieldset
@@ -68,10 +73,8 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                    {% comment %}
                     {% elif meta.type == 'textarea' %}
                         <textarea cols="20" id="{{ key }}" type="text">{{ meta.value }}</textarea>
-                    {% endcomment %}
                     {% else %}
                         <input name="{{ key }}" value="{{ meta.value }}" class="vTextField" type="text" id="{{ key }}">
                     {% endif %}
@@ -99,10 +102,8 @@
                                 </li>
                             {% endfor %}
                         </ul>
-                    {% comment %}
                     {% elif meta.type == 'textarea' %}
-                        <textarea cols="20" id="{{ key }}" type="text">{{ meta.value }}</textarea>
-                    {% endcomment %}
+                        <textarea cols="20" name="{{ key }}" id="{{ key }}" type="text">{{ meta.value }}</textarea>
                     {% else %}
                         <input name="{{ key }}" value="{{ meta.value }}" class="vTextField" type="text" id="{{ key }}">
                     {% endif %}
@@ -122,12 +123,4 @@
         {% endfor %}
     </fieldset>
 
-    <!-- <div class='all-meta'>
-        {% for key, meta in adminform.form.getAdditionalFieldsets.items %}
-            <p>{{ key|normalize }}</p>
-            <p>{{ key }}</p>
-            <p>{{ meta.type }}</p>
-            <p>{{ meta.data }}</p>
-        {% endfor %}
-    </div>  -->
 {% endblock %}

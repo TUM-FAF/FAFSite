@@ -55,7 +55,6 @@ class UserAdmin(admin.ModelAdmin):
 				if userMetaType.multiple:
 					setattr(userExtended, userMetaType.key, request.POST.getlist(userMetaType.key))
 				else:
-					# print request.POST[userMetaType.key]
 					setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])					
 				userExtended.save()
 			else:
