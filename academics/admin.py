@@ -1,5 +1,5 @@
 from django.contrib import admin 
-from academics.models import User, UserMetaType, UserMeta, UserExtended
+from academics.models import User, UserMetaType, UserMeta, UserExtended, Course
 from django import forms
 import json
 
@@ -51,12 +51,13 @@ class UserAdmin(admin.ModelAdmin):
 		obj.save()	# User save
 		userExtended = UserExtended(obj.id)
 		for userMetaType in UserMetaType.objects.all():
-			if userMetaType.key in request.POST:
+			if userMetaType.key in request.POST and request.POST[userMetaType.key] != '':
 				if userMetaType.multiple:
 					setattr(userExtended, userMetaType.key, request.POST.getlist(userMetaType.key))
 				else:
+					# print request.POST[userMetaType.key]
 					setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])					
-				# userExtended.save()
+				userExtended.save()
 			else:
 				userExtended.delMeta(userMetaType.key)
 
@@ -64,9 +65,23 @@ class UserMetaTypeAdmin(admin.ModelAdmin):
 	list_display = ('key', 'type', 'multiple', 'data')
 	search_fields = ('key', 'type')
 
+	# save as a JSON object
+	def save_model(self, request, obj, form, change):
+		data = obj.data
+		data = data.split(',')
+		data = json.dumps(data)
+		obj.data = data
+		obj.save()
+
+
 class UserMetaAdmin(admin.ModelAdmin):
 	list_display = ('user', 'meta', 'value')
+
+class CourseAdmin(admin.ModelAdmin):
+	list_display = ('subject_en', 'subject_ro', 'semester')
+	search_fields = ('subject',)
 
 admin.site.register(User, UserAdmin)
 admin.site.register(UserMetaType, UserMetaTypeAdmin)
 admin.site.register(UserMeta, UserMetaAdmin)
+admin.site.register(Course, CourseAdmin)
