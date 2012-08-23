@@ -44,10 +44,13 @@
 				var second = 0;
 				var left = 0;
 				var right = 0;
+				var id = 1;
 				var main = $('.timeline_main');
 				var articles = main.find('section');
 				articles.each(function(){
 					var content = $(this);
+					content.find('article').attr('data-id', id);
+					id++;
 					content.removeClass('right').removeClass('left').removeClass('first').removeClass('second');
 					// console.log(val);
 					// console.log(content.outerHeight());
