@@ -1,11 +1,9 @@
 from django.conf.urls import patterns, include, url
 from views import *
 from django.conf import settings
-from filebrowser.sites import site
-
-
-# Uncomment the next two lines to enable the admin:
+# from filebrowser.sites import site
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -20,7 +18,6 @@ urlpatterns = patterns('',
 	url(r'^people/$', people),
 	url(r'^contact-us/$', contact_us),
 	url(r'^contact-us/thanks/$', thanks),
-	# url(r'^contact-us/submit/$', contact),
 	url(r'^tinymce/', include('tinymce.urls')),
 	# url(r'^admin/academics/user/add/$', 'admin_views.metakeys'),
 	# Examples:
@@ -32,8 +29,9 @@ urlpatterns = patterns('',
 
 	# Uncomment the next line to enable the admin:
 	url(r'^grappelli/', include('grappelli.urls')),
+	# url(r'^admin/academics/user/add/$', 'academics.views.addUserExtended'),
 	url(r'^admin/', include(admin.site.urls)),
-	url(r'^admin/filebrowser/', include(site.urls)),
+	# url(r'^admin/filebrowser/', include(site.urls)),
 )
 
 

@@ -1,12 +1,30 @@
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
+from django.utils.datastructures import SortedDict
 from django.db import models
 import json
-
 
 META_TYPES = (
 	('number', 'Number'),
 	('string', 'String'),
 	('choice', 'Multiple Choice'),
 	('url', 'URL'),
+	('textarea', 'TextArea'),
+	)
+
+SEMESTERS = (
+	(1, 'I'),
+	(2, 'II'),
+	(3, 'III'),
+	(4, 'IV'),
+	(5, 'V'),
+	(6, 'VI'),
+	(7, 'VII'),
+	)
+
+LANGUAGES = (
+	('EN', 'English'),
+	('RO', 'Romanian'),
 	)
 
 
@@ -21,6 +39,21 @@ class User(models.Model):
 	def __unicode__(self):
 		return u'%s %s' % (self.name, self.surname)
 
+'''
+=== How to fill in Meta Types ===
+
+= 	key - preferably all lowercase
+		- if requires more words to describe, then user underscore (_) to define 
+
+= 	data - used only for multiple choice fields
+		 - when using console create a JSON file
+		 	ex: data = ["student", "alumni"]
+		 		data = JSON.dumps(data)
+		 - when using the admin panel enter all variants separated with coma without any spaces
+		 	ex: student,alumni
+
+= 	multiple - always check multilpe if it's a multiple meta type
+'''
 
 class UserMetaType(models.Model):
 	key = models.CharField(max_length=31)
@@ -39,9 +72,20 @@ class UserMeta(models.Model):
 	def __unicode__(self):
 		return u'%s - %s' % (self.meta, self.value)
 
-class Empty(models.Model):
+class Course(models.Model):
+	subject_ro = models.CharField(max_length=70)
+	subject_en = models.CharField(max_length=70)
+	professors = models.ManyToManyField(User, blank=True, verbose_name="List of professors")
+	semester = models.IntegerField(choices=SEMESTERS)
+	language = models.CharField(max_length=10,choices=LANGUAGES)
+	courseProject = models.BooleanField()
+	labs = models.BooleanField()
+	literature = models.TextField(blank=True)
+	description = models.TextField(blank=True)
+
 	def __unicode__(self):
-		return u'this is empty class'
+		return u'%s %s' % (self.subject_en, self.semester)
+
 
 '''
 ====Proxy Object for User class and it's attributes====
@@ -60,13 +104,14 @@ class Empty(models.Model):
 =	Update user attributes	user.age = 25
 							user.type = ['student']
 							or
-							user.type = ['student', 'mentor'] (if multiple meta)
+							user.type = ['student', 'alumni'] (if multiple meta)
 
 =	Delete user attributes	del user.age
 
 =	Delete user and all		del user
 	its meta
 '''
+
 # TODO: add __dir__ method
 class UserExtended():
 	def __init__(self, user_id=0):
@@ -129,19 +174,22 @@ class UserExtended():
 		elif meta_type.type == 'string':
 			value = str(value)
 		elif meta_type.type == 'choice':
-			# TODO: refactor to use not only lists/arrays
 			try:
 				data = json.loads(meta_type.data)
-				if isinstance(value, list):
-					# check is list value is contained in list data
-					if set(value).issubset(set(data)):
-						pass
-					else:
-						raise AttributeError('No such choice/choises')
+				# # check is list value is contained in list data
+				if set(value).issubset(set(data)):
+					# for item in input_data:
+					pass
 				else:
-					raise AttributeError('Should be a list')
+					raise AttributeError('No such choice/choises')
 			except ValueError:
 				raise ValueError("Should be a valid JSON file")
+		elif meta_type.type == 'url':
+			val = URLValidator()
+			try:
+				val(value)
+			except ValidationError, error:
+				print error
 
 
 		if meta_type.multiple:
@@ -218,9 +266,16 @@ class UserExtended():
 
 	def getAttributes(self):
 		userMeta = UserMeta.objects.filter(user=self.user)
+		userExtended = UserExtended(self.user.id)
 		result = {}
 		for meta in userMeta:
-			result[meta.meta.key] = {'value': meta.value, 'type': meta.meta.type, 'data': meta.meta.data}
+			if not meta.meta.key in result:
+				value = getattr(userExtended, meta.meta.key)
+				try:
+					data = json.loads(meta.meta.data)
+				except:
+					data = meta.meta.data
+				result[meta.meta.key] = {'value': value, 'type': meta.meta.type, 'data': data}
 		return result
 
 

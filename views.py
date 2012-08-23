@@ -76,46 +76,6 @@ def people(request):
 
     return render(request, "people.html", 
         {"activepage": "People", "menu": menu_items})
-# TODO check the validity of the email address
-
-# def contact_us(request):
-#     global menu_items
-#     return render(request, "contact-us.html", 
-#         {"activepage": "Contact Us", "menu": menu_items})
-
-
-# @csrf_exempt
-# def submit(request):
-#     response, noemail, nomessage = '', '', ''
-#     # if 'name' in request.POST:
-#     #     result = "Your name is %s" % request.POST['name']
-#     if not request.POST:
-#         return HttpResponseForbidden()
-
-#     name = request.POST['name']
-#     email = request.POST['email']
-#     message = request.POST['message']
-#     if email and message:
-#         message = '\n\nFROM: ' + email + '\n\nName: ' + name + '\n\nMessage: ' + message
-#         try:
-#             send_mail('[FAF]Contact us', message, email, ['ana.balica@gmail.com'], fail_silently=False)
-#             response = '<span>*</span> Thank you. We will consider your message as soon as possible and contact you.'
-#         except:
-#             return HttpResponse('Invalid header found.')
-#         """
-#         from startapp.models import Mail
-#         p = Mail(from_email = from_email , subject = subject, message = message)
-#         p.save()
-#         """
-#     else:
-#         if not email:
-#             noemail = '* Please provide your Email Address'
-#             # nomessage = '* Please leave us a message'
-#         if not message:
-#             nomessage = '* Please leave us a message'
-#     return render(request, "contact-us.html", 
-#         {"activepage": "Contact Us", "menu": menu_items, "response": response,
-#         "noemail": noemail, "nomessage": nomessage})
 
 @csrf_exempt
 def contact_us(request):
