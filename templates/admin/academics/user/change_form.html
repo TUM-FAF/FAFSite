@@ -35,7 +35,7 @@
             $(this).hide();
             $('.meta-container').find('.c-1 label').each( function() {
                 if ( $(this).text() == meta_key ) {
-                    $(this).closest('.grp-row').show() 
+                    $(this).closest('.grp-row').show(); 
                 }
             });
         });
@@ -54,6 +54,9 @@
     {% for key, meta in adminform.form.getAdditionalFieldsets.items %}
         {% if meta.value != '' %}
         <div class="grp-row grp-cells-1 {{ key }}">
+        {% else %}
+        <div class="grp-row grp-cells-1 {{ key }}" style='display:none;'>
+        {% endif %}
             <div class="l-2c-fluid l-d-4">
                 <div class="c-1">
                     <label for="{{ key }}">{{ key|normalize }}</label>
@@ -81,36 +84,6 @@
                 </div> <span class="close-btn">X</span>
             </div>
         </div>
-        {% else %}
-        <div class="grp-row grp-cells-1 {{ key }}" style='display:none;'>
-            <div class="l-2c-fluid l-d-4">
-                <div class="c-1">
-                    <label for="{{ key }}">{{ key|normalize }}</label>
-                </div>
-                <div class="c-2">
-                    {% if meta.type == 'choice' %} 
-                        <ul>
-                            {% for data in meta.data %}
-                                <li>
-                                    <label for="{{ data }}">
-                                        {% if data in meta.value %}
-                                            <input type="checkbox" checked="checked" name="{{ key }}" value="{{ data }}" id="{{ data }}"> {{ data|normalize }}
-                                        {% else %}
-                                            <input type="checkbox" name="{{ key }}" value="{{ data }}" id="{{ data }}"> {{ data|normalize }}
-                                        {% endif %}
-                                    </label>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    {% elif meta.type == 'textarea' %}
-                        <textarea cols="20" name="{{ key }}" id="{{ key }}" type="text">{{ meta.value }}</textarea>
-                    {% else %}
-                        <input name="{{ key }}" value="{{ meta.value }}" class="vTextField" type="text" id="{{ key }}">
-                    {% endif %}
-                </div> <span class="close-btn">X</span>
-            </div>
-        </div>
-        {% endif %}
     {% endfor %}
     </fieldset>
 
