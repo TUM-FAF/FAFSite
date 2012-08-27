@@ -90,11 +90,13 @@ class CourseForm(forms.ModelForm):
 		choices = []
 		for userExtended in usersExtended:
 			type = userExtended.type
-			if set(filter).issubset(set(type)):
-				userId = User.objects.get(id=userExtended.id)
-				choices.append((userId.id, userId))
+			if type:
+				if set(filter).issubset(set(type)):
+					userId = User.objects.get(id=userExtended.id)
+					choices.append((userId.id, userId))
 		w = self.fields['professors'].widget
 		w.choices = choices
+		print choices
 
 class CourseAdmin(admin.ModelAdmin):
 	list_display = ('subject_en', 'subject_ro', 'semester')

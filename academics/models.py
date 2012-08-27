@@ -13,13 +13,13 @@ META_TYPES = (
 	)
 
 SEMESTERS = (
-	(1, 'I'),
-	(2, 'II'),
-	(3, 'III'),
-	(4, 'IV'),
-	(5, 'V'),
-	(6, 'VI'),
-	(7, 'VII'),
+	('I', 'I'),
+	('II', 'II'),
+	('III', 'III'),
+	('IV', 'IV'),
+	('V', 'V'),
+	('VI', 'VI'),
+	('VII', 'VII'),
 	)
 
 LANGUAGES = (
@@ -73,11 +73,11 @@ class UserMeta(models.Model):
 		return u'%s - %s' % (self.meta, self.value)
 
 class Course(models.Model):
-	subject_ro = models.CharField(max_length=70)
-	subject_en = models.CharField(max_length=70)
+	subject_ro = models.CharField(max_length=127)
+	subject_en = models.CharField(max_length=127)
 	professors = models.ManyToManyField(User, blank=True, verbose_name="List of professors")
-	semester = models.IntegerField(choices=SEMESTERS)
-	language = models.CharField(max_length=10,choices=LANGUAGES)
+	semester = models.CharField(max_length=7, choices=SEMESTERS)
+	language = models.CharField(max_length=15,choices=LANGUAGES)
 	courseProject = models.BooleanField()
 	labs = models.BooleanField()
 	literature = models.TextField(blank=True)

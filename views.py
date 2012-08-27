@@ -1,6 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from blog.models import Article
+from academics.models import Course
 from django.core.mail import send_mail
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from forms import ContactForm
@@ -12,7 +13,7 @@ menu_items = [
         ('/achievements/', 'Achievements'),
         ('/activities/', 'Activities'),
         ('/people/', 'People'),
-        ('#', 'Courses'),
+        ('/courses/', 'Courses'),
         ('/contact-us/', 'Contact Us')
     ]
 
@@ -29,10 +30,12 @@ def about(request):
 
 def courses(request):
     global menu_items
-    courses = Course.objects.all()
-    y = ['I','II','III','IV','V','VI','VII']
+    semesters = ['I','II','III','IV','V','VI','VII']
+    courses = []
+    for sem in semesters:
+        courses.append(Course.objects.filter(semester=sem))
     return render(request, "courses.html", 
-        {"activepage": "Courses", "menu": menu_items, "academic": courses, "y": y})
+        {"activepage": "Courses", "menu": menu_items, "courses": courses})
 
 def about_course(request):
     global menu_items
