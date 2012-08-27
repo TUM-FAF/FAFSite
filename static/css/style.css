@@ -234,7 +234,7 @@ section#articles article.slide .nav_buttons .button.this{background:#1C9DD7;colo
 	}
 
 /****** contact us *********/
-div.contact{margin: 30px 0 15px 0;} /*background:url("../images/phone.png") no-repeat center top;*/
+div.contact{margin: 30px 0 15px 0;}
 @media (min-height: 685px){div.contact {min-height: 475px;}}
 
 .contact p{font-size:16px;text-shadow:white 1px -1px 1px;}
@@ -243,22 +243,16 @@ div.contact{margin: 30px 0 15px 0;} /*background:url("../images/phone.png") no-r
 .contact form{width: 350px; padding: 0; margin: 20px 0; float: left;}
 	.contact label {display:block;text-align:left;font-size:17px;padding:3px 0;text-shadow:white 1px -1px 1px; margin: 7px 0 4px; width: auto; max-width: 100px; background: #eee; box-sizing: border-box;}
 	.contact input{height:20px; margin-bottom: 4px;}
-	.contact input, textarea {width: 100%;line-height: 1em;display:block;border: 1px solid #c3c3c3;
-		-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		-o-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
-		background: url('../images/input_bg.png') repeat;
+	.contact input, textarea {width:100%;display:block;border:1px solid #c3c3c3;font-size:14px;
+		-webkit-box-shadow:  1px 1px 4px #C3C3C3;
+		-moz-box-shadow:  1px 1px 4px #C3C3C3;
+		-o-box-shadow:  1px 1px 4px #C3C3C3;
+		box-shadow: 1px 1px 4px #C3C3C3;
 		box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;}
-	.contact textarea {margin-bottom:10px;}
-	.contact textarea:focus, input:focus {outline: none;
-		border:1px solid #76ACC4;
-		-webkit-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
-		-moz-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
-		-o-box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.5);
-		box-shadow: 0px 0px 8px rgba(28, 157, 214, 0.3);}
+	.contact textarea {margin-bottom:10px;resize:vertical;}
+	.contact textarea:focus, input:focus {outline: none;border:1px solid #76ACC4;}
 	.contact input[type=submit] {width:auto;padding:5px 15px 17px;background:#1c93bb;border:1px solid #1387ac;
 		border-radius:2px;font-size:13px;color:#fff;text-decoration:none;font-weight:600;cursor:pointer;
 		background: -webkit-gradient(radial, center center, 0, center center, 47, from(#20a7d6), to(#1691ba));
@@ -269,7 +263,7 @@ div.contact{margin: 30px 0 15px 0;} /*background:url("../images/phone.png") no-r
 	.contact ul.errorlist {margin:0 0 4px 0;padding:0;}
 		.contact .errorlist li{list-style-type:none;font-size:11px;color:#D80F0F;}
 
-.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}=======
+.contact section #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}=======
 	.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}
 	.contact #articles article{float: left; max-width: 280px;}
 		#articles.right{float: right;}
