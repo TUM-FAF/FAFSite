@@ -1,0 +1,26 @@
+{% extends "admin/change_form.html" %}
+
+{% block after_field_sets %}
+    <h3>Title</h3>
+    <div style="margin:10px 0;">
+        <p>Use only lowercase letters, exception make the roman numbers. Don't use digits (write like that calculus-I). For separating more words use minus (-). For very long titles, try to cut off some info (words) by keeping it understandable.</p>
+        <p>For example:</p>
+            <ul>
+                <li>Subject: <strong>Calculus I</strong> / Title: <strong>calculus-I</strong></li>
+                <li>Subject: <strong>Information Security</strong> / Title: <strong>information-security</strong></li>
+                <li>Subject: <strong>Professional Ethics and Communication Skills</strong> / Title: <strong>professional-ethics</strong></li>
+            </ul>
+    </div>
+    <h3>Literature</h3>
+    <div style="margin:10px 0;">
+        <p>Insert raw HTML markup as a an unordered list.</p>
+        <p>For example:</p>
+        <code>
+            &lt;ul&gt;<br />
+            &#160;&#160; &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.&lt;/li&gt;<br />
+            &#160;&#160; &lt;li&gt;Aliquam tincidunt mauris eu risus.&lt;/li&gt;<br />
+            &#160;&#160; &lt;li&gt;Vestibulum auctor dapibus neque.&lt;/li&gt;<br />
+            &lt;/ul&gt;<br />
+            &#160;&#160;&#160;&#160;&#160;&#160; 
+        </code>  
+{% endblock %}
