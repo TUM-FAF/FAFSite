@@ -13,8 +13,8 @@ urlpatterns = patterns('',
 	url(r'^admission/$', admission),
 	url(r'^achievements/$', achievements),
 	url(r'^activities/$', activities),
-	url(r'^courses/Calculus-1/$', about_course),
 	url(r'^courses/$', courses),
+	url(r'^courses/([a-zA-z-]+)/$', about_course),
 	url(r'^people/$', people),
 	url(r'^contact-us/$', contact_us),
 	url(r'^contact-us/thanks/$', thanks),
@@ -29,7 +29,6 @@ urlpatterns = patterns('',
 
 	# Uncomment the next line to enable the admin:
 	url(r'^grappelli/', include('grappelli.urls')),
-	# url(r'^admin/academics/user/add/$', 'academics.views.addUserExtended'),
 	url(r'^admin/', include(admin.site.urls)),
 	# url(r'^admin/filebrowser/', include(site.urls)),
 )

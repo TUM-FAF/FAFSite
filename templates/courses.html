@@ -2,6 +2,7 @@
 {% block content %}
 <div class="courses">
 	<div class="blank_block"><h2>Courses sorted by semesters</h2></div>
+	
 	{% for sem_courses in courses %}
 	{% with semester=sem_courses.0.semester %}
 		{% if semester == 'II' %}
@@ -15,7 +16,7 @@
 				<ul class="subjects_list">
 					{% for course in sem_courses %}
 						<li class="subjects">
-							<a href="Calculus-1/">{{ course.subject_en }}</a>
+							<a href="{{ course.title }}/">{{ course.subject_en }}</a>
 						</li>
 					{% endfor %}
 				</ul>

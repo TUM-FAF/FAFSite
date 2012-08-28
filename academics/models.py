@@ -73,6 +73,7 @@ class UserMeta(models.Model):
 		return u'%s - %s' % (self.meta, self.value)
 
 class Course(models.Model):
+	title = models.CharField(max_length=127)
 	subject_ro = models.CharField(max_length=127)
 	subject_en = models.CharField(max_length=127)
 	professors = models.ManyToManyField(User, blank=True, verbose_name="List of professors")

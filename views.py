@@ -3,7 +3,7 @@ from django.template import RequestContext
 from blog.models import Article
 from academics.models import Course
 from django.core.mail import send_mail
-from django.http import HttpResponseForbidden, HttpResponseRedirect
+from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404
 from forms import ContactForm
 from django.views.decorators.csrf import csrf_exempt
 
@@ -16,6 +16,13 @@ menu_items = [
         ('/courses/', 'Courses'),
         ('/contact-us/', 'Contact Us')
     ]
+
+def getCourses():
+    semesters = ['I','II','III','IV','V','VI','VII']
+    courses = []
+    for sem in semesters:
+        courses.append(Course.objects.filter(semester=sem))
+    return courses
 
 
 def index(request):
@@ -30,17 +37,19 @@ def about(request):
 
 def courses(request):
     global menu_items
-    semesters = ['I','II','III','IV','V','VI','VII']
-    courses = []
-    for sem in semesters:
-        courses.append(Course.objects.filter(semester=sem))
+    courses = getCourses()
     return render(request, "courses.html", 
         {"activepage": "Courses", "menu": menu_items, "courses": courses})
 
-def about_course(request):
+def about_course(request, course):
     global menu_items
+    courses = getCourses()   
+    try:
+        course_info = Course.objects.get(title=course)
+    except:
+        raise Http404()
     return render(request, "about-course.html", 
-        {"activepage": "About", "menu": menu_items})
+            {"activepage": "Courses", "menu": menu_items, "courses": courses, "course":course_info})
 
 def achievements(request):
     global menu_items

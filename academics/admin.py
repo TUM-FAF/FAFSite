@@ -66,10 +66,14 @@ class UserMetaTypeAdmin(admin.ModelAdmin):
 
 	# save as a JSON object
 	def save_model(self, request, obj, form, change):
-		data = obj.data
-		data = data.split(',')
-		data = json.dumps(data)
-		obj.data = data
+		if obj.data:
+			try:
+				json.loads(obj.data)
+			except ValueError:
+				data = obj.data
+				data = data.split(',')
+				data = json.dumps(data)
+				obj.data = data
 		obj.save()
 
 
