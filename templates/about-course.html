@@ -1,5 +1,9 @@
 {% extends "index.html" %}
 
+{% block title%}
+<title>FAF - {{ course.subject_en }}</title>
+{% endblock%}
+
 {% block header %}
 <script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="{{STATIC_URL}}js/script.js"></script>
@@ -28,7 +32,7 @@
 				<dl>
 					<dt>Professors</dt>
 						{% for professor in course.professors.all %}
-						<dd><a href="">{{ professor.name }} {{ professor.surname }}</a></dd>
+						<dd><a href="#">{{ professor.name }} {{ professor.surname }}</a></dd>
 						{% empty %}
 						<dd>Oops, seems that there are no professors assigned to this course.</dd>
 						{% endfor %}
