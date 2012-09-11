@@ -7,9 +7,9 @@
 {% block content %}
 <div id="side_menu">
 	<ul class="side_nav">
-		<li class='title'><a href="#">Professors</a></li>
+		<li class='title'><a href="/people/">Professors</a></li>
 
-		<li class='title'>Students</li>
+		<li class='title'><a href="/people/students/">Students</a></li>
 		<ul class='subtitel'>
 			<li><a href="#">FAF-111</a></li>
 			<li><a href="#">FAF-101</a></li>
@@ -17,7 +17,7 @@
 			<li><a href="#">FAF-081</a></li>
 		</ul>
 
-		<li class='title'>Alumni</li>
+		<li class='title'><a href="/people/alumni/">Alumni</a></li>
 		<ul class='subtitel'>
 			<li><a href="#">FAF-071</a></li>
 			<li><a href="#">FAF-061</a></li>
@@ -26,124 +26,7 @@
 		</ul>
 	</ul>
 </div>
-<section id="articles" class='table_block'>
-	<article>
-		<div class="article_body">
-			<h3><a href="#">Professors</a></h3>	
-			<div class="article_content">
-				<table>
-					<thead>
-						<tr>
-							<th class='name'>Name</th>
-							<th class='degree'>Degree</th>
-							<th>Courses</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class='person'>
-							<td class='name'>Viorel Bostan</td>
-							<td class='degree'>PhD.</td>
-							<td>Calculus I, Calculus II</td>
-						</tr>
-						<tr class='id_card'>
-							<td colspan="3">
-								<div><img src="../static/images/bostan.jpg" alt=""></div>
-								<div>
-									<h4>Viorel Bostan</h4>
-									<p>Head of Department</br>PhD</p>
-									<p class='emphasis'>Courses:</p>
-									<ul>
-										<li><a href="#">Calculus I</a></li>
-										<li><a href="#">Calculus II</a></li>
-										<li><a href="#">Probability and Information Theory</a></li>
-										<li><a href="#">Discrete Mathematics</a></li>
-										<li><a href="#">Numerical Analysis</a></li>
-										<li><a href="#">Optimization Technics</a></li>
-									</ul>
-								</div>
-								<div class="clr"></div>
-								<a href="#" class="hide_btn">Hide</a>					
-							</td>
-						</tr>
-						<tr class='person'>
-							<td class='name'>Viorica Sudacevschi </td>
-							<td class='degree'>PhD.</td>
-							<td><a href="#">Calculus I</a>, Calculus II</td>
-						</tr>
-						<tr class='id_card'>
-							<td colspan="3">
-								<div><img src="../static/images/bostan.jpg" alt=""></div>
-								<div>
-									<h4>Viorel Bostan</h4>
-									<p>Head of Department</br>PhD</p>
-									<p>Courses:</p>
-									<ul>
-										<li><a href="#">Calculus I</a></li>
-										<li><a href="#">Calculus II</a></li>
-										<li><a href="#">Probability and Information Theory</a></li>
-										<li><a href="#">Discrete Mathematics</a></li>
-										<li><a href="#">Numerical Analysis</a></li>
-										<li><a href="#">Optimization Technics</a></li>
-									</ul>
-								</div>
-								<div class="clr"></div>
-								<a href="#" class="hide_btn">Hide</a>					
-							</td>
-						</tr>
-						<tr class='person'>
-							<td class='name'>Viorel Bostan</td>
-							<td class='degree'>PhD.</td>
-							<td>Calculus I, Calculus II</td>
-						</tr>
-						<tr class='id_card'>
-							<td colspan="3">
-								<div><img src="../static/images/bostan.jpg" alt=""></div>
-								<div>
-									<h4>Viorel Bostan</h4>
-									<p>Head of Department</br>PhD</p>
-									<p>Courses:</p>
-									<ul>
-										<li><a href="#">Calculus I</a></li>
-										<li><a href="#">Calculus II</a></li>
-										<li><a href="#">Probability and Information Theory</a></li>
-										<li><a href="#">Discrete Mathematics</a></li>
-										<li><a href="#">Numerical Analysis</a></li>
-										<li><a href="#">Optimization Technics</a></li>
-									</ul>
-								</div>
-								<div class="clr"></div>
-								<a href="#" class="hide_btn">Hide</a>					
-							</td>
-						</tr>
-						<tr class='person'>
-							<td class='name'>Viorel Bostan</td>
-							<td class='degree'>PhD.</td>
-							<td>Calculus I, Calculus II</td>
-						</tr>
-						<tr class='id_card'>
-							<td colspan="3">
-								<div><img src="../static/images/bostan.jpg" alt=""></div>
-								<div>
-									<h4>Viorel Bostan</h4>
-									<p>Head of Department</br>PhD</p>
-									<p>Courses:</p>
-									<ul>
-										<li><a href="#">Calculus I</a></li>
-										<li><a href="#">Calculus II</a></li>
-										<li><a href="#">Probability and Information Theory</a></li>
-										<li><a href="#">Discrete Mathematics</a></li>
-										<li><a href="#">Numerical Analysis</a></li>
-										<li><a href="#">Optimization Technics</a></li>
-									</ul>
-								</div>
-								<div class="clr"></div>
-								<a href="#" class="hide_btn">Hide</a>					
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</article>
-</section>
+{% block about_people %}
+{% endblock %}
+
 {% endblock %}

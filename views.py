@@ -71,7 +71,14 @@ def admission(request):
 def people(request):
     from academics.models import *
     global menu_items
-
+    academics = []
+    professors = UserMeta.objects.filter(value='professor')
+    for professor in professors:
+        userID = professor.user_id
+        # prof = User.objects.get(id=userID)
+        prof = UserExtended(userID)
+        courses = Course.objects.filter(professors=prof)
+        academics.append([prof, courses])
     '''
     DEMO
 
@@ -86,8 +93,8 @@ def people(request):
     '''
 
 
-    return render(request, "people.html", 
-        {"activepage": "People", "menu": menu_items})
+    return render(request, "professors.html", 
+        {"activepage": "People", "menu": menu_items, "academics": academics})
 
 @csrf_exempt
 def contact_us(request):

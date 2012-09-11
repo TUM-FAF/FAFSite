@@ -1,0 +1,69 @@
+{% extends "people.html" %}
+
+{% block title %}
+<title>FAF - Professors</title>
+{% endblock %}
+
+{% block about_people %}
+<section id="articles" class='table_block'>
+	<article>
+		<div class="article_body">
+			<h3>Professors</h3>	
+			<div class="article_content">
+				<table>
+					<thead>
+						<tr>
+							<th class='name'>Name</th>
+							<th class='degree'>Rank</th>
+							<th>Courses</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for academic in academics %}
+						{% with academic.0 as professor %}
+						{% with academic.1 as courses %}
+						<tr class='person'>
+							<td class='name'>{{ professor.name }} {{ professor.surname }}</td>
+							<td class='degree'>{{ professor.rank }}</td>
+							<td>
+								{% for course in courses %}
+									{% if forloop.last %}
+										{{ course.subject_en }}
+									{% else %}
+										{{ course.subject_en }},
+									{% endif %}
+								{% endfor %}
+							</td>
+						</tr>
+						<tr class='id_card'>
+							<td colspan="3">
+								{% if professor.photo%}
+									<div><img src="{{ MEDIA_URL }}{{professor.photo}}" alt=""></div>
+								{% else %}
+								{% endif %}
+								<div>
+									<h4>{{ professor.name }} {{ professor.surname }}</h4>
+									<p>{{ professor.rank }}</p>
+									<p class='emphasis'>Courses:</p>
+									<ul>
+										{% for course in courses %}
+											<li><a href="/courses/{{ course.title }}/">{{ course.subject_en }}</a></li>
+										{% empty %}
+											<p>Oops, no courses assigned to this professor.</p>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="clr"></div>
+								<a href="#" class="hide_btn">Hide</a>					
+							</td>
+						</tr>
+						{% endwith %}
+						{% endwith %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</article>
+</section>
+{% endblock %}
