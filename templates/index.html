@@ -21,13 +21,10 @@
 					<input type="text" name="search" id="search_text" value="" placeholder="Write here to search" size="100" />
 				</form>
 			</div> -->
-			<!-- <div id='ribbon'> -->
-				<!-- <a href="#"><img src="{{ STATIC_URL }}images/faf_ribbon_red.png" alt="Join FAF now"></a> -->
-			<!-- </div> -->
 			<a href="/admission/">
 			<div class="ribbon">
 				<!-- Join <span style="font-weight: bold;">FAF</span> -->		
-				<img src="../../static/images/faf_ribbon_red.png" alt="">
+				<img src="{{ STATIC_URL }}/images/faf_ribbon_red.png" alt="">
 			</div></a>
 			<div id="header_body">
 				<div class="logo">
@@ -39,7 +36,7 @@
 			</div>
 			<div id="header_links">
 				<div class="header_links_in">
-					<a href="#" class="fb">Follow us on</a>
+					<a href="https://www.facebook.com/FAF.UTM" target="blank" class="fb">Follow us on</a>
 					<nav>
 						{% for link, page in menu %}
 							<a href="{{ link }}" {% if activepage == page %}class="active"{% endif %}>{{ page }}</a>

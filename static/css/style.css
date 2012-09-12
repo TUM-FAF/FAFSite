@@ -205,6 +205,8 @@ footer{height:43px;width:100%;position:absolute;bottom:0;left:0;border-top:1px s
 .wrapper header a{text-decoration: none;}
 .wrapper header a div.ribbon:hover{text-decoration: none;box-shadow: 0 0 20px 1px #777;-webkit-box-shadow: 0 0 20px 1px #777;-moz-box-shadow: 0 0 20px 1px #777;-o-box-shadow: 0 0 20px 1px #777;}
 
+.timeline_main .no-content{width:350px;margin:0 auto;font-size:18px;text-align:center;}
+
 
 /********* Admission Slide show *******/
 
@@ -276,3 +278,6 @@ div.contact{margin: 30px 0 15px 0;}
 	.contact #articles{max-width: 550px; vertical-align: top; overflow: hidden; background: url('../images/input_bg.png') repeat;border: 1px solid #c3c3c3;}
 	.contact #articles article{float: left; max-width: 280px;}
 		#articles.right{float: right;}
+
+.contact article dt{font-size:16px;text-shadow: white 1px -1px 1px;}
+.contact article dd{margin-bottom:20px;}

@@ -16,7 +16,7 @@
 				<li class='title'>{{ semester }}</li>
 				<ul class='subtitel'>
 					{% for course in sem_courses %}
-					<li><a href='{{ course.title }}/'>{{ course.subject_en }}</a></li>
+					<li><a href='/courses/{{ course.title }}/'>{{ course.subject_en }}</a></li>
 					{% endfor %}
 				</ul>
 			{% endwith %}
@@ -58,11 +58,15 @@
 						<dd>Nope, not for this course.</dd>
 						{% endif %}
 						<hr>
+					{% if course.literature %}
 					<dt>List of literature</dt>
 						<dd>{{ course.literature|safe  }}</dd>
 						<hr>
+					{% endif %}
+					{% if course.description %}
 					<dt>Description</dt>
 						<dd>{{ course.description|safe }}</dd>
+					{% endif %}
 				</dl>
 			</div>
 		</div>
