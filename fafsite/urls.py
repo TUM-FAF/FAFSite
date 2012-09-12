@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from views import *
+from academics.views import courses, about_course, professors, students, alumni
+from blog.views import achievements, activities
 from django.conf import settings
 # from filebrowser.sites import site
 from django.contrib import admin
@@ -14,12 +16,14 @@ urlpatterns = patterns('',
 	url(r'^achievements/$', achievements),
 	url(r'^activities/$', activities),
 	url(r'^courses/$', courses),
-	url(r'^courses/([a-zA-z-]+)/$', about_course),
-	url(r'^people/$', people),
+	url(r'^courses/([a-zA-Z-]+)/$', about_course),
+	url(r'^people/$', professors),
+	url(r'^people/professors/$', professors),
+	url(r'^people/students/([a-zA-Z0-9]+)/$', students),
+	url(r'^people/alumni/([a-zA-Z0-9]+)/$', alumni),
 	url(r'^contact-us/$', contact_us),
 	url(r'^contact-us/thanks/$', thanks),
 	url(r'^tinymce/', include('tinymce.urls')),
-	# url(r'^admin/academics/user/add/$', 'admin_views.metakeys'),
 	# Examples:
 	# url(r'^$', 'fafsite.views.home', name='home'),
 	# url(r'^fafsite/', include('fafsite.foo.urls')),
