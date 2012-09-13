@@ -17,7 +17,6 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        # 'NAME': os.path.join( PROJECT_PATH, 'db', 'fafdb.db' ).replace( '\\', '/' ),                      # Or path to database file if using sqlite3.
         'NAME': 'fafdb',
         'USER': 'root',                      # Not used with sqlite3.
         'PASSWORD': 'dev',                  # Not used with sqlite3.
