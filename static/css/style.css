@@ -157,7 +157,8 @@ section{}
 		#side_menu .side_nav ul.subtitel{border:1px solid #e1e1e1;background:white;}
 		#side_menu .side_nav .subtitel li{font-size:13px;padding:8px 18px;border-bottom:1px solid #e1e1e1;}
 				#side_menu .side_nav .subtitel a{color:#555;}
-				#side_menu .title a:hover{text-decoration:none;}			
+				#side_menu .title a:hover{text-decoration:none;}
+				#side_menu .subtitel a.active {text-decoration:underline;}			
 	#side_menu .block_content{padding:8px 0 0;}
 		#side_menu .block_content p{}
 
