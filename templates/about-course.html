@@ -16,7 +16,7 @@
 				<li class='title'>{{ semester }}</li>
 				<ul class='subtitel'>
 					{% for course in sem_courses %}
-					<li><a href='/courses/{{ course.title }}/'>{{ course.subject_en }}</a></li>
+					<li><a href='/courses/{{ course.title }}/' {% if course.title == Course.title %}class="active"{% endif %}>{{ course.subject_en }}</a></li>
 					{% endfor %}
 				</ul>
 			{% endwith %}
@@ -26,46 +26,46 @@
 <section id="course_description">
 	<article>
 		<div class="article_body">
-			<h3 class="compressed">{{ course.subject_en }}</h3>
-			<h4>{{ course.subject_ro }}</h4>	
+			<h3 class="compressed">{{ Course.subject_en }}</h3>
+			<h4>{{ Course.subject_ro }}</h4>	
 			<div class="article_content">
 				<dl>
 					<dt>Professors</dt>
-						{% for professor in course.professors.all %}
+						{% for professor in Course.professors.all %}
 						<dd><a href="#">{{ professor.name }} {{ professor.surname }}</a></dd>
 						{% empty %}
 						<dd>Oops, seems that there are no professors assigned to this course.</dd>
 						{% endfor %}
 						<hr>
 					<dt>Language</dt>
-						{% if course.language == 'RO' %}
+						{% if Course.language == 'RO' %}
 						<dd>Romanian</dd>
 						{% else %}
 						<dd>English</dd>
 						{% endif %}
 						<hr>
 					<dt>Laboratory Works</dt>
-						{% if course.labs == 'True' %}
+						{% if Course.labs == 'True' %}
 						<dd>Yes, plenty of those.</dd>
 						{% else %}
 						<dd>Nope, not for this course.</dd>
 						{% endif %}
 						<hr>
 					<dt>Course Project</dt>
-						{% if course.courseProject == 'True' %}
+						{% if Course.courseProject == 'True' %}
 						<dd>Yep, definitely there is one.</dd>
 						{% else %}
 						<dd>Nope, not for this course.</dd>
 						{% endif %}
 						<hr>
-					{% if course.literature %}
+					{% if Course.literature %}
 					<dt>List of literature</dt>
-						<dd>{{ course.literature|safe  }}</dd>
+						<dd>{{ Course.literature|safe  }}</dd>
 						<hr>
 					{% endif %}
-					{% if course.description %}
+					{% if Course.description %}
 					<dt>Description</dt>
-						<dd>{{ course.description|safe }}</dd>
+						<dd>{{ Course.description|safe }}</dd>
 					{% endif %}
 				</dl>
 			</div>
