@@ -150,11 +150,13 @@ INSTALLED_APPS = (
     'academics',
     'tinymce',
     'blog',
+    'fafemail',
     # Uncomment the next line to enable the admin:
     'grappelli.dashboard',
     'grappelli',
     'filebrowser',
     'django.contrib.admin',
+    'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

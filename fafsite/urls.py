@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from views import *
 from academics.views import courses, about_course, professors, students, alumni
+from fafemail.views import contact_us, thanks
 from blog.views import achievements, activities
 from django.conf import settings
 # from filebrowser.sites import site
@@ -9,38 +10,38 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	url(r'^$', index),
-	url(r'^index/$', index),
-	url(r'^about/$', about),
-	url(r'^admission/$', admission),
-	url(r'^achievements/$', achievements),
-	url(r'^activities/$', activities),
-	url(r'^courses/$', courses),
-	url(r'^courses/([a-zA-Z-]+)/$', about_course),
-	url(r'^people/$', professors),
-	url(r'^people/professors/$', professors),
-	url(r'^people/students/([a-zA-Z0-9]+)/$', students),
-	url(r'^people/alumni/([a-zA-Z0-9]+)/$', alumni),
-	url(r'^contact-us/$', contact_us),
-	url(r'^contact-us/thanks/$', thanks),
-	url(r'^tinymce/', include('tinymce.urls')),
-	# Examples:
-	# url(r'^$', 'fafsite.views.home', name='home'),
-	# url(r'^fafsite/', include('fafsite.foo.urls')),
+    url(r'^$', index),
+    url(r'^index/$', index),
+    url(r'^about/$', about),
+    url(r'^admission/$', admission),
+    url(r'^achievements/$', achievements),
+    url(r'^activities/$', activities),
+    url(r'^courses/$', courses),
+    url(r'^courses/([a-zA-Z-]+)/$', about_course),
+    url(r'^people/$', professors),
+    url(r'^people/professors/$', professors),
+    url(r'^people/students/([a-zA-Z0-9]+)/$', students),
+    url(r'^people/alumni/([a-zA-Z0-9]+)/$', alumni),
+    url(r'^contact-us/$', contact_us),
+    url(r'^contact-us/thanks/$', thanks),
+    url(r'^tinymce/', include('tinymce.urls')),
+    # Examples:
+    # url(r'^$', 'fafsite.views.home', name='home'),
+    # url(r'^fafsite/', include('fafsite.foo.urls')),
 
-	# Uncomment the admin/doc line below to enable admin documentation:
-	# url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-	# Uncomment the next line to enable the admin:
-	url(r'^grappelli/', include('grappelli.urls')),
-	url(r'^admin/', include(admin.site.urls)),
-	# url(r'^admin/filebrowser/', include(site.urls)),
+    # Uncomment the next line to enable the admin:
+    url(r'^grappelli/', include('grappelli.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/filebrowser/', include(site.urls)),
 )
 
 
 if settings.DEBUG:
-	urlpatterns = patterns('',
-	url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-		{'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-	url(r'', include('django.contrib.staticfiles.urls')),
+    urlpatterns = patterns('',
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+    url(r'', include('django.contrib.staticfiles.urls')),
 ) + urlpatterns
