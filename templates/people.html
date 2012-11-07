@@ -11,19 +11,16 @@
 
 		<li class='title'>Students</li>
 		<ul class='subtitel'>
-			<li><a href="/people/students/faf121/">FAF-121</a></li>
-			<li><a href="/people/students/faf111/">FAF-111</a></li>
-			<li><a href="#">FAF-101</a></li>
-			<li><a href="#">FAF-091</a></li>
+			{% for group in student_groups %}
+				<li><a href="/people/students/{{ group }}/">{{ group }}</a></li>
+			{% endfor %}
 		</ul>
 
 		<li class='title'>Alumni</li>
 		<ul class='subtitel'>
-			<li><a href="#">FAF-081</a></li>
-			<li><a href="#">FAF-071</a></li>
-			<li><a href="#">FAF-061</a></li>
-			<li><a href="#">FAF-051</a></li>
-			<li><a href="#">FAF-041</a></li>
+			{% for group in alumni_groups %}
+				<li><a href="/people/alumni/{{ group }}/">{{ group }}</a></li>
+			{% endfor %}
 		</ul>
 	</ul>
 </div>
