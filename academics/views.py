@@ -2,6 +2,7 @@ from django.shortcuts import render, render_to_response
 from django.http import Http404
 from django.template import RequestContext
 from academics.models import *
+import operator
 
 menu_items = [
 		('/about/', 'About'),
@@ -45,9 +46,11 @@ def get_groups():
 	group_dict = User.objects.values('group').distinct()
 	groups = []
 	for group in group_dict:
-		groups.append(group['group'])
+		if group['group'] != '' and group['group'] not in groups:
+			groups.append(group['group'])
 	groups = sorted(groups, reverse=True)
 	return groups
+
 
 # Lists all the professors and their attributes
 def professors(request):
@@ -72,22 +75,36 @@ def students(request, group):
 	students = []
 	student_metas = UserMeta.objects.filter(value='student')
 	for student in student_metas:
-		userID = student_metas.user_id
+		userID = student.user_id
 		st = UserExtended(userID)
+		if st.group == group:
+			students.append(st)
+
+	students.sort(key = operator.attrgetter('surname'))
 
 	groups = get_groups()
 	student_groups = groups[:4]
 	alumni_groups = groups[4:]
 	return render(request, "students.html", 
-		{"activepage": "People", "menu": menu_items,
+		{"activepage": "People", "menu": menu_items, "students": students, "this_group": group,
 		'student_groups': student_groups, 'alumni_groups': alumni_groups})
 
 # Lists all the alumni filtered by the group with all their attributes
 def alumni(request, group):
 	global menu_items
+	alumni = []
+	alumni_metas = UserMeta.objects.filter(value='alumni')
+	for alumni in alumni_metas:
+		userID = alumni.user_id
+		al = UserExtended(userID)
+		if al.group == group:
+			alumni.append(al)
+
+	alumni.sort(key = operator.attrgetter('surname'))
+
 	groups = get_groups()
 	student_groups = groups[:4]
 	alumni_groups = groups[4:]
 	return render(request, "alumni.html", 
-		{"activepage": "People", "menu": menu_items,
+		{"activepage": "People", "menu": menu_items, "alumni": alumni, "this_group": group,
 		'student_groups': student_groups, 'alumni_groups': alumni_groups})
