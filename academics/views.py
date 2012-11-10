@@ -94,8 +94,8 @@ def alumni(request, group):
 	global menu_items
 	alumni = []
 	alumni_metas = UserMeta.objects.filter(value='alumni')
-	for alumni in alumni_metas:
-		userID = alumni.user_id
+	for alumnae in alumni_metas:
+		userID = alumnae.user_id
 		al = UserExtended(userID)
 		if al.group == group:
 			alumni.append(al)
