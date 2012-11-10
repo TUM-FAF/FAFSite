@@ -24,7 +24,9 @@
 						{% with academic.1 as courses %}
 						<tr class='person'>
 							<td class='name'>{{ professor.name }} {{ professor.surname }}</td>
-							<td class='degree'>{{ professor.rank }}</td>
+							{% if professor.rank %}
+							<td class='degree'>{{ professor.rank|first }}</td>
+							{% endif %}
 							<td>
 								{% for course in courses %}
 									{% if forloop.last %}
@@ -37,21 +39,23 @@
 						</tr>
 						<tr class='id_card'>
 							<td colspan="3">
-								{% if professor.photo%}
-									<div><img src="{{ MEDIA_URL }}{{professor.photo}}" alt=""></div>
-								{% else %}
-								{% endif %}
 								<div>
 									<h4>{{ professor.name }} {{ professor.surname }}</h4>
-									<p>{{ professor.rank }}</p>
-									<p class='emphasis'>Courses:</p>
-									<ul>
-										{% for course in courses %}
-											<li><a href="/courses/{{ course.title }}/">{{ course.subject_en }}</a></li>
-										{% empty %}
-											<p>Oops, no courses assigned to this professor.</p>
-										{% endfor %}
-									</ul>
+									{% if professor.rank %} <p>{{ professor.rank|first }}</p>{% endif %}
+								{% if professor.photo %}
+									<img src="{{ MEDIA_URL }}{{professor.photo}}" alt="">
+								{% else %}
+								{% endif %}
+									<div class='id_right'>
+										<p class='emphasis'>Courses:</p>
+										<ul>
+											{% for course in courses %}
+												<li><a href="/courses/{{ course.title }}/">{{ course.subject_en }}</a></li>
+											{% empty %}
+												<p>Oops, no courses assigned to this professor.</p>
+											{% endfor %}
+										</ul>
+									</div>
 								</div>
 								<div class="clr"></div>
 								<a href="#" class="hide_btn">Hide</a>					
