@@ -9,7 +9,7 @@ $(function() {
 			$('ul.side_nav.courses>ul.subtitel').find('.active').closest('ul').siblings('ul').hide(); 
 		}
 		else if (page == 'people') {
-			$('ul.side_nav.people>ul.subtitel').hide();
+			$('ul.side_nav.people>ul.subtitel').find('.active').closest('ul').siblings('ul').hide();
 		}
 		
 		$('ul.side_nav').on('click', 'li.title', function() {

@@ -12,14 +12,14 @@
 		<li class='title'>Students</li>
 		<ul class='subtitel'>
 			{% for group in student_groups %}
-				<li><a href="/people/students/{{ group }}/">{{ group }}</a></li>
+				<li><a href="/people/students/{{ group }}/" {% if group == this_group %}class="active"{% endif %}>  {{ group }}</a></li>
 			{% endfor %}
 		</ul>
 
 		<li class='title'>Alumni</li>
 		<ul class='subtitel'>
 			{% for group in alumni_groups %}
-				<li><a href="/people/alumni/{{ group }}/">{{ group }}</a></li>
+				<li><a href="/people/alumni/{{ group }}/" {% if group == this_group %}class="active"{% endif %}>{{ group }}</a></li>
 			{% endfor %}
 		</ul>
 	</ul>
