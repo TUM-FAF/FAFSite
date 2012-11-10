@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from views import *
 from academics.views import courses, about_course, professors, students, alumni
-from fafemail.views import contact_us, thanks
+from fafemail.views import contact_us, thanks, sorry
 from blog.views import achievements, activities
 from django.conf import settings
 # from filebrowser.sites import site
@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^people/alumni/([a-zA-Z0-9]+)/$', alumni),
     url(r'^contact-us/$', contact_us),
     url(r'^contact-us/thanks/$', thanks),
+    url(r'^contact-us/sorry/$', sorry),
     url(r'^tinymce/', include('tinymce.urls')),
     # Examples:
     # url(r'^$', 'fafsite.views.home', name='home'),

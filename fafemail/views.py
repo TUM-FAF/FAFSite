@@ -35,6 +35,8 @@ def contact_us(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
+            if cd['surname'] != '':
+                return HttpResponseRedirect('/contact-us/sorry/')
             name = cd['name']
             email = cd['email']
             message = cd['message']
@@ -58,3 +60,11 @@ def thanks(request):
     response = '<span>*</span> Thank you. We will consider your message as soon as possible and contact you.'
     return render(request, "contact-us.html",
         {"activepage": "Contact Us", "menu": menu_items, "form": form,"response": response})
+
+def sorry(request):
+    global menu_items
+    form = ContactForm()
+    response = "Sorry, your form has not been submitted."
+    return render(request, "contact-us.html",
+        {"activepage": "Contact Us", "menu": menu_items, "form": form,"response": response})
+

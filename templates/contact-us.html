@@ -4,6 +4,15 @@
 <title>FAF - Contact Us</title>
 {% endblock%}
 
+{% block header %}
+<script type="text/javascript">
+$(function() {
+	$('#id_surname').hide();
+	$("[for='id_surname']").hide();
+});
+</script>
+{% endblock %}
+
 {% block content %}
 <div class="contact">
 	{% if response %}
@@ -15,7 +24,7 @@
 	<form action="/contact-us/" method="POST">
 		{% csrf_token %}
 		{{ form }}
-		<input type="submit" value="Submit">
+		<button type="submit">Submit</button>
 	</form>
 
 	<section id="articles" class="right">
