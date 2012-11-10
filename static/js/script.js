@@ -1,11 +1,16 @@
 $(function() {
 
-	sliding();
-// 	showHide();
+	sliding('courses');
+	sliding('people');
 
-	// slide up and down items of the sidebar
-	function sliding() {
-		$('ul.side_nav>ul.subtitel').filter(':nth-child(n+3)').hide()
+	// slide up and down items of the sidebar on the courses page
+	function sliding(page) {
+		if (page == 'courses') {
+			$('ul.side_nav.courses>ul.subtitel').find('.active').closest('ul').siblings('ul').hide(); 
+		}
+		else if (page == 'people') {
+			$('ul.side_nav.people>ul.subtitel').hide();
+		}
 		
 		$('ul.side_nav').on('click', 'li.title', function() {
 			$(this)
@@ -16,6 +21,7 @@ $(function() {
 		});
 	}
 
+	// show and hide the ID cards
 	$tbody = $('body');
 	var people = {
 		init: function(){

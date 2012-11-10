@@ -10,7 +10,7 @@
 {% endblock %}
 {% block content %}
 <div id="side_menu">
-	<ul class="side_nav">
+	<ul class="side_nav courses">
 		{% for sem_courses in courses %}
 			{% with semester=sem_courses.0.semester %}
 				<li class='title'>{{ semester }}</li>
