@@ -77,7 +77,7 @@
                             {% endfor %}
                         </ul>
                     {% elif meta.type == 'textarea' %}
-                        <textarea cols="20" id="{{ key }}" type="text">{{ meta.value }}</textarea>
+                        <textarea name="{{ key }}" value="{{ meta.value }}" cols="20" id="{{ key }}" type="text">{{ meta.value }}</textarea>
                     {% else %}
                         <input name="{{ key }}" value="{{ meta.value }}" class="vTextField" type="text" id="{{ key }}">
                     {% endif %}
