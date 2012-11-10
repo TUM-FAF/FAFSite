@@ -13,51 +13,61 @@
 				<table>
 					<thead>
 						<tr>
-							<th class='name'>Name Surname</th>
-							<th class='degree'>Rank</th>
-							<th>Courses</th>
+							<th>Surname Name</th>
 						</tr>
 					</thead>
 					<tbody>
-						{% for academic in academics %}
-						{% with academic.0 as professor %}
-						{% with academic.1 as courses %}
+						{% for student in students %}
+						{% with student as s %}
 						<tr class='person'>
-							<td class='name'>{{ professor.name }} {{ professor.surname }}</td>
-							<td class='degree'>{{ professor.rank }}</td>
-							<td>
-								{% for course in courses %}
-									{% if forloop.last %}
-										{{ course.subject_en }}
-									{% else %}
-										{{ course.subject_en }},
-									{% endif %}
-								{% endfor %}
-							</td>
+							<td>{{ s.surname }} {{ s.name }}</td>
 						</tr>
 						<tr class='id_card'>
 							<td colspan="3">
-								{% if professor.photo%}
-									<div><img src="{{ MEDIA_URL }}{{professor.photo}}" alt=""></div>
-								{% else %}
-								{% endif %}
-								<div>
-									<h4>{{ professor.name }} {{ professor.surname }}</h4>
-									<p>{{ professor.rank }}</p>
-									<p class='emphasis'>Courses:</p>
-									<ul>
-										{% for course in courses %}
-											<li><a href="/courses/{{ course.title }}/">{{ course.subject_en }}</a></li>
-										{% empty %}
-											<p>Oops, no courses assigned to this professor.</p>
-										{% endfor %}
-									</ul>
+								<div class='card'>
+									<h4>{{ s.name }} {{ s.surname }}</h4>
+									{% if s.photo %}
+										<img src="{{ MEDIA_URL }}{{ s.photo }}" alt="">
+									{% endif %}
+									{% if s.programming_skills %}
+									<div class='id_right'>
+										<p class='emphasis'>Programming</p>
+										{{ s.programming_skills|safe }}
+									</div>
+									{% endif %}
+									<div class="clr"></div>
+									{% if s.projects_involved %}
+									<div>
+										<p class='emphasis'>Projects involved</p>
+										{{ s.projects_involved|safe }}
+									</div>
+									{% endif %}
+									{% if s.publications %}
+									<div>
+										<p class='emphasis'>Publications</p>
+										{{ s.publications|safe }}
+									</div>
+									{% endif %}
+									{% if s.current_job %}
+									<p><span class='emphasis'>Employeed:</span> {{ s.current_job|safe }}</p>
+									{% endif %}
+									{% if s.phone or s.linkedin or s.facebook or s.googleplus or s.skype %}
+									<div>
+										<p class='emphasis'>Get in touch</p>
+										<ul>
+											{% if s.phone %}<li>Phone  {{ s.phone }}</li>{% endif %}
+											{% if s.linkedin %}<li><a href="{{ s.linkedin }}" target="_blank">Linkedin</a></li>{% endif %}
+											{% if s.facebook %}<li><a href="{{ s.facebook }}"  target="_blank">Facebook</a></li>{% endif %}
+											{% if s.googleplus %}<li><a href="{{ s.googleplus }}" target="_blank">Google+</a></li>{% endif %}
+											{% if s.skype %}<li><a href="{{ s.skype }}" target="_blank">Skype</a></li>{% endif %}
+										</ul>
+									</div>
+									{% endif %}
 								</div>
 								<div class="clr"></div>
 								<a href="#" class="hide_btn">Hide</a>					
 							</td>
 						</tr>
-						{% endwith %}
 						{% endwith %}
 						{% endfor %}
 					</tbody>
