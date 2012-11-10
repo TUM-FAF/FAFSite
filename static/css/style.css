@@ -133,10 +133,13 @@ section{}
 					article table a{text-decoration:none;}
 					article table a:hover{text-decoration:underline;}
 			article table tr.id_card{background:url('../images/lightpaperfibers.png') repeat;}
-			article table tr.id_card div{float:left;padding:7px;}
-				article table tr.id_card h4{font-size:19px;margin:0 0 10px;}
+				article table tr.id_card div.card{padding:7px;}
+				article table tr.id_card img{float:left;}
+				article table tr.id_card div{margin:0px;}
+				article table tr.id_card div.id_right{float:left;margin-left:50px;}
+				article table tr.id_card h4{font-size:19px;margin:0 0 5px;}
 				article table tr.id_card p{line-height:1.2em;}
-				article table tr.id_card p.emphasis{font-size:15px;font-weight:600;}
+				article table tr.id_card .emphasis{font-size:15px;font-weight:600;}
 				article table tr.id_card ul{margin-top:0;}
 					article table tr.id_card li{list-style-type:square;}
 			a.hide_btn{padding:2px 15px 3px;background:#777;border:1px solid #555;border-radius:2px;font-size:12px;color:#fff;text-decoration:none;font-weight:600;float:right;margin-right:15px;
