@@ -8,7 +8,9 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext,latin-ext" rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
 	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.2.js"></script>
-	<!--<script type="text/javascript" src="../static/js/jquery-1.7.2.js"></script>-->
+	<!--[if lt IE 9]>
+	<script src="{{STATIC_URL}}dist/html5shiv.js"></script>
+	<![endif]-->
 	{% block header %}
 	{% endblock %}
 </head>
