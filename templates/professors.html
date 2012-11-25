@@ -43,7 +43,7 @@
 									<h4>{{ professor.name }} {{ professor.surname }}</h4>
 									{% if professor.rank %} <p>{{ professor.rank|first }}</p>{% endif %}
 								{% if professor.photo %}
-									<img src="{{ MEDIA_URL }}{{professor.photo}}" alt="">
+									<img src="/media/{{professor.photo}}" alt="">
 								{% else %}
 								{% endif %}
 									<div class='id_right'>

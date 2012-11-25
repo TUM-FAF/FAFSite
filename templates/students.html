@@ -25,9 +25,9 @@
 						<tr class='id_card'>
 							<td colspan="1">
 								<div class='card'>
-									<h4>{{ s.name }} {{ s.surname }}</h4>
+									<h4>{{ s.surname }} {{ s.name }} </h4>
 									{% if s.photo %}
-										<img src="{{ MEDIA_URL }}{{ s.photo }}" alt="">
+										<img src="/media/{{ s.photo }}" alt="">
 									{% endif %}
 									{% if s.programming_skills %}
 									<div class='id_right'>
