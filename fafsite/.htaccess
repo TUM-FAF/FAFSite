@@ -1,4 +1,0 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !^/site_media/
-RewriteRule ^(.*)$ django.cgi/$1 [QSA,L]

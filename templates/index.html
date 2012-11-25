@@ -5,11 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=7"/> 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
 	<meta name="viewport" content="width=device-width, initial-scale=0.6">
+	<link rel="icon" href="/static/images/faficon.ico" type="image/x-icon"> 
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext,latin-ext" rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" type="text/css" />
-	<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.7.2.js"></script>
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+	<script type="text/javascript" src="/static/js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="/static/js/script.js"></script>
 	<!--[if lt IE 9]>
-	<script src="{{STATIC_URL}}dist/html5shiv.js"></script>
+	<script src="/static/dist/html5shiv.js"></script>
 	<![endif]-->
 	{% block header %}
 	{% endblock %}
@@ -27,7 +29,7 @@
 			<a href="/admission/">
 			<div class="ribbon">
 				<!-- Join <span style="font-weight: bold;">FAF</span> -->		
-				<img src="{{ STATIC_URL }}/images/faf_ribbon_red.png" alt="">
+				<img src="/static/images/faf_ribbon_red.png" alt="">
 			</div></a>
 			<div id="header_body">
 				<div class="logo">
@@ -67,7 +69,11 @@
 		<div class="footer_inside">
 			<p class='left'>&copy; 2012 <a href="/index/">FAF</a> - English taught Honor's Program in Computer Science</p>
 			<p class='right'><a href="http://utm.md/" target='_blank'>Technical University of Moldova</a></p>
+<<<<<<< HEAD
 			<a href="http://utm.md/" target='_blank'><img src="{{ STATIC_URL }}images/utm-logo.png" alt=""></a>
+=======
+			<a href="http://utm.md/" target='_blank'><img src="/static/images/utm-logo.png" alt=""></a>
+>>>>>>> development
 		</div>
 	</footer>
 </body>
