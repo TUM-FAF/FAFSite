@@ -145,12 +145,6 @@ class UserExtended():
         else:
             self.delMeta(key)
 
-    # removed this as AdminModel was erasing this data
-    # def __del__(self):
-    #   self.user.delete()
-    #   # delete all attributes
-    #   UserMeta.objects.filter(user=self.user).delete()
-
     def hasattr(self, key):
         if hasattr(self.user, key):
             return True
