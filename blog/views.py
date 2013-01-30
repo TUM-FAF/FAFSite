@@ -1,23 +1,16 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from blog.models import *
+from shared import get_menu_items
 
-menu_items = [
-		('/about/', 'About'),
-		('/admission/', 'Admission'),
-		('/achievements/', 'Achievements'),
-		('/activities/', 'Activities'),
-		('/people/', 'People'),
-		('/courses/', 'Courses'),
-		('/contact-us/', 'Contact Us')
-	]
-
+menu_items = get_menu_items()
 
 def achievements(request):
     global menu_items
     articles = Article.objects.filter(category='ACH').order_by('-date')
     return render(request, "timeline.html", 
         {"activepage": "Achievements", "menu": menu_items, "articles": articles})
+
 
 def activities(request):
     global menu_items

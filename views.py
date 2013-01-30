@@ -1,20 +1,8 @@
-from django.http import HttpResponseForbidden, HttpResponseRedirect, Http404
-from django.shortcuts import render, render_to_response
-from django.template import RequestContext
-from blog.models import Article
-from django.core.mail import send_mail
+from django.http import HttpResponseForbidden
+from django.shortcuts import render
+from shared import get_menu_items
 
-
-
-menu_items = [
-        ('/about/', 'About'),
-        ('/admission/', 'Admission'),
-        ('/achievements/', 'Achievements'),
-        ('/activities/', 'Activities'),
-        ('/people/', 'People'),
-        ('/courses/', 'Courses'),
-        ('/contact-us/', 'Contact Us')
-    ]
+menu_items = get_menu_items()
 
 def index(request):
     global menu_items

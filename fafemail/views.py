@@ -6,16 +6,9 @@ from fafemail.models import *
 from django.views.decorators.csrf import csrf_exempt
 from forms import ContactForm
 from datetime import datetime
+from shared import get_menu_items
 
-menu_items = [
-        ('/about/', 'About'),
-        ('/admission/', 'Admission'),
-        ('/achievements/', 'Achievements'),
-        ('/activities/', 'Activities'),
-        ('/people/', 'People'),
-        ('/courses/', 'Courses'),
-        ('/contact-us/', 'Contact Us')
-    ]
+menu_items = get_menu_items()
 
 def save_in_db(_name, _email, _message):
 	_timestamp = datetime.now()

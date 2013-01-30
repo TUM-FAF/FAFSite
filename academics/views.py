@@ -2,17 +2,10 @@ from django.shortcuts import render, render_to_response
 from django.http import Http404
 from django.template import RequestContext
 from academics.models import *
+from shared import get_menu_items
 import operator
 
-menu_items = [
-		('/about/', 'About'),
-		('/admission/', 'Admission'),
-		('/achievements/', 'Achievements'),
-		('/activities/', 'Activities'),
-		('/people/', 'People'),
-		('/courses/', 'Courses'),
-		('/contact-us/', 'Contact Us')
-	]
+menu_items = get_menu_items()
 
 def getCourses():
 	semesters = ['I','II','III','IV','V','VI','VII']
