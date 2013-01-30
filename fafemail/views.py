@@ -11,12 +11,12 @@ from shared import get_menu_items
 menu_items = get_menu_items()
 
 def save_in_db(_name, _email, _message):
-	_timestamp = datetime.now()
-	e = Email(timestamp = _timestamp,
-			name = _name,
-			email = _email,
-			message = _message)
-	e.save()
+    _timestamp = datetime.now()
+    e = Email(timestamp = _timestamp,
+            name = _name,
+            email = _email,
+            message = _message)
+    e.save()
 
 
 @csrf_exempt
