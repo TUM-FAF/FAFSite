@@ -4,7 +4,6 @@ from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us, thanks, sorry
 from blog.views import achievements, activities
 from django.conf import settings
-# from filebrowser.sites import site
 from django.contrib import admin
 
 admin.autodiscover()
@@ -26,14 +25,7 @@ urlpatterns = patterns('',
     url(r'^contact-us/thanks/$', thanks),
     url(r'^contact-us/sorry/$', sorry),
     url(r'^tinymce/', include('tinymce.urls')),
-    # Examples:
-    # url(r'^$', 'fafsite.views.home', name='home'),
-    # url(r'^fafsite/', include('fafsite.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+    # Admin panel and admin skin
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     # url(r'^admin/filebrowser/', include(site.urls)),
