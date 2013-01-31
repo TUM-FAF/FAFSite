@@ -6,6 +6,7 @@ CATEGORY = (
     ('ACH', 'Achievements'),
     )
 
+
 class Article(models.Model):
     date = models.DateField()
     title = models.CharField(max_length=127)
@@ -13,7 +14,6 @@ class Article(models.Model):
     category = models.CharField(max_length=15, choices=CATEGORY)
     preview = HTMLField()
     content = HTMLField()
-    
+
     def __unicode__(self):
         return u'%s: "%s" by %s' % (self.category, self.title, self.author)
-

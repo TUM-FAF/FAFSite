@@ -1,4 +1,3 @@
-
 def get_menu_items():
 
     menu_items = [

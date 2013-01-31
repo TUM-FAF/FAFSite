@@ -1,6 +1,5 @@
-from django.shortcuts import render, render_to_response
-from django.http import Http404, HttpResponse, HttpResponseRedirect
-from django.template import RequestContext
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
 from fafemail.models import *
 from django.views.decorators.csrf import csrf_exempt
@@ -10,9 +9,10 @@ from shared import get_menu_items
 
 menu_items = get_menu_items()
 
+
 def save_in_db(_name, _email, _message):
     _timestamp = datetime.now()
-    e = Email(timestamp = _timestamp,
+    e = Email(timestamp=_timestamp,
             name = _name,
             email = _email,
             message = _message)
@@ -39,7 +39,7 @@ def contact_us(request):
             except:
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('/contact-us/thanks/')
-    return render(request, "contact-us.html", 
+    return render(request, "contact-us.html",
         {"activepage": "Contact Us", "menu": menu_items, "form": form})
 
 
@@ -48,7 +48,7 @@ def thanks(request):
     form = ContactForm()
     response = '<span>*</span> Thank you. We will consider your message as soon as possible and contact you.'
     return render(request, "contact-us.html",
-        {"activepage": "Contact Us", "menu": menu_items, "form": form,"response": response})
+        {"activepage": "Contact Us", "menu": menu_items, "form": form, "response": response})
 
 
 def sorry(request):
@@ -56,5 +56,4 @@ def sorry(request):
     form = ContactForm()
     response = "Sorry, your form has not been submitted."
     return render(request, "contact-us.html",
-        {"activepage": "Contact Us", "menu": menu_items, "form": form,"response": response})
-
+        {"activepage": "Contact Us", "menu": menu_items, "form": form, "response": response})

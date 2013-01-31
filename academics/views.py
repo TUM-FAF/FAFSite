@@ -1,14 +1,14 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.http import Http404
-from django.template import RequestContext
 from academics.models import *
 from shared import get_menu_items
 import operator
 
 menu_items = get_menu_items()
 
+
 def getCourses():
-    semesters = ['I','II','III','IV','V','VI','VII']
+    semesters = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII']
     courses = []
     for sem in semesters:
         courses.append(Course.objects.filter(semester=sem))
@@ -19,19 +19,21 @@ def getCourses():
 def courses(request):
     global menu_items
     courses = getCourses()
-    return render(request, "courses.html", 
+    return render(request, "courses.html",
         {"activepage": "Courses", "menu": menu_items, "courses": courses})
+
 
 # Page of a single course containing all the info about it
 def about_course(request, course):
     global menu_items
-    courses = getCourses()   
+    courses = getCourses()
     try:
         course_info = Course.objects.get(title=course)
     except:
         raise Http404()
-    return render(request, "about-course.html", 
-            {"activepage": "Courses", "menu": menu_items, "courses": courses, "Course":course_info})
+    return render(request, "about-course.html",
+            {"activepage": "Courses", "menu": menu_items, "courses": courses, "Course": course_info})
+
 
 # Main page of people
 # Ge a list of all distinct groups
@@ -58,9 +60,10 @@ def professors(request):
     groups = get_groups()
     student_groups = groups[:4]
     alumni_groups = groups[4:]
-    return render(request, "professors.html", 
-        {"activepage": "People", "menu": menu_items, "academics": academics, 
+    return render(request, "professors.html",
+        {"activepage": "People", "menu": menu_items, "academics": academics,
         'student_groups': student_groups, 'alumni_groups': alumni_groups})
+
 
 # Lists all the students filtered by the group with all their attributes
 def students(request, group):
@@ -73,14 +76,15 @@ def students(request, group):
         if st.group == group:
             students.append(st)
 
-    students.sort(key = operator.attrgetter('surname'))
+    students.sort(key=operator.attrgetter('surname'))
 
     groups = get_groups()
     student_groups = groups[:4]
     alumni_groups = groups[4:]
-    return render(request, "students.html", 
+    return render(request, "students.html",
         {"activepage": "People", "menu": menu_items, "students": students, "this_group": group,
         'student_groups': student_groups, 'alumni_groups': alumni_groups})
+
 
 # Lists all the alumni filtered by the group with all their attributes
 def alumni(request, group):
@@ -93,11 +97,11 @@ def alumni(request, group):
         if al.group == group:
             alumni.append(al)
 
-    alumni.sort(key = operator.attrgetter('surname'))
+    alumni.sort(key=operator.attrgetter('surname'))
 
     groups = get_groups()
     student_groups = groups[:4]
     alumni_groups = groups[4:]
-    return render(request, "alumni.html", 
+    return render(request, "alumni.html",
         {"activepage": "People", "menu": menu_items, "alumni": alumni, "this_group": group,
         'student_groups': student_groups, 'alumni_groups': alumni_groups})
