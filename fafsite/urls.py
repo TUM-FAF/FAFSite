@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^contact-us/$', contact_us),
     url(r'^contact-us/thanks/$', thanks),
     url(r'^contact-us/sorry/$', sorry),
+    url(r'^thankyou/$', thankyou),
     url(r'^tinymce/', include('tinymce.urls')),
     # Admin panel and admin skin
     url(r'^grappelli/', include('grappelli.urls')),
