@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Email(models.Model):
     timestamp = models.DateTimeField()
     name = models.CharField(max_length=31, blank=True)
@@ -8,4 +9,3 @@ class Email(models.Model):
 
     def __unicode__(self):
         return u'%s - %s' % (self.name, self.email)
-

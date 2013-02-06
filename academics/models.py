@@ -1,6 +1,5 @@
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
-from django.utils.datastructures import SortedDict
 from django.db import models
 import json
 
@@ -28,8 +27,8 @@ LANGUAGES = (
     )
 
 
-
 class User(models.Model):
+
     name = models.CharField(max_length=15)
     surname = models.CharField(max_length=31)
     email = models.EmailField()
@@ -55,6 +54,7 @@ class User(models.Model):
 =   multiple - always check multilpe if it's a multiple meta type
 '''
 
+
 class UserMetaType(models.Model):
     key = models.CharField(max_length=31)
     type = models.CharField(max_length=31, choices=META_TYPES)
@@ -64,6 +64,7 @@ class UserMetaType(models.Model):
     def __unicode__(self):
         return u'%s' % (self.key)
 
+
 class UserMeta(models.Model):
     user = models.ForeignKey(User)
     meta = models.ForeignKey(UserMetaType)
@@ -72,13 +73,14 @@ class UserMeta(models.Model):
     def __unicode__(self):
         return u'%s - %s' % (self.meta, self.value)
 
+
 class Course(models.Model):
     title = models.CharField(max_length=127)
     subject_ro = models.CharField(max_length=127)
     subject_en = models.CharField(max_length=127)
     professors = models.ManyToManyField(User, blank=True, verbose_name="List of professors")
     semester = models.CharField(max_length=7, choices=SEMESTERS)
-    language = models.CharField(max_length=15,choices=LANGUAGES)
+    language = models.CharField(max_length=15, choices=LANGUAGES)
     courseProject = models.BooleanField()
     labs = models.BooleanField()
     literature = models.TextField(blank=True)
@@ -112,6 +114,7 @@ class Course(models.Model):
 =   Delete user and all     del user
     its meta
 '''
+
 
 # TODO: add __dir__ method
 class UserExtended():
@@ -186,7 +189,6 @@ class UserExtended():
             except ValidationError, error:
                 print error
 
-
         if meta_type.multiple:
             delattr(self, key)  # delete all meta of this type
             if type(value) == type([]) or type(value) == type(list()):
@@ -201,10 +203,10 @@ class UserExtended():
                 user_meta = UserMeta(user=self.user, meta=meta_type)    # new meta
             except:
                 raise AttributeError("unknown error")
-                
+
             user_meta.value = value
-            user_meta.save()        
-        
+            user_meta.save()
+
     def addMeta(self, key, value):
         try:
             meta_type = UserMetaType.objects.get(key=key)
@@ -246,7 +248,7 @@ class UserExtended():
             raise AttributeError("multiple objects returned")
         except:
             raise AttributeError("unknown error")
-        
+
         raise AttributeError()
 
     def delMeta(self, key):
@@ -272,6 +274,3 @@ class UserExtended():
                     data = meta.meta.data
                 result[meta.meta.key] = {'value': value, 'type': meta.meta.type, 'data': data}
         return result
-
-
-    
