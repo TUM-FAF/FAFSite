@@ -1,6 +1,8 @@
 FAF Site
 ==============
 
+[Official website](http://faf.utm.md/)
+
 What is FAF?
 --------------
 FAF represents an English Taught Honor's Program in Computer Science at the Technical University of Moldova. Basically we are a group of enthusiastic and proactive students that try their best. 
