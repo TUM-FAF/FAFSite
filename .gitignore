@@ -17,3 +17,8 @@
 # media staging files #
 #######################
 /media/photos/
+
+
+# Local settings #
+########################################
+fafsite/local_settings.py

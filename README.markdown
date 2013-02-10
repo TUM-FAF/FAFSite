@@ -24,7 +24,7 @@ In order to run the project follow the steps:
      + `mysql> quit`
 8.   Install [GIT](http://git-scm.com/), for windows there is GITHUB for Windows
 9.   Use GIT to clone fafsite project to your local directory 
-10.   Copy the contents from `fafsite/staging_settings.py` to a new locally created file `fafsite/settings.py`
+10.   Create a new `fafsite/local_setting.py` file, containg the necessary info(e.g. DATABASES) to run it locally. It will override the `fafsite/staging_settings.py` configuration.
 11.   cd to the project path and run the following `<python manage.py syncdb>`
 12.   Run the project from the console within the project directory `<python manage.py runserver>`
 13.   Now you can acces the server on the localhost
@@ -46,7 +46,7 @@ Set Up for Ubuntu (dummy style)
      + `mysql> quit`
 9.   Install git (`sudo apt-get git-core`)
 10.   Copy project to your local directory (`git clone https://github.com/ana-balica/fafsite.git`)
-11.   Copy the contents from `fafsite/staging_settings.py` to a new locally created file `fafsite/settings.py`
+11.   Create a 'fafsite/local_settings.py' file containing all the necessary data(e.g.DATABASES) to run it locally.
 12.   cd in fafsite directory (`cd fafsite/`)
 13.   Run server (`python manage.py syncdb`)
 14.   Run server (`python manage.py runserver`)
