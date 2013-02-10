@@ -219,3 +219,10 @@ TINYMCE_DEFAULT_CONFIG = {
     'editor_deselector' : "mceNoEditor",
     'extended_valid_elements': "hr[class|width|size|noshade],img[!src|border:0|alt|title|width|height|style]"
     } 
+
+
+
+try:
+    from local_settings import *
+except ImportError:
+    print pass
