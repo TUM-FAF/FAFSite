@@ -31,8 +31,7 @@ header{height:170px;background:url(../images/dark_mosaic.png) 0 0 repeat;overflo
 		#header_body .logo{padding:23px 0 0;float;left;}
 			#header_body .logo a{display:block;background:url(../images/faf_logo.png) 0 0 no-repeat;width:358px;height:84px;}
 		#header_body #console{}
-	#header_links{height:42px;background:url(../images/bg_head_bottom.gif) 0 0 repeat;opacity:0.8;}
-		#header_links:hover{opacity:1;}
+	#header_links{height:42px;background:url(../images/bg_head_bottom.gif) 0 0 repeat;}
 		#header_links .header_links_in{width:962px;text-align:left;margin:0 auto;}
 		#header_links a.fb{padding:14px 32px 14px 0;text-decoration:none;color:#9b9b9b;display:block;float:right;background:url(../images/facebook.png) 100% 50% no-repeat;}
 			#header_links a.fb b{font-weight:400;color:#eee;}
