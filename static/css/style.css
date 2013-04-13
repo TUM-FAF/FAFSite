@@ -87,6 +87,7 @@ section{}
 			article .article_body h4{margin:0;padding-bottom:15px;font-size:18px;}
 				article .article_body h3 a{color:#1c9dd6;text-decoration:none;}
 			article .article_body .article_content{line-height:160%;}
+			article .article_body .article_content ul{line-height:100%;list-style:square;}
 				article .article_body .image{border:1px solid #dfdfdf;background:#f8f8f8;padding:6px;}
 				article .article_body .left{float:left;margin:0 15px 10px 0;}
 				article .article_body .right{float:right;margin:0 0 10px 15px;}
