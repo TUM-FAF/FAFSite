@@ -7,14 +7,18 @@
 		<article data-id="{{ article.id }}">
 			<div class="article_header">
 				<time>{{ article.date }}</time>
-				<a href="#" class='article_author'>{{ article.author }}</a>
-				<a href="#" class="article_comments">0 comments</a>
+				<a href="" class='article_author'>{{ article.author }}</a>
+				<a href="" class="article_comments">0 comments</a>
 			</div>
 			<div class="article_body">
 				<h3>{{ article.title }}</h3>
-				<div  class="article_content">
+				<div  class="article_content" id="preview">
 					{{ article.preview|safe }}
 					<a href="#" class="read_more">Read more &raquo;</a>
+				</div>
+				<div class="article_content" id="content" style="display:none;">
+					{{ article.content|safe }}
+					<a href="#" class="hide_btn">Hide</a>
 				</div>
 			</div>
 		</article>
@@ -37,106 +41,4 @@
 		&nbsp;
 	</div>
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){
-		var timeline = {
-			init: function(val){
-				var first = 0;
-				var second = 0;
-				var left = 0;
-				var right = 0;
-				var id = 1;
-				var main = $('.timeline_main');
-				var articles = main.find('section');
-				articles.each(function(){
-					var content = $(this);
-					content.find('article').attr('data-id', id);
-					id++;
-					content.removeClass('right').removeClass('left').removeClass('first').removeClass('second');
-					// console.log(val);
-					// console.log(content.outerHeight());
-					if(!first)
-					{
-						content.addClass('left').addClass('first');
-						first = 1;
-						left+=content.outerHeight();
-					}
-					else
-						if(!second)
-						{
-							content.addClass('right').addClass('second');
-							second = 1;
-							right+=content.outerHeight();
-						}
-						else
-						{
-							if(left <= right)
-							{
-								content.addClass('left');
-								left+=content.outerHeight();
-							}
-							else
-							{
-								content.addClass('right');
-								right+=content.outerHeight();
-							}
-						}
-					if(val != 1){
-						content.removeClass('long');
-					} else{
-						if(content.hasClass('long'))
-						{
-							left = 0;
-							right = 0;
-							content.removeClass('second').removeClass('right').removeClass('left');
-						}
-					}
-					if(content.hasClass('first') && content.hasClass('long')){
-						second = 1;
-						left = 0;
-					}
-				});
-				// console.log(articles);
-			},
-			links: function(){
-				var link = $('a.read_more');
-				link.unbind().click(function(e){
-					e.preventDefault();
-					$('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
-					$this = $(this).parents('section');
-					$id = $(this).parents('article').attr('data-id');
-					window.location.hash = $id;
-					timeline.init();
-					$this.removeClass('right').removeClass('left').removeClass('first').addClass('long').removeClass('second');
-					timeline.init(1);
-					$this.siblings().find('.hide_btn').removeClass('hide_btn').addClass('read_more').text('Read more »');
-					$position = $this.position().top + $this.parent().position().top - $(window).height()/2 + $this.outerHeight()/2 +20;
-					console.log($position);
-					$('body').delay(300).animate({scrollTop: $position}, 1500);
-					$(this).removeClass('read_more').addClass('hide_btn').text('Hide').click(function(){
-							
-						// window.location.hash = "0";
-						history.replaceState("#", "Timeline", "/achievements/");
-						$this.removeClass('right').removeClass('left').removeClass('first').removeClass('long').removeClass('second');
-						timeline.init();
-						$(this).removeClass('hide_btn').addClass('read_more').text('Read more »');
-						timeline.links();
-					});
-					timeline.links();
-				});
-			},
-			hash: function(){
-				var $hash = window.location.hash;
-				$hash = $hash.substring(1);
-				if($hash.length > 0){
-					$('[data-id="'+$hash+'"]').find('a.read_more').click();
-					timeline.init(1);
-				}
-			}
-		};
-		timeline.init();
-		timeline.links();
-		timeline.hash();
-	});
-</script>
 {% endblock %}
