@@ -12,11 +12,11 @@
 			</div>
 			<div class="article_body">
 				<h3>{{ article.title }}</h3>
-				<div  class="article_content" id="preview">
+				<div  class="article_content preview">
 					{{ article.preview|safe }}
 					<a href="#" class="read_more">Read more &raquo;</a>
 				</div>
-				<div class="article_content" id="content" style="display:none;">
+				<div class="article_content full_content" style="display:none;">
 					{{ article.content|safe }}
 					<a href="#" class="hide_btn">Hide</a>
 				</div>

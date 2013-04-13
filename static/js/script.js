@@ -119,27 +119,26 @@ Timeline.init = function init(val) {
 };
 
 Timeline.expand_article = function expand_article() {
+
 	$('a.read_more').click(function(e) {
 		e.preventDefault();
 
-		// c($('#content'));
-		// $('#content').each(function() {
-		// 	c($(this));
-		// 	$(this).hide();
-		// });
+		// restore the timeline to defaults before expanding an article
+		$('.full_content').each(function() {
+			$(this).hide();
+		});
 
-		// $('.preview').each(function() {
-		// 	// c($(this));
-		// 	$(this).show();
-		// })
+		$('.preview').each(function() {
+			$(this).show();
+		})
 		
 		var article_id = $(this).parents('article').attr('data-id');
 		window.location.hash = article_id;
 		Timeline.init();
 		var section = $(this).parents('section');
-		var preview = $(this).parents('#preview');
+		var preview = $(this).parents('.preview');
 		$(preview).hide();
-		var content = $(this).parents('.article_body').children('#content');
+		var content = $(this).parents('.article_body').children('.full_content');
 		$(section).removeClass('right')
 					.removeClass('left')
 					.removeClass('second')
@@ -157,8 +156,8 @@ Timeline.shrink_article = function shrink_article() {
 		e.preventDefault();
 		history.pushState("", document.title, window.location.pathname);
 		var section = $(this).parents('section');
-		var content = $(this).parents('.article_body').children('#content');
-		var preview = $(this).parents('.article_body').children('#preview');
+		var content = $(this).parents('.article_body').children('.full_content');
+		var preview = $(this).parents('.article_body').children('.preview');
 		$(content).hide();
 		$(preview).show();
 		$(section).removeClass('right')
