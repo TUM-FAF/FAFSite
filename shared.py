@@ -5,6 +5,7 @@ def get_menu_items():
             ('/admission/', 'Admission'),
             ('/achievements/', 'Achievements'),
             ('/activities/', 'Activities'),
+            ('/blog/', 'Blog'),
             ('/people/', 'People'),
             ('/courses/', 'Courses'),
             ('/contact-us/', 'Contact Us')

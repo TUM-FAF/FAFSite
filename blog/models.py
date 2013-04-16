@@ -4,6 +4,7 @@ from tinymce.models import HTMLField
 CATEGORY = (
     ('ACT', 'Activities'),
     ('ACH', 'Achievements'),
+    ('BLOG', 'Blog'),
     )
 
 

@@ -3,6 +3,7 @@ from views import *
 from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us, thanks, sorry
 from blog.views import achievements, activities
+from blog.views import blog
 from django.conf import settings
 from django.contrib import admin
 
@@ -15,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^admission/$', admission),
     url(r'^achievements/$', achievements),
     url(r'^activities/$', activities),
+    url(r'^blog/$', blog),
     url(r'^courses/$', courses),
     url(r'^courses/([a-zA-Z-]+)/$', about_course),
     url(r'^people/$', professors),
