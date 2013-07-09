@@ -1,5 +1,6 @@
 # Django settings for fafsite project.
 import os
+
 gettext = lambda s: s
 PROJECT_PATH = os.path.join( os.path.abspath(os.path.dirname(__file__)), '..').replace( '\\', '/' )
 
@@ -10,20 +11,23 @@ ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
 
-GRAPPELLI_ADMIN_TITLE = 'FAF website'
-
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'fafdb',
-        'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'dev',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'fafdb',                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
     }
 }
+
+# Hosts/domain names that are valid for this site; required if DEBUG is False
+# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -39,7 +43,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
@@ -83,18 +87,14 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '78z34cm8gu-kaup)y0at9amy7qk-xb=@fc&8jkkpr7z95yw6$i'
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
-)
-
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
-    "django.core.context_processors.i18n",
-    'django.contrib.messages.context_processors.messages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -119,16 +119,7 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.request",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    'django.contrib.messages.context_processors.messages',
-)
-
-GRAPPELLI_INDEX_DASHBOARD = 'fafsite.dashboard.CustomIndexDashboard'
+# GRAPPELLI_INDEX_DASHBOARD = 'fafsite.dashboard.CustomIndexDashboard'
 
 # Email Service
 EMAIL_USE_TLS = True
@@ -149,11 +140,11 @@ INSTALLED_APPS = (
     'blog',
     'fafemail',
     # Uncomment the next line to enable the admin:
-    'grappelli.dashboard',
-    'grappelli',
-    'filebrowser',
+    # 'grappelli.dashboard',
+    # 'grappelli',
+    # 'filebrowser',
     'django.contrib.admin',
-    'south',
+    # 'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -163,7 +154,6 @@ INSTALLED_APPS = (
 # the site admins on every HTTP 500 error when DEBUG=False.
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
-import sys
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -173,11 +163,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'console':{
-            'level':'INFO',
-            'class':'logging.StreamHandler',
-            'stream': sys.stdout
-        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
@@ -186,33 +171,33 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['console'],
+            'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': True,
         },
     }
 }
 
-TINYMCE_JS_URL = STATIC_URL + 'jscripts/tiny_mce/tiny_mce.js'
+# TINYMCE_JS_URL = STATIC_URL + 'jscripts/tiny_mce/tiny_mce.js'
 
-TINYMCE_JS_ROOT = STATIC_URL + 'jscripts/tiny_mce/'
+# TINYMCE_JS_ROOT = STATIC_URL + 'jscripts/tiny_mce/'
 
-TINYMCE_DEFAULT_CONFIG = { 
-    'mode': "textareas", 
-    'plugins': "advimage,media,advhr", 
-    'theme': "advanced", 
-    'convert_urls' : False, 
-    'relative_urls' : False, 
-    'cleanup_on_startup': True, 
-    'force_p_newlines' : True, 
-    'remove_linebreaks' : True, 
-    'remove_trailing_nbsp' : True, 
-    'theme_advanced_buttons1' : "bold,italic,underline,strikethrough,|,sub,sup,|,formatselect,|,bullist,numlist,link,unlink,code", 
-    'theme_advanced_buttons1_add': 'image, media',
-    'theme_advanced_buttons2' : 'undo,redo,preview,zoom,|,advhr,removeformat,visualaid', 
-    'theme_advanced_buttons3' : '', 
-    'theme_advanced_toolbar_align' : "center", 
-    'valid_elements' : "a,sup,sub,strong,b,br,i,u,p,ul,ol,li,h1,h2,h3,h4,h5,@[align],object[data|type|align|width|height],param[name|value],embed[src|type|wmode|width|height,img[src|alt]],img[!src|border:0|alt|title|width|height|style],a[name|href|target|title|onclick]",
-    'editor_deselector' : "mceNoEditor",
-    'extended_valid_elements': "hr[class|width|size|noshade],img[!src|border:0|alt|title|width|height|style]"
-    } 
+# TINYMCE_DEFAULT_CONFIG = { 
+#     'mode': "textareas", 
+#     'plugins': "advimage,media,advhr", 
+#     'theme': "advanced", 
+#     'convert_urls' : False, 
+#     'relative_urls' : False, 
+#     'cleanup_on_startup': True, 
+#     'force_p_newlines' : True, 
+#     'remove_linebreaks' : True, 
+#     'remove_trailing_nbsp' : True, 
+#     'theme_advanced_buttons1' : "bold,italic,underline,strikethrough,|,sub,sup,|,formatselect,|,bullist,numlist,link,unlink,code", 
+#     'theme_advanced_buttons1_add': 'image, media',
+#     'theme_advanced_buttons2' : 'undo,redo,preview,zoom,|,advhr,removeformat,visualaid', 
+#     'theme_advanced_buttons3' : '', 
+#     'theme_advanced_toolbar_align' : "center", 
+#     'valid_elements' : "a,sup,sub,strong,b,br,i,u,p,ul,ol,li,h1,h2,h3,h4,h5,@[align],object[data|type|align|width|height],param[name|value],embed[src|type|wmode|width|height,img[src|alt]],img[!src|border:0|alt|title|width|height|style],a[name|href|target|title|onclick]",
+#     'editor_deselector' : "mceNoEditor",
+#     'extended_valid_elements': "hr[class|width|size|noshade],img[!src|border:0|alt|title|width|height|style]"
+#     } 
