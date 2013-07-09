@@ -17,3 +17,7 @@
 # media staging files #
 #######################
 /media/photos/
+
+# virtual env #
+###############
+env/
