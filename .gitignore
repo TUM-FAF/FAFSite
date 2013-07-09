@@ -10,9 +10,10 @@
 ###############
 /fafsite/settings.py
 
-# rope project #
+# project files #
 ################
 .ropeproject
+.idea
 
 # media staging files #
 #######################
