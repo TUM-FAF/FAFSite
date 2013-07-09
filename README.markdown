@@ -27,9 +27,8 @@ In order to setup and run the project follow the steps:
 6. Copy the stagging settings to a settings file.
 
 
-        $ cd fafsite
-        $ touch settings.py
-        $ cp settings.py staging_settings.py
+        $ cp fafsite/staging_settings.py fafsite/settings.py
      
-7. Create the tables in the database: `python manage.py syncdb`. When prompted for a superuser, create one. That are the credentials you are going to use for logging in to the admin panel.
+7. Create the tables in the database: `python manage.py syncdb`. When prompted for a superuser, create one. 
+These are the credentials you are going to use for logging in to the admin panel.
 8. Run the wsgi server: `python manage.py runserver`
