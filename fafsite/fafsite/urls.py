@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from views import *
+from general.views import index, about, admission, thankyou
 from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us, thanks, sorry
 from blog.views import achievements, activities
