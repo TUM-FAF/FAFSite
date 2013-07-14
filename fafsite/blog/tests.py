@@ -4,6 +4,7 @@ from django.test.client import Client
 
 class BlogTest(TestCase):
     """ Test blog app """
+
     def setUp(self):
         self.client = Client()
 

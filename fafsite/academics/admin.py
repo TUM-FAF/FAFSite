@@ -1,7 +1,8 @@
-from django.contrib import admin 
+from django.contrib import admin
 from academics.models import User, UserMetaType, UserMeta, UserExtended, Course
 from django import forms
 import json
+
 
 def getMetaTypes():
     result = {}
@@ -17,6 +18,7 @@ def getMetaTypes():
 
 class UserAdminForm(forms.ModelForm):
     userExtended = None
+
     class Meta:
         model = User
 
@@ -51,14 +53,18 @@ class UserAdmin(admin.ModelAdmin):
         obj.save()  # User save
         userExtended = UserExtended(obj.id)
         for userMetaType in UserMetaType.objects.all():
-            if userMetaType.key in request.POST and request.POST[userMetaType.key] != '':
+            if userMetaType.key in request.POST and request.POST[
+                userMetaType.key] != '':
                 if userMetaType.multiple:
-                    setattr(userExtended, userMetaType.key, request.POST.getlist(userMetaType.key))
+                    setattr(userExtended, userMetaType.key,
+                            request.POST.getlist(userMetaType.key))
                 else:
-                    setattr(userExtended, userMetaType.key, request.POST[userMetaType.key])                 
+                    setattr(userExtended, userMetaType.key,
+                            request.POST[userMetaType.key])
                 userExtended.save()
             else:
                 userExtended.delMeta(userMetaType.key)
+
 
 class UserMetaTypeAdmin(admin.ModelAdmin):
     list_display = ('key', 'type', 'multiple', 'data')
@@ -80,9 +86,11 @@ class UserMetaTypeAdmin(admin.ModelAdmin):
 class UserMetaAdmin(admin.ModelAdmin):
     list_display = ('user', 'meta', 'value')
 
+
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
+
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
         users = User.objects.all()
@@ -102,11 +110,11 @@ class CourseForm(forms.ModelForm):
         w.choices = choices
         print choices
 
+
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('subject_en', 'subject_ro', 'semester')
     search_fields = ('subject',)
     form = CourseForm
-
 
 
 admin.site.register(User, UserAdmin)

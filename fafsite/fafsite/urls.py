@@ -32,7 +32,6 @@ urlpatterns = patterns('',
     # url(r'^admin/filebrowser/', include(site.urls)),
 )
 
-
 if settings.DEBUG:
     urlpatterns = patterns('',
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve',

@@ -20,7 +20,8 @@ def courses(request):
     global menu_items
     courses = getCourses()
     return render(request, "courses.html",
-        {"activepage": "Courses", "menu": menu_items, "courses": courses})
+                  {"activepage": "Courses", "menu": menu_items,
+                   "courses": courses})
 
 
 # Page of a single course containing all the info about it
@@ -32,7 +33,8 @@ def about_course(request, course):
     except:
         raise Http404()
     return render(request, "about-course.html",
-            {"activepage": "Courses", "menu": menu_items, "courses": courses, "Course": course_info})
+                  {"activepage": "Courses", "menu": menu_items,
+                   "courses": courses, "Course": course_info})
 
 
 # Main page of people
@@ -61,8 +63,10 @@ def professors(request):
     student_groups = groups[:4]
     alumni_groups = groups[4:]
     return render(request, "professors.html",
-        {"activepage": "People", "menu": menu_items, "academics": academics,
-        'student_groups': student_groups, 'alumni_groups': alumni_groups})
+                  {"activepage": "People", "menu": menu_items,
+                   "academics": academics,
+                   'student_groups': student_groups,
+                   'alumni_groups': alumni_groups})
 
 
 # Lists all the students filtered by the group with all their attributes
@@ -82,8 +86,10 @@ def students(request, group):
     student_groups = groups[:4]
     alumni_groups = groups[4:]
     return render(request, "students.html",
-        {"activepage": "People", "menu": menu_items, "students": students, "this_group": group,
-        'student_groups': student_groups, 'alumni_groups': alumni_groups})
+                  {"activepage": "People", "menu": menu_items,
+                   "students": students, "this_group": group,
+                   'student_groups': student_groups,
+                   'alumni_groups': alumni_groups})
 
 
 # Lists all the alumni filtered by the group with all their attributes
@@ -103,5 +109,7 @@ def alumni(request, group):
     student_groups = groups[:4]
     alumni_groups = groups[4:]
     return render(request, "alumni.html",
-        {"activepage": "People", "menu": menu_items, "alumni": alumni, "this_group": group,
-        'student_groups': student_groups, 'alumni_groups': alumni_groups})
+                  {"activepage": "People", "menu": menu_items, "alumni": alumni,
+                   "this_group": group,
+                   'student_groups': student_groups,
+                   'alumni_groups': alumni_groups})

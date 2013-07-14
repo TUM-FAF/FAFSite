@@ -9,7 +9,7 @@ META_TYPES = (
     ('choice', 'Multiple Choice'),
     ('url', 'URL'),
     ('textarea', 'TextArea'),
-    )
+)
 
 SEMESTERS = (
     ('I', 'I'),
@@ -19,16 +19,15 @@ SEMESTERS = (
     ('V', 'V'),
     ('VI', 'VI'),
     ('VII', 'VII'),
-    )
+)
 
 LANGUAGES = (
     ('EN', 'English'),
     ('RO', 'Romanian'),
-    )
+)
 
 
 class User(models.Model):
-
     name = models.CharField(max_length=15)
     surname = models.CharField(max_length=31)
     email = models.EmailField()
@@ -37,6 +36,7 @@ class User(models.Model):
 
     def __unicode__(self):
         return u'%s %s' % (self.name, self.surname)
+
 
 '''
 === How to fill in Meta Types ===
@@ -78,7 +78,8 @@ class Course(models.Model):
     title = models.CharField(max_length=127)
     subject_ro = models.CharField(max_length=127)
     subject_en = models.CharField(max_length=127)
-    professors = models.ManyToManyField(User, blank=True, verbose_name="List of professors")
+    professors = models.ManyToManyField(User, blank=True,
+                                        verbose_name="List of professors")
     semester = models.CharField(max_length=7, choices=SEMESTERS)
     language = models.CharField(max_length=15, choices=LANGUAGES)
     courseProject = models.BooleanField()
@@ -200,7 +201,8 @@ class UserExtended():
             try:
                 user_meta = UserMeta.objects.get(user=self.user, meta=meta_type)
             except UserMeta.DoesNotExist:
-                user_meta = UserMeta(user=self.user, meta=meta_type)    # new meta
+                user_meta = UserMeta(user=self.user,
+                                     meta=meta_type)    # new meta
             except:
                 raise AttributeError("unknown error")
 
@@ -236,7 +238,8 @@ class UserExtended():
             else:
                 # return array of values
                 result = []
-                for meta in UserMeta.objects.filter(user=self.user, meta=meta_type):
+                for meta in UserMeta.objects.filter(user=self.user,
+                                                    meta=meta_type):
                     result.append(meta.value)
                 if result == []:
                     return None
@@ -255,7 +258,8 @@ class UserExtended():
         try:
             meta_type = UserMetaType.objects.get(key=key)
             try:
-                return UserMeta.objects.filter(user=self.user, meta=meta_type).delete()
+                return UserMeta.objects.filter(user=self.user,
+                                               meta=meta_type).delete()
             except:
                 return False
         except:
@@ -272,5 +276,6 @@ class UserExtended():
                     data = json.loads(meta.meta.data)
                 except:
                     data = meta.meta.data
-                result[meta.meta.key] = {'value': value, 'type': meta.meta.type, 'data': data}
+                result[meta.meta.key] = {'value': value, 'type': meta.meta.type,
+                                         'data': data}
         return result
