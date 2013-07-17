@@ -17,14 +17,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'fafdb', # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '', # Set to empty string for default.
+        'NAME': 'fafdb',
+    },
+    'test': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'test_fafdb',
     }
 }
 
@@ -129,7 +126,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'faf.utm@gmail.com'
-EMAIL_HOST_PASSWORD = 'vlad123qw'
+EMAIL_HOST_PASSWORD = ''
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -138,19 +135,22 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'general',
     'academics',
     'tinymce',
     'blog',
     'fafemail',
-    # Uncomment the next line to enable the admin:
-    # 'grappelli.dashboard',
-    # 'grappelli',
-    # 'filebrowser',
+    'grappelli.dashboard',
+    'grappelli',
+    'django_pdb',
     'django.contrib.admin',
+    'django_nose',
     # 'south',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
