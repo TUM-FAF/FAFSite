@@ -22,18 +22,18 @@ class UserAdminForm(forms.ModelForm):
     class Meta:
         model = User
 
-    def __init__(self, *args, **kwargs): # * - tuple, ** - dictionary
+    def __init__(self, *args, **kwargs):
         super(UserAdminForm, self).__init__(*args, **kwargs)
         # Set the form fields based on the model object
-        if kwargs.has_key('instance'):
+        if 'instance' in kwargs:
             instance = kwargs['instance']   # User instance
-            self.userExtended = UserExtended(kwargs['instance'].id)
+            self.userExtended = UserExtended(instance.id)
 
     def getAdditionalFieldsets(self):
-        if self.userExtended != None:
+        if self.userExtended is not None:
             meta_types = getMetaTypes()
             user_meta_types = self.userExtended.getAttributes()
-            result = {}
+            result = dict()
             for key in meta_types:
                 if key in user_meta_types:
                     result[key] = user_meta_types[key]
@@ -53,8 +53,7 @@ class UserAdmin(admin.ModelAdmin):
         obj.save()  # User save
         userExtended = UserExtended(obj.id)
         for userMetaType in UserMetaType.objects.all():
-            if userMetaType.key in request.POST and request.POST[
-                userMetaType.key] != '':
+            if userMetaType.key in request.POST and request.POST[userMetaType.key] != '':
                 if userMetaType.multiple:
                     setattr(userExtended, userMetaType.key,
                             request.POST.getlist(userMetaType.key))

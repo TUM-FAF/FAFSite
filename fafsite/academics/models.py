@@ -42,7 +42,7 @@ class User(models.Model):
 === How to fill in Meta Types ===
 
 =   key - preferably all lowercase
-        - if requires more words to describe, then user underscore (_) to define 
+        - if requires more words to describe, then user underscore (_) to define
 
 =   data - used only for multiple choice fields
          - when using console create a JSON file
@@ -192,7 +192,7 @@ class UserExtended():
 
         if meta_type.multiple:
             delattr(self, key)  # delete all meta of this type
-            if type(value) == type([]) or type(value) == type(list()):
+            if isinstance(value, list):
                 for value_one in value:
                     self.addMeta(key, value_one)
             else:
@@ -251,8 +251,6 @@ class UserExtended():
             raise AttributeError("multiple objects returned")
         except:
             raise AttributeError("unknown error")
-
-        raise AttributeError()
 
     def delMeta(self, key):
         try:
