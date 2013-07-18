@@ -1,7 +1,8 @@
-from django.contrib import admin
-from academics.models import User, UserMetaType, UserMeta, UserExtended, Course
-from django import forms
 import json
+
+from django.contrib import admin
+from django import forms
+from .models import User, UserMetaType, UserMeta, UserExtended, Course
 
 
 def getMetaTypes():

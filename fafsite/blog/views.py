@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from blog.models import *
+
+from .models import Article
 from shared import get_menu_items
 
 menu_items = get_menu_items()

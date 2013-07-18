@@ -1,7 +1,7 @@
+import json
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.db import models
-import json
 
 META_TYPES = (
     ('number', 'Number'),

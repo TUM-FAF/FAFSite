@@ -1,5 +1,5 @@
 from django.contrib import admin
-from fafemail.models import Email
+from .models import Email
 
 
 class EmailAdmin(admin.ModelAdmin):

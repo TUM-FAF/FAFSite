@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.test.client import Client
 
-from academics.models import Course, User
-from academics.views import getCourses, get_groups
+from .models import Course, User
+from .views import getCourses, get_groups
 
 
 class AcademicsTest(TestCase):

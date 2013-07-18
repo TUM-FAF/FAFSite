@@ -1,10 +1,12 @@
+from datetime import datetime
+
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
-from fafemail.models import *
 from django.views.decorators.csrf import csrf_exempt
-from forms import ContactForm
-from datetime import datetime
+
+from .models import *
+from .forms import ContactForm
 from shared import get_menu_items
 
 menu_items = get_menu_items()

@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.test.client import Client
 from django.forms import Form
 from django.core import mail
-from fafemail.models import Email
+
+from .models import Email
 
 
 class FafemailTest(TestCase):

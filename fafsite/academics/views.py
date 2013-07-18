@@ -1,8 +1,10 @@
+import operator
+
 from django.shortcuts import render
 from django.http import Http404
-from academics.models import *
+
+from .models import Course, User, UserMeta, UserExtended
 from shared import get_menu_items
-import operator
 
 menu_items = get_menu_items()
 

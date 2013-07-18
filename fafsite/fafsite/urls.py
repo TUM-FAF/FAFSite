@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
+from django.contrib import admin
+
 from general.views import index, about, admission, thankyou
 from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us, thanks, sorry
 from blog.views import achievements, activities
-from django.conf import settings
-from django.contrib import admin
+
 
 admin.autodiscover()
 
