@@ -81,5 +81,3 @@ class CustomIndexDashboard(Dashboard):
             collapsible=False,
             column=3,
         ))
-
-
