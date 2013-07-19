@@ -32,3 +32,9 @@ In order to setup and run the project follow the steps:
 7. Create the tables in the database: `python manage.py syncdb`. When prompted for a superuser, create one. 
 These are the credentials you are going to use for logging in to the admin panel.
 8. Run the wsgi server: `python manage.py runserver`
+9. Run the tests: `python manage.ry test`. Note: please run the tests everytime you make a change.
+
+
+Contributing
+-----------
+For everyone who is willing to contribute please check our [Contribution Guidelines](https://github.com/ana-balica/fafsite/wiki/FAFsite-Contribution-Guidelines).
