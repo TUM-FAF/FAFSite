@@ -1,79 +1,127 @@
 {% extends "index.html" %}
 
-{% block title%}
-<title>FAF - Admission</title>
-{% endblock%}
-
-{% block header %}
-<script type="text/javascript" src="/static/js/script.js"></script>
-
+{% block title %}
+    <title>FAF - Admission</title>
 {% endblock %}
-{% block content %}
-<section id="articles" class="left" style="width:610px; height: 225px; position: relative; overflow: hidden;">
-	<article class="slide">
-		<div class="article_body" style="position: relative; height: 200px;">
-			<h3>Admission steps</h3>	
-			<div class="article_content active" data-nr="1" style="position: absolute;">
-				<p>
-					In order to become a FAF student, you have to first apply to any of the specialities of the CIM Faculty (Computers, Informatics and Microelectronics) of the Technical University of Moldova. Descriptions of the application process and required documents are usually available on the university's official website <a href="http://utm.md/" target="blank">www.utm.md</a>.
-				</p>
-				<p>
-					During your first week of studies at the CIM Faculty, you have to apply for FAF by writing a request (cerere) to the faculty’s dean, in which you show your intention to participate at the competition organized by the Anglophone Department. Usually, during this week, there are some students from a higher FAF year of studies in the hall of the FCIM building, to whom you can approach with questions on how life as a FAF student is, or ask how you can write the request to become a FAF student. If you don’t see them in hall, then go to the 213A room, where it is most likely you will find someone who can help you.
-				</p>
-				<p>
-					Exams are not that hard to pass and you have nothing to lose if you try. For example, at the English exam you have to write down a couple of sentences and put the verbs in the brackets in their correct form and for the math part you have a small number of problems highly resembling the ones you passed in June. The big plus is that the tests don’t surpass the difficulty of the Baccalaureate exams. If you are good at math, but have troubles with English, come and take the tests, we are sure you have a high chance of getting through.
-				</p>
-				<p>
-					After the exams (usually next monday), come to the university and go up to the 2nd floor to find yourself in the list of FAF students. If you do (and we are sure that will be the case), you have to write one more request where you ask to be transferred in the FAF group.
-				</p>
-			</div>
-		</div>
-		<div class="nav_buttons">
-			<div class="button this" data-nr="1">1</div>
-			<div class="button" data-nr="2">2</div>
-			<div class="button" data-nr="3">3</div>
-			<div class="button" data-nr="4">4</div>
-			<!-- <img src="../..//static/images/circle_btn_1.png" data-nr="1" alt="">
-			<img src="../..//static/images/circle_btn_2.png" data-nr="2" alt="">
-			<img src="../..//static/images/circle_btn_3.png" data-nr="3" alt="">
-			<img src="../..//static/images/circle_btn_4.png" data-nr="4" alt=""> -->
-		</div>
-	</article>
-</section>
-	<section id="articles" class="right" style="width: 260px;" class="right_section">
-		<article id="article_x">
-			<div class="article_body">
-				<h3><a href="#">Why FAF?</a></h3>
-				<div class="article_content">
-					<p>
-						Those few years at the university you will pass them as a whole with you colleagues. And your personal progress will mostly depend on the one of your group’s.
-					</p>
-					<p>
-						That is why FAF has the most favourable development environment: the majority of it’s students are highly motivated and with a huge knowledge background and the group’s spirit is the key element that brings constructive competition inside the team, along with an ability the industry strives for the most: teamwork.
-					</p>
-					<p>
-						If you feel like a motivated person, or you know that you are one of those who choose to perfect themselves, then this is where you should be - Anglophone Department.
-					</p>
-				</div>
-			</div>
-		</article>
-	</section>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		slideshow = {
-			init: function(){
-				var $article = $('article.slide');
-				var $nav = $('article.slide .nav_buttons');
-				$nav.children('.button').click(function(){
-					var nr = $(this).attr('data-nr');
-					var pos = -(nr-1)*620;
-					$article.find('.article_content').animate({left: pos+'px'}, 1200);
-					$(this).addClass('this').siblings().removeClass('this');
-				});
-			}
-		};
-		slideshow.init();
-	});
-</script>
+{% block content %}
+    <section id="articles" class="left"
+             style="width:610px; height: 225px; position: relative; overflow: hidden;">
+        <article class="slide">
+            <div class="article_body"
+                 style="position: relative; height: 200px;">
+                <h3>Admission steps</h3>
+
+                <div class="article_content active" data-nr="1"
+                     style="position: absolute;">
+                    <p>
+                        In order to become a FAF student, you have to first
+                        apply to any of the specialities of the CIM Faculty
+                        (Computers, Informatics and Microelectronics) of the
+                        Technical University of Moldova. Descriptions of the
+                        application process and required documents are usually
+                        available on the university's official website <a
+                            href="http://utm.md/" target="blank">www.utm.md</a>.
+                    </p>
+
+                    <p>
+                        During your first week of studies at the CIM Faculty,
+                        you have to apply for FAF by writing a request (cerere)
+                        to the faculty’s dean, in which you show your intention
+                        to participate at the competition organized by the
+                        Anglophone Department. Usually, during this week, there
+                        are some students from a higher FAF year of studies in
+                        the hall of the FCIM building, to whom you can approach
+                        with questions on how life as a FAF student is, or ask
+                        how you can write the request to become a FAF student.
+                        If you don’t see them in hall, then go to the 213A room,
+                        where it is most likely you will find someone who can
+                        help you.
+                    </p>
+
+                    <p>
+                        Exams are not that hard to pass and you have nothing to
+                        lose if you try. For example, at the English exam you
+                        have to write down a couple of sentences and put the
+                        verbs in the brackets in their correct form and for the
+                        math part you have a small number of problems highly
+                        resembling the ones you passed in June. The big plus is
+                        that the tests don’t surpass the difficulty of the
+                        Baccalaureate exams. If you are good at math, but have
+                        troubles with English, come and take the tests, we are
+                        sure you have a high chance of getting through.
+                    </p>
+
+                    <p>
+                        After the exams (usually next monday), come to the
+                        university and go up to the 2nd floor to find yourself
+                        in the list of FAF students. If you do (and we are sure
+                        that will be the case), you have to write one more
+                        request where you ask to be transferred in the FAF
+                        group.
+                    </p>
+                </div>
+            </div>
+            <div class="nav_buttons">
+                <div class="button this" data-nr="1">1</div>
+                <div class="button" data-nr="2">2</div>
+                <div class="button" data-nr="3">3</div>
+                <div class="button" data-nr="4">4</div>
+                <!-- <img src="../..//static/images/circle_btn_1.png" data-nr="1" alt="">
+                <img src="../..//static/images/circle_btn_2.png" data-nr="2" alt="">
+                <img src="../..//static/images/circle_btn_3.png" data-nr="3" alt="">
+                <img src="../..//static/images/circle_btn_4.png" data-nr="4" alt=""> -->
+            </div>
+        </article>
+    </section>
+    <section id="articles" class="right" style="width: 260px;"
+             class="right_section">
+        <article id="article_x">
+            <div class="article_body">
+                <h3><a href="#">Why FAF?</a></h3>
+
+                <div class="article_content">
+                    <p>
+                        Those few years at the university you will pass them as
+                        a whole with you colleagues. And your personal progress
+                        will mostly depend on the one of your group’s.
+                    </p>
+
+                    <p>
+                        That is why FAF has the most favourable development
+                        environment: the majority of it’s students are highly
+                        motivated and with a huge knowledge background and the
+                        group’s spirit is the key element that brings
+                        constructive competition inside the team, along with an
+                        ability the industry strives for the most: teamwork.
+                    </p>
+
+                    <p>
+                        If you feel like a motivated person, or you know that
+                        you are one of those who choose to perfect themselves,
+                        then this is where you should be - Anglophone
+                        Department.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            slideshow = {
+                init: function () {
+                    var $article = $('article.slide');
+                    var $nav = $('article.slide .nav_buttons');
+                    $nav.children('.button').click(function () {
+                        var nr = $(this).attr('data-nr');
+                        var pos = -(nr - 1) * 620;
+                        $article.find('.article_content').animate({left: pos + 'px'}, 1200);
+                        $(this).addClass('this').siblings().removeClass('this');
+                    });
+                }
+            };
+            slideshow.init();
+        });
+    </script>
 {% endblock %}

@@ -1,44 +1,47 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="timeline_main">
-	{% for article in articles%}
-	<section id="articles" class="content">
-		<article data-id="{{ article.id }}">
-			<div class="article_header">
-				<time>{{ article.date }}</time>
-				<a href="" class='article_author'>{{ article.author }}</a>
-				<a href="" class="article_comments">0 comments</a>
-			</div>
-			<div class="article_body">
-				<h3>{{ article.title }}</h3>
-				<div  class="article_content preview">
-					{{ article.preview|safe }}
-					<a href="#" class="read_more">Read more &raquo;</a>
-				</div>
-				<div class="article_content full_content" style="display:none;">
-					{{ article.content|safe }}
-					<a href="#" class="hide_btn">Hide</a>
-				</div>
-			</div>
-		</article>
-		<div class="arrow">&nbsp;
-			<div class="circle">
-				&nbsp;
-			</div>
-		</div>
-		<div class="arrow_inside">
-			&nbsp;
-		</div>
-	</section>
-	{% empty %}
-		<div class="no-content">
-			<p>Keep calm.</p>
-			<p>There are no articles yet in this section.</p>
-		</div>
-	{% endfor %}
-	<div class="mid_line">
-		&nbsp;
-	</div>
-</div>
+    <div class="timeline_main">
+        {% for article in articles %}
+            <section id="articles" class="content">
+                <article data-id="{{ article.id }}">
+                    <div class="article_header">
+                        <time>{{ article.date }}</time>
+                        <a href=""
+                           class='article_author'>{{ article.author }}</a>
+                        <a href="" class="article_comments">0 comments</a>
+                    </div>
+                    <div class="article_body">
+                        <h3>{{ article.title }}</h3>
+
+                        <div class="article_content preview">
+                            {{ article.preview|safe }}
+                            <a href="#" class="read_more">Read more &raquo;</a>
+                        </div>
+                        <div class="article_content full_content"
+                             style="display:none;">
+                            {{ article.content|safe }}
+                            <a href="#" class="hide_btn">Hide</a>
+                        </div>
+                    </div>
+                </article>
+                <div class="arrow">&nbsp;
+                    <div class="circle">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="arrow_inside">
+                    &nbsp;
+                </div>
+            </section>
+        {% empty %}
+            <div class="no-content">
+                <p>Keep calm.</p>
+                <p>There are no articles yet in this section.</p>
+            </div>
+        {% endfor %}
+        <div class="mid_line">
+            &nbsp;
+        </div>
+    </div>
 {% endblock %}

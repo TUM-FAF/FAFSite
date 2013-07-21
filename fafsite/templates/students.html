@@ -1,79 +1,105 @@
 {% extends "people.html" %}
 
 {% block title %}
-<title>FAF - Students</title>
+    <title>FAF - Students</title>
 {% endblock %}
 
 {% block about_people %}
-<section id="articles" class='table_block'>
-	<article>
-		<div class="article_body">
-			<h3>Students</h3>	
-			<div class="article_content">
-				<table>
-					<thead>
-						<tr>
-							<th>Surname Name</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for student in students %}
-						{% with student as s %}
-						<tr class='person'>
-							<td>{{ s.surname }} {{ s.name }}</td>
-						</tr>
-						<tr class='id_card'>
-							<td colspan="1">
-								<div class='card'>
-									<h4>{{ s.surname }} {{ s.name }} </h4>
-									{% if s.photo %}
-										<img src="/media/{{ s.photo }}" alt="">
-									{% endif %}
-									{% if s.programming_skills %}
-									<div class='id_right'>
-										<p class='emphasis'>Programming</p>
-										{{ s.programming_skills|safe }}
-									</div>
-									{% endif %}
-									<div class="clr"></div>
-									{% if s.projects_involved %}
-									<div>
-										<p class='emphasis'>Projects involved</p>
-										{{ s.projects_involved|safe }}
-									</div>
-									{% endif %}
-									{% if s.publications %}
-									<div>
-										<p class='emphasis'>Publications</p>
-										{{ s.publications|safe }}
-									</div>
-									{% endif %}
-									{% if s.current_job %}
-									<p><span class='emphasis'>Employeed:</span> {{ s.current_job|safe }}</p>
-									{% endif %}
-									{% if s.phone or s.linkedin or s.facebook or s.googleplus or s.skype %}
-									<div>
-										<p class='emphasis'>Get in touch</p>
-										<ul>
-											{% if s.phone %}<li>Phone  {{ s.phone }}</li>{% endif %}
-											{% if s.linkedin %}<li><a href="{{ s.linkedin }}" target="_blank">Linkedin</a></li>{% endif %}
-											{% if s.facebook %}<li><a href="{{ s.facebook }}"  target="_blank">Facebook</a></li>{% endif %}
-											{% if s.googleplus %}<li><a href="{{ s.googleplus }}" target="_blank">Google+</a></li>{% endif %}
-											{% if s.skype %}<li><a href="{{ s.skype }}" target="_blank">Skype</a></li>{% endif %}
-										</ul>
-									</div>
-									{% endif %}
-								</div>
-								<div class="clr"></div>
-								<a href="#" class="hide_btn">Hide</a>					
-							</td>
-						</tr>
-						{% endwith %}
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</article>
-</section>
+    <section id="articles" class='table_block'>
+        <article>
+            <div class="article_body">
+                <h3>Students</h3>
+
+                <div class="article_content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Surname Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for student in students %}
+                            {% with student as s %}
+                                <tr class='person'>
+                                    <td>{{ s.surname }} {{ s.name }}</td>
+                                </tr>
+                                <tr class='id_card'>
+                                    <td colspan="1">
+                                        <div class='card'>
+                                            <h4>{{ s.surname }} {{ s.name }} </h4>
+                                            {% if s.photo %}
+                                                <img src="/media/{{ s.photo }}"
+                                                     alt="">
+                                            {% endif %}
+                                            {% if s.programming_skills %}
+                                                <div class='id_right'>
+                                                    <p class='emphasis'>
+                                                        Programming</p>
+                                                    {{ s.programming_skills|safe }}
+                                                </div>
+                                            {% endif %}
+                                            <div class="clr"></div>
+                                            {% if s.projects_involved %}
+                                                <div>
+                                                    <p class='emphasis'>Projects
+                                                        involved</p>
+                                                    {{ s.projects_involved|safe }}
+                                                </div>
+                                            {% endif %}
+                                            {% if s.publications %}
+                                                <div>
+                                                    <p class='emphasis'>
+                                                        Publications</p>
+                                                    {{ s.publications|safe }}
+                                                </div>
+                                            {% endif %}
+                                            {% if s.current_job %}
+                                                <p><span class='emphasis'>Employeed:</span> {{ s.current_job|safe }}
+                                                </p>
+                                            {% endif %}
+                                            {% if s.phone or s.linkedin or s.facebook or s.googleplus or s.skype %}
+                                                <div>
+                                                    <p class='emphasis'>Get in
+                                                        touch</p>
+                                                    <ul>
+                                                        {% if s.phone %}
+                                                            <li>
+                                                            Phone {{ s.phone }}
+                                                            </li>{% endif %}
+                                                        {% if s.linkedin %}
+                                                            <li>
+                                                            <a href="{{ s.linkedin }}"
+                                                               target="_blank">Linkedin</a>
+                                                            </li>{% endif %}
+                                                        {% if s.facebook %}
+                                                            <li>
+                                                            <a href="{{ s.facebook }}"
+                                                               target="_blank">Facebook</a>
+                                                            </li>{% endif %}
+                                                        {% if s.googleplus %}
+                                                            <li>
+                                                            <a href="{{ s.googleplus }}"
+                                                               target="_blank">Google+</a>
+                                                            </li>{% endif %}
+                                                        {% if s.skype %}
+                                                            <li>
+                                                            <a href="{{ s.skype }}"
+                                                               target="_blank">Skype</a>
+                                                            </li>{% endif %}
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="clr"></div>
+                                        <a href="#" class="hide_btn">Hide</a>
+                                    </td>
+                                </tr>
+                            {% endwith %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </section>
 {% endblock %}

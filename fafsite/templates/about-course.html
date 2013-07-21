@@ -1,71 +1,79 @@
 {% extends "index.html" %}
 
-{% block title%}
-<title>FAF - {{ Course.subject_en }}</title>
-{% endblock%}
+{% block title %}
+    <title>FAF - {{ Course.subject_en }}</title>
+{% endblock %}
+{% load staticfiles %}
 
 {% block content %}
-<div id="side_menu">
-	<ul class="side_nav courses">
-		{% for sem_courses in courses %}
-			{% with semester=sem_courses.0.semester %}
-				<li class='title'>{{ semester }}</li>
-				<ul class='subtitel'>
-					{% for course in sem_courses %}
-					<li><a href='/courses/{{ course.title }}/' {% if course.title == Course.title %}class="active"{% endif %}>{{ course.subject_en }}</a></li>
-					{% endfor %}
-				</ul>
-			{% endwith %}
-		{% endfor %}
-	</ul>
-</div>
-<section id="course_description">
-	<article>
-		<div class="article_body">
-			<h3 class="compressed">{{ Course.subject_en }}</h3>
-			<h4>{{ Course.subject_ro }}</h4>	
-			<div class="article_content">
-				<dl>
-					<dt>Professors</dt>
-						{% for professor in Course.professors.all %}
-						<dd><a href="#">{{ professor.name }} {{ professor.surname }}</a></dd>
-						{% empty %}
-						<dd>Oops, seems that there are no professors assigned to this course.</dd>
-						{% endfor %}
-						<hr>
-					<dt>Language</dt>
-						{% if Course.language == 'RO' %}
-						<dd>Romanian</dd>
-						{% else %}
-						<dd>English</dd>
-						{% endif %}
-						<hr>
-					<dt>Laboratory Works</dt>
-						{% if Course.labs == 'True' %}
-						<dd>Yes, plenty of those.</dd>
-						{% else %}
-						<dd>Nope, not for this course.</dd>
-						{% endif %}
-						<hr>
-					<dt>Course Project</dt>
-						{% if Course.courseProject == 'True' %}
-						<dd>Yep, definitely there is one.</dd>
-						{% else %}
-						<dd>Nope, not for this course.</dd>
-						{% endif %}
-						<hr>
-					{% if Course.literature %}
-					<dt>List of literature</dt>
-						<dd>{{ Course.literature|safe  }}</dd>
-						<hr>
-					{% endif %}
-					{% if Course.description %}
-					<dt>Description</dt>
-						<dd>{{ Course.description|safe }}</dd>
-					{% endif %}
-				</dl>
-			</div>
-		</div>
-	</article>
-</section>
+    <div id="side_menu">
+        <ul class="side_nav courses">
+            {% for sem_courses in courses %}
+                {% with semester=sem_courses.0.semester %}
+                    <li class='title'>{{ semester }}</li>
+                    <ul class='subtitel'>
+                        {% for course in sem_courses %}
+                            <li><a href='/courses/{{ course.title }}/'
+                                   {% if course.title == Course.title %}class="active"{% endif %}>{{ course.subject_en }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    </div>
+    <section id="course_description">
+        <article>
+            <div class="article_body">
+                <h3 class="compressed">{{ Course.subject_en }}</h3>
+                <h4>{{ Course.subject_ro }}</h4>
+
+                <div class="article_content">
+                    <dl>
+                        <dt>Professors</dt>
+                        {% for professor in Course.professors.all %}
+                            <dd>
+                                <a href="#">{{ professor.name }} {{ professor.surname }}</a>
+                            </dd>
+                        {% empty %}
+                            <dd>Oops, seems that there are no professors
+                                assigned to this course.
+                            </dd>
+                        {% endfor %}
+                        <hr>
+                        <dt>Language</dt>
+                        {% if Course.language == 'RO' %}
+                            <dd>Romanian</dd>
+                        {% else %}
+                            <dd>English</dd>
+                        {% endif %}
+                        <hr>
+                        <dt>Laboratory Works</dt>
+                        {% if Course.labs == 'True' %}
+                            <dd>Yes, plenty of those.</dd>
+                        {% else %}
+                            <dd>Nope, not for this course.</dd>
+                        {% endif %}
+                        <hr>
+                        <dt>Course Project</dt>
+                        {% if Course.courseProject == 'True' %}
+                            <dd>Yep, definitely there is one.</dd>
+                        {% else %}
+                            <dd>Nope, not for this course.</dd>
+                        {% endif %}
+                        <hr>
+                        {% if Course.literature %}
+                            <dt>List of literature</dt>
+                            <dd>{{ Course.literature|safe }}</dd>
+                            <hr>
+                        {% endif %}
+                        {% if Course.description %}
+                            <dt>Description</dt>
+                            <dd>{{ Course.description|safe }}</dd>
+                        {% endif %}
+                    </dl>
+                </div>
+            </div>
+        </article>
+    </section>
 {% endblock %}

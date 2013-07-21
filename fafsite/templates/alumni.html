@@ -1,83 +1,112 @@
 {% extends "people.html" %}
 
 {% block title %}
-<title>FAF - Students</title>
+    <title>FAF - Students</title>
 {% endblock %}
 
 {% block about_people %}
-<section id="articles" class='table_block'>
-	<article>
-		<div class="article_body">
-			<h3>Professors</h3>	
-			<div class="article_content">
-				<table>
-					<thead>
-						<tr>
-							<th class='name'>Name</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for alumnae in alumni %}
-						{% with alumnae as al %}
-						<tr class='person'>
-							<td>{{ al.surname }} {{ al.name }}</td>
-						</tr>
-						<tr class='id_card'>
-							<td colspan="1">
-								<div class='card'>
-									<h4>{{ al.name }} {{ al.surname }}</h4>
-									{% if professor.rank %} <p>{{ professor.rank|first }}</p>{% endif %}
-									{% if al.photo %}
-										<img src="{{ MEDIA_URL }}{{ al.photo }}" alt="">
-									{% endif %}
-									{% if al.programming_skills %}
-									<div class='id_right'>
-										<p class='emphasis'>Programming</p>
-										{{ al.programming_skills|safe }}
-									</div>
-									{% endif %}
-									<div class="clr"></div>
-									{% if al.current_job %}
-									<p><span class='emphasis'>Employeed:</span> {{ al.current_job|safe }}</p>
-									{% endif %}
-									{% if al.diploma_topic %}
-									<p><span class='emphasis'>Diploma Topic:</span> {{ al.diploma_topic }}</p>
-									{% endif %}
-									{% if al.projects_involved %}
-									<div>
-										<p class='emphasis'>Projects involved</p>
-										{{ al.projects_involved|safe }}
-									</div>
-									{% endif %}
-									{% if al.publications %}
-									<div>
-										<p class='emphasis'>Publications</p>
-										{{ al.publications|safe }}
-									</div>
-									{% endif %}
-									{% if al.phone or al.linkedin or al.facebook or al.googleplus or al.skype %}
-									<div>
-										<p class='emphasis'>Get in touch</p>
-										<ul>
-											{% if al.phone %}<li>Phone  {{ al.phone }}</li>{% endif %}
-											{% if al.linkedin %}<li><a href="{{ al.linkedin }}" target="_blank">Linkedin</a></li>{% endif %}
-											{% if al.facebook %}<li><a href="{{ al.facebook }}"  target="_blank">Facebook</a></li>{% endif %}
-											{% if al.googleplus %}<li><a href="{{ al.googleplus }}" target="_blank">Google+</a></li>{% endif %}
-											{% if al.skype %}<li><a href="{{ al.skype }}" target="_blank">Skype</a></li>{% endif %}
-										</ul>
-									</div>
-									{% endif %}
-								</div>
-								<div class="clr"></div>
-								<a href="#" class="hide_btn">Hide</a>					
-							</td>
-						</tr>
-						{% endwith %}
-						{% endfor %}
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</article>
-</section>
+    <section id="articles" class='table_block'>
+        <article>
+            <div class="article_body">
+                <h3>Professors</h3>
+
+                <div class="article_content">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class='name'>Name</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for alumnae in alumni %}
+                            {% with alumnae as al %}
+                                <tr class='person'>
+                                    <td>{{ al.surname }} {{ al.name }}</td>
+                                </tr>
+                                <tr class='id_card'>
+                                    <td colspan="1">
+                                        <div class='card'>
+                                            <h4>{{ al.name }} {{ al.surname }}</h4>
+                                            {% if professor.rank %}
+                                                <p>{{ professor.rank|first }}</p>{% endif %}
+                                            {% if al.photo %}
+                                                <img src="
+                                                        {{ MEDIA_URL }}{{ al.photo }}"
+                                                     alt="">
+                                            {% endif %}
+                                            {% if al.programming_skills %}
+                                                <div class='id_right'>
+                                                    <p class='emphasis'>
+                                                        Programming</p>
+                                                    {{ al.programming_skills|safe }}
+                                                </div>
+                                            {% endif %}
+                                            <div class="clr"></div>
+                                            {% if al.current_job %}
+                                                <p><span class='emphasis'>Employeed:</span> {{ al.current_job|safe }}
+                                                </p>
+                                            {% endif %}
+                                            {% if al.diploma_topic %}
+                                                <p><span class='emphasis'>Diploma Topic:</span> {{ al.diploma_topic }}
+                                                </p>
+                                            {% endif %}
+                                            {% if al.projects_involved %}
+                                                <div>
+                                                    <p class='emphasis'>Projects
+                                                        involved</p>
+                                                    {{ al.projects_involved|safe }}
+                                                </div>
+                                            {% endif %}
+                                            {% if al.publications %}
+                                                <div>
+                                                    <p class='emphasis'>
+                                                        Publications</p>
+                                                    {{ al.publications|safe }}
+                                                </div>
+                                            {% endif %}
+                                            {% if al.phone or al.linkedin or al.facebook or al.googleplus or al.skype %}
+                                                <div>
+                                                    <p class='emphasis'>Get in
+                                                        touch</p>
+                                                    <ul>
+                                                        {% if al.phone %}
+                                                            <li>
+                                                            Phone {{ al.phone }}
+                                                            </li>{% endif %}
+                                                        {% if al.linkedin %}
+                                                            <li>
+                                                            <a href="{{ al.linkedin }}"
+                                                               target="_blank">Linkedin</a>
+                                                            </li>{% endif %}
+                                                        {% if al.facebook %}
+                                                            <li>
+                                                            <a href="{{ al.facebook }}"
+                                                               target="_blank">Facebook</a>
+                                                            </li>{% endif %}
+                                                        {% if al.googleplus %}
+                                                            <li>
+                                                            <a href="{{ al.googleplus }}"
+                                                               target="_blank">Google+</a>
+                                                            </li>{% endif %}
+                                                        {% if al.skype %}
+                                                            <li>
+                                                            <a href="{{ al.skype }}"
+                                                               target="_blank">Skype</a>
+                                                            </li>{% endif %}
+                                                    </ul>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="clr"></div>
+                                        <a href="#" class="hide_btn">Hide</a>
+                                    </td>
+                                </tr>
+                            {% endwith %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </section>
 {% endblock %}
