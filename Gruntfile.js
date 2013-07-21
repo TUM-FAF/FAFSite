@@ -8,7 +8,7 @@ module.exports = function(grunt) {
   var fruitConfig = {
     src: 'src',
     mockup: 'mockup',
-    app: 'app'
+    app: 'fafsite'
   };
 
   // Project configuration
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     watch: {
       stylus: {
         files: ['<%= fruit.src %>/style/{,*/}*.styl'],
-        tasks: ['stylus:development'],
+        tasks: ['stylus:development', 'copy:development'],
         options: {
           nospawn: true,
           livereload: true
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
           '<%= fruit.mockup %>/{,*/}*.js',
           '<%= fruit.mockup %>/{,*/}*.{png,jpg,jpeg,gif}'
         ],
-        tasks: []
+        tasks: ['copy:development']
       }
     },
     stylus: {
@@ -121,6 +121,18 @@ module.exports = function(grunt) {
       production: {
         src: ['<%= fruit.mockup %>/js/*.map']
       }
+    },
+    copy: {
+      development: {
+        files: [
+          {'<%= fruit.app %>/static/css/style.css': '<%= fruit.mockup %>/css/application.css'}
+        ]
+      },
+      production: {
+        files: [
+          {'<%= fruit.app %>/static/css/style.css': '<%= fruit.mockup %>/css/application.css'}
+        ]
+      }
     }
   });
 
@@ -128,12 +140,14 @@ module.exports = function(grunt) {
     'stylus:production',
     'coffee:production',
     'template',
+    'copy:production',
     'clean:production'
   ]);
 
   grunt.registerTask('server', [
     'stylus:development',
     'coffee:development',
+    'copy:development',
     'watch'
   ]);
 
