@@ -8,11 +8,13 @@
     <meta name="description"
           content="FAF is an English taught Honors Program in Computer Science at the Technical University of Moldova."/>
     {% load staticfiles %}
-    <link rel="icon" href="{% static "images/faficon.ico" %}" type="image/x-icon">
+    <link rel="icon" href="{% static "images/faficon.ico" %}"
+          type="image/x-icon">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext,latin-ext"
           rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css"/>
-    <script type="text/javascript" src="{% static "js/jquery-1.7.2.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "js/jquery-1.7.2.js" %}"></script>
     <script type="text/javascript" src="{% static "js/script.js" %}"></script>
     {% block header %}
     {% endblock %}
@@ -44,30 +46,28 @@
             <div class="logo">
                 <a href="/"></a>
             </div>
-            <div id="console">
-
-            </div>
         </div>
         <div id="header_links">
             <div class="header_links_in">
                 <a href="https://www.facebook.com/FAF.UTM" target="blank"
                    class="fb">Follow us on</a>
                 <nav>
-                    {% for link, page in menu %}
-                        <a href="{{ link }}"
-                           {% if activepage == page %}class="active"{% endif %}>{{ page }}</a>
-                    {% endfor %}
+                    <a href="{% url "about" %}"
+                       {% if activepage == 'About' %}class="active"{% endif %}>About</a>
+                    <a href="{% url "admission" %}"
+                       {% if activepage == 'Admission' %}class="active"{% endif %}>Admisssion</a>
+                    <a href="{% url "achievements" %}"
+                       {% if activepage == 'Achievements' %}class="active"{% endif %}>Achievements</a>
+                    <a href="{% url "activities" %}"
+                       {% if activepage == 'Activities' %}class="active"{% endif %}>Activities</a>
+                    <a href="{% url "people" %}"
+                       {% if activepage == 'People' %}class="active"{% endif %}>People</a>
+                    <a href="{% url "courses" %}"
+                       {% if activepage == 'Courses' %}class="active"{% endif %}>Courses</a>
+                    <a href="{% url "contact-us" %}"
+                       {% if activepage == 'Contact us' %}class="active"{% endif %}>Contact
+                        us</a>
                 </nav>
-            </div>
-
-            <div class="header_select">
-                <select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
-                    {% for link, page in menu %}
-                        <option value="{{ link }}"
-                                {% if activepage == page %}selected="selected"{% endif %}>{{ page }}</option>
-                    {% endfor %}
-                    <option value="#">Follow us on</option>
-                </select>
             </div>
         </div>
     </header>
