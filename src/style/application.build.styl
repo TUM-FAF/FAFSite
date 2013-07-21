@@ -4,19 +4,46 @@
 	NOTE: nib documentation http://www.fontsquirrel.com/tools/webfont-generator
 **************************/
 
+// Bootstrap
+@import "../components/bootstrap-stylus/stylus/bootstrap"
+@import "../components/bootstrap-stylus/stylus/responsive"
+
 // System imports
 @import "nib"
 
 // Generals
 @import "includes/variables"
-@import "includes/html5-reset"
-@import "includes/utils"
 
-// Pages
-@import "pages/global"
+// Old stylesheet
+@import "old"
 
-// Components
-// @import "accordion"
+/*************************
+  Available on all pages
+**************************/
 
-// Responsive
-@import "includes/responsive"
+body
+  font-family $fontFamily
+  font-size $fontSizeBase
+
+html, body
+  height 100%
+
+.wrapper
+  width 100%
+  min-height 100%
+  height auto !important
+  height 100%
+  margin 0px 0px $footerHeight * -1 0px
+
+  .wrapper-inner
+    width 100%
+    padding 0px 0px $footerHeight 0px
+
+  header
+    //
+  .container
+    //
+footer
+  width 100%
+  height $footerHeight
+
