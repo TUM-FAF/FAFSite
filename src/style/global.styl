@@ -2,34 +2,38 @@
   Available on all pages
 **************************/
 
-body
-  background #eee
-/*
-
-body
-  font-family $fontFamily
-  font-size $fontSizeBase
-
 html, body
   height 100%
 
+body
+  background #eee
+  position relative
+
 .wrapper
-  width 100%
   min-height 100%
-  height auto !important
-  height 100%
-  margin 0px 0px $footerHeight * -1 0px
 
-  .wrapper-inner
-    width 100%
-    padding 0px 0px $footerHeight 0px
+header
+  height 170px
+  background url(../images/dark_mosaic.png) 0 0 repeat
+  position relative
+  overflow hidden
 
-  header
-    //
-  .container
-    //
+#footer-placeholder
+  height 44px
+
 footer
+  height 43px
   width 100%
-  height $footerHeight
-  background #000
-*/
+  border-top 1px solid #2b2b2b
+  background #1e1e1e
+  font-size $fontSizeSmall
+  color $grayLight
+  overflow hidden
+  margin-top -44px
+  line-height 41px
+  a
+    color @color
+    text-decoration none
+    &:hover
+      color @color
+      text-decoration underline
