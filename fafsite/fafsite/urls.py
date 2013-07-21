@@ -28,6 +28,8 @@ urlpatterns = patterns('',
     url(r'^contact-us/sorry/$', sorry, name='sorry'),
     url(r'^thankyou/$', thankyou, name='thankyou'),
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^login/$', 'fafauth.views.authenticate', name='login'),
+    url(r'', include('social_auth.urls')),
     # Admin panel and admin skin
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
@@ -36,7 +38,7 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns = patterns('',
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'', include('django.contrib.staticfiles.urls')),
-) + urlpatterns
+                           url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+                               {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+                           url(r'', include('django.contrib.staticfiles.urls')),
+    ) + urlpatterns
