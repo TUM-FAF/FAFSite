@@ -7,9 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .models import *
 from .forms import ContactForm
-from shared import get_menu_items
-
-menu_items = get_menu_items()
 
 
 def save_in_db(_name, _email, _message):
@@ -23,7 +20,6 @@ def save_in_db(_name, _email, _message):
 
 @csrf_exempt
 def contact_us(request):
-    global menu_items
     form = ContactForm()
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -43,23 +39,21 @@ def contact_us(request):
                 return HttpResponse('Invalid header found.')
             return HttpResponseRedirect('/contact-us/thanks/')
     return render(request, "contact-us.html",
-                  {"activepage": "Contact Us", "menu": menu_items,
+                  {"activepage": "Contact Us",
                    "form": form})
 
 
 def thanks(request):
-    global menu_items
     form = ContactForm()
     response = '<span>*</span> Thank you. We will consider your message as soon as possible and contact you.'
     return render(request, "contact-us.html",
-                  {"activepage": "Contact Us", "menu": menu_items, "form": form,
+                  {"activepage": "Contact Us", "form": form,
                    "response": response})
 
 
 def sorry(request):
-    global menu_items
     form = ContactForm()
     response = "Sorry, your form has not been submitted."
     return render(request, "contact-us.html",
-                  {"activepage": "Contact Us", "menu": menu_items, "form": form,
+                  {"activepage": "Contact us", "form": form,
                    "response": response})

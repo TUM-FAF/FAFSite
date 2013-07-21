@@ -1,16 +1,13 @@
 from django.shortcuts import render
 
 from .models import Article
-from shared import get_menu_items
-
-menu_items = get_menu_items()
 
 
 def achievements(request):
     global menu_items
     articles = Article.objects.filter(category='ACH').order_by('-date')
     return render(request, "timeline.html",
-                  {"activepage": "Achievements", "menu": menu_items,
+                  {"activepage": "Achievements",
                    "articles": articles})
 
 
@@ -18,5 +15,5 @@ def activities(request):
     global menu_items
     articles = Article.objects.filter(category='ACT').order_by('-date')
     return render(request, "timeline.html",
-                  {"activepage": "Activities", "menu": menu_items,
+                  {"activepage": "Activities",
                    "articles": articles})
