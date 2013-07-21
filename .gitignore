@@ -35,3 +35,7 @@ node_modules/
 # Coffee map #
 ##############
 *.map
+
+# Bower components #
+####################
+src/components/

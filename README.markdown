@@ -47,14 +47,16 @@ In order to automate front-end building and keep it cross-platform we use Grunt.
 
 In order to be able to build front-end you'll need:
 
-1. Node.js [now to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
-*. Grunt-cli. Run `npm install -g grunt-cli`
-*. Go to project folder in your favorite terminal `cd fafsite`
-*. Install packages `npm install`
-*. Run development task `grunt` or `grunt server`
-*. Install [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) in Google Chrome
-*. Open _localhost/fafsite/mockup/index.html_ in your browser (you need a local server for that)
-*. Activate LiveReload in browser
+1. Node.js [now to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)-
+*  Grunt-cli. Run `npm install -g grunt-cli`
+*  Go to project folder in your favorite terminal `cd fafsite`
+*  Install packages `npm install`
+*  Install bower `npm insatll -g bower`
+*  Install bower components `bower install`
+*  Run development task `grunt` or `grunt server`
+*  Install [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) in Google Chrome
+*  Open _localhost/fafsite/mockup/index.html_ in your browser (you need a local server for that)
+*  Activate LiveReload in browser
 
 Now any change in sources should recompile the project and reload the browser automatically.
 
