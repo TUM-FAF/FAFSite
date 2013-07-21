@@ -55,7 +55,7 @@
                                                     <ul>
                                                         {% for course in courses %}
                                                             <li>
-                                                                <a href="/courses/{{ course.title }}/">{{ course.subject_en }}</a>
+                                                                <a href="{% url "about_course" course.title %} ">{{ course.subject_en }}</a>
                                                             </li>
                                                         {% empty %}
                                                             <p>Oops, no courses assigned to this professor.</p>

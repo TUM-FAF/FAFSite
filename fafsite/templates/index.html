@@ -36,7 +36,7 @@
 <body>
 <div class="wrapper">
     <header>
-        <a href="/admission/">
+        <a href="{% url "admission" %}">
             <div class="ribbon">
                 <img src="{% static "images/faf_ribbon_red.png" %}" alt="">
             </div>
@@ -44,7 +44,7 @@
 
         <div id="header_body">
             <div class="logo">
-                <a href="/"></a>
+                <a href="{% url "index" %}"></a>
             </div>
         </div>
         <div id="header_links">
@@ -79,7 +79,7 @@
 </div>
 <footer>
     <div class="footer_inside">
-        <p class='left'>&copy; {% now "Y" %} <a href="/">FAF</a> - English
+        <p class='left'>&copy; {% now "Y" %} <a href="{% url "index" %}">FAF</a> - English
             taught Honor's Program in Computer Science</p>
 
         <p class='right'><a href="http://utm.md/" target='_blank'>Technical

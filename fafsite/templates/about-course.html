@@ -13,7 +13,7 @@
                     <li class='title'>{{ semester }}</li>
                     <ul class='subtitel'>
                         {% for course in sem_courses %}
-                            <li><a href='/courses/{{ course.title }}/'
+                            <li><a href="{% url 'about_course' course.title %}"
                                    {% if course.title == Course.title %}class="active"{% endif %}>{{ course.subject_en }}</a>
                             </li>
                         {% endfor %}

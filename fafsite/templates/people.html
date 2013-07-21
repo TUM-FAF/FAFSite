@@ -3,12 +3,12 @@
 {% block content %}
     <div id="side_menu">
         <ul class="side_nav people">
-            <li class='title'><a href="/people/professors/">Professors</a></li>
+            <li class='title'><a href="{% url "professors" %}">Professors</a></li>
 
             <li class='title'>Students</li>
             <ul class='subtitel'>
                 {% for group in student_groups %}
-                    <li><a href="/people/students/{{ group }}/"
+                    <li><a href="{% url "students" group %}"
                            {% if group == this_group %}class="active"{% endif %}>  {{ group }}</a>
                     </li>
                 {% endfor %}
@@ -17,7 +17,7 @@
             <li class='title'>Alumni</li>
             <ul class='subtitel'>
                 {% for group in alumni_groups %}
-                    <li><a href="/people/alumni/{{ group }}/"
+                    <li><a href="{% url "alumni" group %}"
                            {% if group == this_group %}class="active"{% endif %}>{{ group }}</a>
                     </li>
                 {% endfor %}

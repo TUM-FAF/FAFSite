@@ -21,7 +21,7 @@
             <ul class="subjects_list">
                 {% for course in sem_courses %}
                     <li class="subjects">
-                        <a href="{{ course.title }}/">{{ course.subject_en }}</a>
+                        <a href="{% url 'about_course' course.title %}">{{ course.subject_en }}</a>
                     </li>
                 {% endfor %}
             </ul>
