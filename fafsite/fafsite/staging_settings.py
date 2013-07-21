@@ -17,11 +17,11 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'fafdb',
+        'NAME': 'fafdb.sqlite',
     },
     'test': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'test_fafdb',
+        'NAME': 'test_fafdb.sqlite',
     }
 }
 

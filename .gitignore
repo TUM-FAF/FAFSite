@@ -22,3 +22,8 @@ settings.py
 # virtual env #
 ###############
 env/
+
+# sqlite db files #
+###################
+fafdb.sqlite
+test_fafdb.sqlite
