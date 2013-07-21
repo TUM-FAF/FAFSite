@@ -140,7 +140,7 @@ INSTALLED_APPS = (
     'tinymce',
     'blog',
     'fafemail',
-    'grappelli.dashboard',
+    'fafside',
     'grappelli',
     'django_pdb',
     'django.contrib.admin',
@@ -150,8 +150,6 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
-
-
 
 # Google Auth Keys
 AUTHENTICATION_BACKENDS = (
