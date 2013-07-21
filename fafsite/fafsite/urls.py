@@ -6,6 +6,7 @@ from general.views import index, about, admission, thankyou
 from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us, thanks, sorry
 from blog.views import achievements, activities
+from fafside.views import fafside_index, profile
 
 
 admin.autodiscover()
@@ -27,8 +28,12 @@ urlpatterns = patterns('',
     url(r'^contact-us/thanks/$', thanks, name='thanks'),
     url(r'^contact-us/sorry/$', sorry, name='sorry'),
     url(r'^thankyou/$', thankyou, name='thankyou'),
-    url(r'^tinymce/', include('tinymce.urls')),
+    # fafside - internal system urls
     url(r'^login/$', 'fafauth.views.authenticate', name='login'),
+    url(r'^fafside/$', fafside_index, name='fafside_index'),
+    url(r'^profile/$', profile, name='profile'),
+    # url(r'^course_info_contribute/$', course_contrib, name='course_contrib'),
+    url(r'^tinymce/', include('tinymce.urls')),
     url(r'', include('social_auth.urls')),
     # Admin panel and admin skin
     url(r'^grappelli/', include('grappelli.urls')),

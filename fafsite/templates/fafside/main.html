@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    {% load staticfiles %}
+    <link rel="icon" href="{% static "images/faficon.ico" %}"
+          type="image/x-icon">
+    {% block header %}
+    {% endblock %}
+</head>
+<body>
+<a href="{% url "fafside_index" %}">FAFside</a>
+<a href="{% url "profile" %}">Profile</a>
+{% block content %}
+{% endblock %}
+</body>
+</html>
