@@ -7,32 +7,33 @@ What is FAF?
 --------------
 FAF represents an English Taught Honor's Program in Computer Science at the Technical University of Moldova. Basically we are a group of enthusiastic and proactive students that try their best.
 
-In order to share things and promote ourselves we decided to lanch our website.
+In order to share things and promote ourselves we decided to launch our website.
 
 Installation
 -------------
 In order to setup and run the project follow the steps:
 
 1. Ensure that you have any Python version from 2.6.5 to 2.7. For this run `python -c 'import sys; print(sys.version_info[:])'`
-2. Also you should have pip installed. Run `easy_install pip` or `sudo apt-get install python-pip`
-3. Install virtualenv if you don't have one: `pip install virtualenv`
-4. After cloning fafsite project, create a virtualenv inside the project and activate it.
+*  Also you should have pip installed. Run `easy_install pip` or `sudo apt-get install python-pip`
+*  Install virtualenv if you don't have one: `pip install virtualenv`
+*  Clone project `git clone git@github.com:ana-balica/fafsite.git`
+*  After cloning fafsite project, create a virtualenv inside the project and activate it.
 
 
         $ cd fafsite
         $ virtualenv env
         $ source env/bin/activate
 
-5. Run `pip install -r requirements.txt`
-6. Copy the stagging settings to a settings file.
+*  Run `pip install -r requirements.txt`
+*  Copy the stagging settings to a settings file.
 
 
-        $ cp fafsite/staging_settings.py fafsite/settings.py
+        $ cp fafsite/fafsite/staging_settings.py fafsite/fafsite/settings.py
 
-7. Create the tables in the database: `python manage.py syncdb`. When prompted for a superuser, create one.
+*  Create the tables in the database: `python fafsite/manage.py syncdb`. When prompted for a superuser, create one.
 These are the credentials you are going to use for logging in to the admin panel.
-8. Run the wsgi server: `python manage.py runserver`
-9. Run the tests: `python manage.ry test`. Note: please run the tests everytime you make a change.
+*  Run the wsgi server: `python fafsite/manage.py runserver`
+*  Run the tests: `python fafsite/manage.py test`. Note: please run the tests every time you make a change.
 
 Developing front-end
 --------------------
@@ -47,7 +48,7 @@ In order to automate front-end building and keep it cross-platform we use Grunt.
 
 In order to be able to build front-end you'll need:
 
-1. Node.js [now to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)-
+1. Node.js [how to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 *  Grunt-cli. Run `npm install -g grunt-cli`
 *  Go to project folder in your favorite terminal `cd fafsite`
 *  Install packages `npm install`
