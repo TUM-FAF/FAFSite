@@ -145,10 +145,28 @@ INSTALLED_APPS = (
     'django_pdb',
     'django.contrib.admin',
     'django_nose',
-    # 'south',
+    'south',
+    'social_auth',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+
+
+# Google Auth Keys
+AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.google.GoogleOAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_ENABLED_BACKENDS = ('google-oauth2')
+GOOGLE_OAUTH2_CLIENT_ID = '419507287308-orkvgvpjrpv76j426k7avcr4smgvcg1a.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'brbZFaFSfTRgQQcx7XjT1cq2'
+GOOGLE_OAUTH2_USE_UNIQUE_USER_ID = True
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/'
+
+
+
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
