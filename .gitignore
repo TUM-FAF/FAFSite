@@ -27,3 +27,11 @@ env/
 ###################
 fafdb.sqlite
 test_fafdb.sqlite
+
+# Node modules #
+################
+node_modules/
+
+# Coffee map #
+##############
+*.map

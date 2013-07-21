@@ -1,0 +1,2 @@
+$ ->
+	console.log 'js loaded'
