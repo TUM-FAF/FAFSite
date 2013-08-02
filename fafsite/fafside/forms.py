@@ -16,4 +16,4 @@ class Profile(forms.Form):
     facebook = forms.URLField(max_length=127, required=False)
     googleplus = forms.URLField(max_length=127, required=False)
     skype = forms.URLField(max_length=127, required=False)
-    phone_number = forms.CharField(max_length=127, required=False)
+    phone = forms.CharField(max_length=127, required=False)
