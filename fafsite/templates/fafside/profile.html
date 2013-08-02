@@ -1,15 +1,18 @@
 {% extends 'fafside/main.html' %}
 
 {% block content %}
-<form action="/profile/" method="post" enctype="multipart/form-data">
-    {% for field in form %}
-        <div>
-            {{ field.label }}
+    <form action="/profile/" method="post" enctype="multipart/form-data">
+        {% for field in form %}
             <div>
-                {{ field }}
+                {{ field.label }}
+                <div>
+                    {% autoescape off %}
+                        {{ field }}
+                    {% endautoescape %}
+                </div>
+                {{ field.errors }}
             </div>
-            {{ field.errors }}
-        </div>
-    {% endfor %}
-</form>
+        {% endfor %}
+    </form>
+    <button type="submit">Submit</button>
 {% endblock %}
