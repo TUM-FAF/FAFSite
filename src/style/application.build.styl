@@ -2,53 +2,96 @@
 	Imports
 
 	NOTE: nib documentation http://www.fontsquirrel.com/tools/webfont-generator
+  NOTE: bootstrap documentation http://twitter.github.io/bootstrap/
+  NOTE: in order to override default bootstrap files, create new ones in includes
+        folder and place them right after original file definition
 **************************/
 
-// Bootstrap
-@import "../components/bootstrap-stylus/stylus/bootstrap"
-@import "../components/bootstrap-stylus/stylus/responsive"
+/*@import "../components/bootstrap-stylus/stylus/variables";
+@import "includes/variables" // override
+@import "../components/bootstrap-stylus/stylus/mixins";
 
+// CSS Reset
+@import "../components/bootstrap-stylus/stylus/reset";
+
+// Grid system and page structure
+@import "../components/bootstrap-stylus/stylus/scaffolding";
+@import "../components/bootstrap-stylus/stylus/grid";
+@import "../components/bootstrap-stylus/stylus/layouts";
+
+// Base CSS
+@import "../components/bootstrap-stylus/stylus/type";
+@import "../components/bootstrap-stylus/stylus/code";
+@import "../components/bootstrap-stylus/stylus/forms";
+@import "../components/bootstrap-stylus/stylus/tables";
+
+// Components: common
+@import "../components/bootstrap-stylus/stylus/sprites";
+@import "../components/bootstrap-stylus/stylus/dropdowns";
+@import "../components/bootstrap-stylus/stylus/wells";
+@import "../components/bootstrap-stylus/stylus/component-animations";
+@import "../components/bootstrap-stylus/stylus/close";
+
+// Components: Buttons & Alerts
+@import "../components/bootstrap-stylus/stylus/buttons";
+@import "../components/bootstrap-stylus/stylus/button-groups";
+@import "../components/bootstrap-stylus/stylus/alerts"; // Note: alerts share common CSS with buttons and thus have styles in buttons
+
+// Components: Nav
+@import "../components/bootstrap-stylus/stylus/navs";
+@import "../components/bootstrap-stylus/stylus/navbar";
+@import "../components/bootstrap-stylus/stylus/breadcrumbs";
+@import "../components/bootstrap-stylus/stylus/pagination";
+@import "../components/bootstrap-stylus/stylus/pager";
+
+// Components: Popovers
+@import "../components/bootstrap-stylus/stylus/modals";
+@import "../components/bootstrap-stylus/stylus/tooltip";
+@import "../components/bootstrap-stylus/stylus/popovers";
+
+// Components: Misc
+@import "../components/bootstrap-stylus/stylus/thumbnails";
+@import "../components/bootstrap-stylus/stylus/media";
+@import "../components/bootstrap-stylus/stylus/labels-badges";
+@import "../components/bootstrap-stylus/stylus/progress-bars";
+@import "../components/bootstrap-stylus/stylus/accordion";
+@import "../components/bootstrap-stylus/stylus/carousel";
+@import "../components/bootstrap-stylus/stylus/hero-unit";
+
+// Utility classes
+@import "../components/bootstrap-stylus/stylus/utilities"; // Has to be last to override when necessary
+
+// RESPONSIVE CLASSES
+// ------------------
+
+@import "../components/bootstrap-stylus/stylus/responsive-utilities";
+
+
+// MEDIA QUERIES
+// ------------------
+
+// Large desktops
+// @import "../components/bootstrap-stylus/stylus/responsive-1200px-min";
+
+// Tablets to regular desktops
+@import "../components/bootstrap-stylus/stylus/responsive-768px-979px";
+
+// Phones to portrait tablets and narrow desktops
+@import "../components/bootstrap-stylus/stylus/responsive-767px-max";
+
+
+// RESPONSIVE NAVBAR
+// ------------------
+
+// From 979px and below, show a button to toggle navbar contents
+@import "../components/bootstrap-stylus/stylus/responsive-navbar";
+*/
+
+@import "./vendor/bootstrap.min.css"
 // System imports
 @import "nib"
-
-// Generals
-@import "includes/variables"
 
 // Old stylesheet
 @import "old"
 
-/*************************
-  Available on all pages
-**************************/
-
-body
-  background #eee
-/*
-
-body
-  font-family $fontFamily
-  font-size $fontSizeBase
-
-html, body
-  height 100%
-
-.wrapper
-  width 100%
-  min-height 100%
-  height auto !important
-  height 100%
-  margin 0px 0px $footerHeight * -1 0px
-
-  .wrapper-inner
-    width 100%
-    padding 0px 0px $footerHeight 0px
-
-  header
-    //
-  .container
-    //
-footer
-  width 100%
-  height $footerHeight
-  background #000
-*/
+@import "global"
