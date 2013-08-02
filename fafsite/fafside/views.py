@@ -27,4 +27,4 @@ def profile(request):
     else:
         for field in form.fields:
             form.fields.get(field).initial = getattr(user_extended, field)
-    return render(request, 'fafside/profile.html', {"form": form})
+    return render(request, 'fafside/profile.html', {"form": form, "user": user})

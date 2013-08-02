@@ -1,5 +1,9 @@
 {% extends 'fafside/main.html' %}
 
+{% block header %}
+    <title>FAFside - {{ user.name }} {{ user.surname }} Profile</title>
+{% endblock %}
+
 {% block content %}
     <form action="/profile/" method="post" enctype="multipart/form-data">
         {% for field in form %}
