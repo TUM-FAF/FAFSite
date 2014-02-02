@@ -137,6 +137,9 @@ class UserExtended():
         else:
             return self.setMeta(key, value)
 
+    def __trunc__(self):
+        return self.user.id
+
     def __getattr__(self, key):
         if hasattr(self.user, key):
             return getattr(self.user, key)
@@ -224,6 +227,7 @@ class UserExtended():
         try:
             meta_type = UserMetaType.objects.get(key=key)
         except UserMetaType.DoesNotExist:
+            # print(key)
             raise AttributeError("no such meta type")
         except:
             raise AttributeError("unknown error")
