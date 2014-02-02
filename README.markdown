@@ -37,31 +37,36 @@ These are the credentials you are going to use for logging in to the admin panel
 
 Developing front-end
 --------------------
-We do use technologies that have to be preprocessed (e.g. Stylus, CoffeeScript).
+We do use technologies that have to be preprocessed (e.g. Stylus, LESS< CoffeeScript).
 
-In order to automate front-end building and keep it cross-platform we use Grunt.js. The structure of folders is as follows:
+In order to automate front-end building and keep it cross-platform we use [Gulp.js](http://gulpjs.com/). The structure of folders is as follows:
 
-* _mockup_ - HTML examples of components
+* _src/components_ - Used components (e.g. Bootstrap and jQuery)
 * _src/script_ - JS sources (Coffee)
 * _src/style_ - CSS sources (Stylus)
-* _src/template_ - HTML sources (Handlebars)
+* _src/style/bootstrap_ - Bootstrap overriding (LESS)
 
 In order to be able to build front-end you'll need:
 
 1. Node.js [how to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
-*  Grunt-cli. Run `npm install -g grunt-cli`
+*  Install Gulp globally (one time) `npm install -g gulp gulp-util`
+*  Install Bower globally (one time) `npm insatll -g bower`
 *  Go to project folder in your favorite terminal `cd fafsite`
 *  Install packages `npm install`
-*  Install bower `npm insatll -g bower`
 *  Install bower components `bower install`
-*  Run development task `grunt` or `grunt server`
-*  Install [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) in Google Chrome
-*  Open _localhost/fafsite/mockup/index.html_ in your browser (you need a local server for that)
+*  Run `gulp development` for development version
+*  Run `gulp build` for build version
+
+In order to recompile sources live you'll need:
+1. Install [LiveReload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei) in Google Chrome
+*  Run development watch task `gulp w` or `gulp watch`
+*  Start python server `python fafsite/manage.py runserver`
+*  Open the page in browser
 *  Activate LiveReload in browser
 
-Now any change in sources should recompile the project and reload the browser automatically.
+Now any change in sources should recompile the project front-end and reload the browser automatically.
 
-Before commiting stop Grunt task (Ctrl+c) and run `grunt build`. This way files will get optimized and all necessary files will be copied in their right place.
+Before commiting stop Gulp task (Ctrl+c) and run `gulp build`. This way project will be prepaired for production.
 
 
 Contributing
