@@ -1,8 +1,9 @@
 #footer-placeholder
   height 44px
 
-footer
-  size 100% 43px
+#footer
+  width 100%
+  min-height 43px
   margin-top -44px
   overflow hidden
   border-top 1px solid #2b2b2b
@@ -16,3 +17,9 @@ footer
     &:hover
       color @color
       text-decoration underline
+
+@media (max-width: 768px)
+  #footer
+    text-align center
+    .text-right
+      text-align center
