@@ -1,1 +1,1 @@
-$(function(){return console.log("js loaded")});
+$(function(){return"undefined"!=typeof console&&null!==console?console.log("js loaded"):void 0});

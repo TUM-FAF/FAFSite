@@ -1,75 +1,43 @@
 {% extends "index.html" %}
 
 {% block title %}
-    <title>FAF</title>
+  <title>FAF</title>
 {% endblock %}
 
 {% block content %}
-    <div class="info-block">
-        <article>
-            <div class="description">We are <a href='http://utm.md/'
-                                               target="_blank" class='emphasis'>UTM</a>
-                students and we are proud of it.
-            </div>
-            <div class="article_body">
-                <div class="article_content achievements">
-                    <a href="{% url "achievements" %}" class="achievements_logo"></a>
-
-                    <h3><a href="{% url "achievements" %}">Achievements</a></h3>
-
-                    <p>We've been places, we've won competitions and we
-                        continously undertake challenges to expand our skils. We
-                        firmly believe that our professional field has to be
-                        conquered one small battle at a time and we have to
-                        treat each battle as a lesson. Learn about our victories
-                        here.</p>
-                    <a href="{% url "achievements" %}" class="read_more">Read
-                        more &raquo;</a>
-                </div>
-            </div>
-        </article>
-        <article>
-            <div class="description">We study <a href='http://fcim.utm.md/'
-                                                 target="_blank"
-                                                 class="emphasis">Computer
-                Science</a> and we like it.
-            </div>
-            <div class="article_body">
-                <div class="article_content activities">
-                    <a href="{% url "activities" %}" class="activities_logo"></a>
-
-                    <h3><a href="{% url "activities" %}">Activities</a></h3>
-
-                    <p>Whether it's a seminar on the emerging technologies or a
-                        game-development competition, we're there. In the
-                        emergin world of IT we get to work on great projects,
-                        attend or organize various events and get to know
-                        interesting people from our field. Read about what we're
-                        up to here.</p>
-                    <a href="{% url "activities" %}" class="read_more">Read
-                        more &raquo;</a>
-                </div>
-            </div>
-        </article>
-        <article>
-            <div class="description">We are <a href='/' class="emphasis">FAF</a>
-                and we are a great team.
-            </div>
-            <div class="article_body">
-                <div class="article_content students">
-                    <a href="{% url "people" %}" class="people_logo"></a>
-
-                    <h3><a href="{% url "people" %}">People</a></h3>
-
-                    <p>It's not just about people, but rather a family having
-                        professors, students, alumni and industry professionals
-                        getting together. We take pride in knowing each and
-                        every one of us. If you encounter a skilled craftsman,
-                        chances are he is in our lists. You can check it
-                        here.</p>
-                    <a href="{% url "people" %}" class="read_more">Read more &raquo;</a>
-                </div>
-            </div>
-        </article>
+  <div class="container container-hero">
+    <div class="row">
+      <div class="col-md-4">
+        <section>
+          <div class="description">We are <a href="http://utm.md/" target="_blank">UTM</a> students and we are proud of it.</div>
+          <a href="{% url "achievements" %}" class="hero-icon hero-icon-achievements"></a>
+          <h3><a href="{% url "achievements" %}">Achievements</a></h3>
+          <p>We've been places, we've won competitions and we continuously undertake challenges to expand our skills. We firmly believe that our professional field has to be conquered one small battle at a time and we have to treat each battle as a lesson. Learn about our victories here.</p>
+          <a href="{% url "achievements" %}" class="btn btn-sm btn-info">Read more <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </section>
+      </div>
+      <div class="col-md-4">
+        <section>
+          <div class="description">We study <a href="http://fcim.utm.md/" target="_blank">Computer Science</a> and we love it.</div>
+          <a href="{% url "activities" %}" class="hero-icon hero-icon-activities"></a>
+          <h3><a href="{% url "activities" %}">Activities</a></h3>
+          <p>Whether it's a seminar on the emerging technologies or a game-development competition, we're there. In the
+            emerging world of IT we get to work on great projects, attend or organize various events and get to know
+            interesting people from our field. Read about what we're up to here.</p>
+          <a href="{% url "activities" %}" class="btn btn-sm btn-info">Read more <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </section>
+      </div>
+      <div class="col-md-4">
+        <section>
+          <div class="description">We are <a href="{% url "index" %}" class="emphasis">FAF</a> and we are a great team.</div>
+          <a href="{% url "people" %}" class="hero-icon hero-icon-people"></a>
+          <h3><a href="{% url "people" %}">People</a></h3>
+          <p>It's not just about people, but rather a family having professors, students, alumni and industry professionals
+            getting together. We take pride in knowing each and every one of us. If you encounter a skilled craftsman,
+            chances are he is in our lists. You can check it here.</p>
+          <a href="{% url "people" %}" class="btn btn-sm btn-info">Read more <span class="glyphicon glyphicon-chevron-right"></span></a>
+        </section>
+      </div>
     </div>
+  </div>
 {% endblock %}

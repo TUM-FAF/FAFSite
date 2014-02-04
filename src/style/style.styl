@@ -3,7 +3,27 @@
 // System imports
 @import "nib"
 
+/*************************
+  Available on all pages
+**************************/
+
+html, body
+  height 100%
+
+body
+  background #eee
+  position relative
+
+.wrapper
+  min-height 100%
+
+.overflow-hidden
+  overflow hidden
+
+// Site imports
+@import "includes/_header"
+@import "includes/_hero"
+@import "includes/_footer"
+
 // Old stylesheet
 @import "old"
-
-@import "global"

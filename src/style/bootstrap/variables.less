@@ -20,8 +20,9 @@
 @link-color:            @blue;
 @link-color-hover:      darken(@link-color, 15%);
 
-// Typography
-// -------------------------
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
 
 // Font sizes
 // @font-size-base: 12px;
@@ -30,3 +31,33 @@
 
 // Font families
 @font-family-base: "Open Sans", Tahoma, Verdana, Segoe, sans-serif;
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+@navbar-height:                    42px;
+@navbar-margin-bottom:             @line-height-computed;
+@navbar-border-radius:             0;
+@navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+@navbar-collapse-max-height:       340px;
+
+@navbar-default-color:             #C3C3C3;
+@navbar-default-bg:                transparent;
+@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+
+// Navbar links
+@navbar-default-link-color:                #C3C3C3;
+@navbar-default-link-hover-color:          #fff;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color:       #ccc;
+@navbar-default-link-disabled-bg:          transparent;
+
+// Navbar toggle
+@navbar-default-toggle-hover-bg:           #ddd;
+@navbar-default-toggle-icon-bar-bg:        #555;
+@navbar-default-toggle-border-color:       #444;

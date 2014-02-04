@@ -1,0 +1,38 @@
+.container-hero
+  section
+    margin 50px 0
+    text-align justify
+  .description
+    margin 0 30px 30px 0
+    padding 0 30px 0 0
+    font-size 20px
+    line-height 120%
+    text-shadow white 1px -1px 1px
+  .hero-icon
+    display block
+    size 76px 76px
+    margin 0 auto
+    background url('../images/bg-sprite-hero.png') 0 0 no-repeat
+    &.hero-icon-achievements
+      //
+    &.hero-icon-activities
+      background-position 0 -76px
+    &.hero-icon-people
+      background-position 0 -152px
+  section:hover
+    .hero-icon-achievements
+      background-position -76px 0
+    .hero-icon-activities
+      background-position -76px -76px
+    .hero-icon-people
+      background-position -76px -152px
+  h3
+    margin 0
+    padding 8px 0 15px
+    font-weight 400
+    font-size 22px
+    color #2b2b2b
+    text-align center
+    a
+      color #2b2b2b
+      text-decoration none

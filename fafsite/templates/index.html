@@ -4,16 +4,16 @@
   {% block title %}{% endblock %}
   <meta http-equiv="X-UA-Compatible" content="IE=7"/>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=0.6">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
     content="FAF is an English taught Honors Program in Computer Science at the Technical University of Moldova."/>
   {% load staticfiles %}
-  <link rel="icon" href="{% static "images/faficon.ico" %}"
-    type="image/x-icon">
+  <link rel="icon" href="{% static "images/faficon.ico" %}" type="image/x-icon">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic-ext,latin-ext"
     rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css"/>
-  <script type="text/javascript" src="{% static "js/jquery.2.1.0.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/jquery-2.1.0.min.js" %}"></script>
+  <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
   <script type="text/javascript" src="{% static "js/script.js" %}"></script>
   <script type="text/javascript" src="{% static "js/script_old.js" %}"></script>
   {% block header %}
@@ -35,60 +35,81 @@
 </head>
 <body>
 <div class="wrapper">
-  <header>
-    <a href="{% url "admission" %}">
-      <div class="ribbon">
-        <img src="{% static "images/faf_ribbon_red.png" %}" alt="">
+  <header id="header">
+    <div class="container overflow-hidden">
+      <div class="row row-logo">
+        <div class="col-md-12">
+          <a href="{% url "index" %}" class="logo"></a>
+        </div>
       </div>
-    </a>
-
-    <div id="header_body">
-      <div class="logo">
-        <a href="{% url "index" %}"></a>
+      <div class="ribbon">
+        <a href="{% url "admission" %}">
+          <img src="{% static "images/faf_ribbon_red.png" %}" alt="">
+        </a>
       </div>
     </div>
-    <div id="header_links">
-      <div class="header_links_in">
-        <a href="https://www.facebook.com/FAF.UTM" target="blank"
-           class="fb">Follow us on</a>
-        <nav>
-          <a href="{% url "about" %}"
-             {% if activepage == 'About' %}class="active"{% endif %}>About</a>
-          <a href="{% url "admission" %}"
-             {% if activepage == 'Admission' %}class="active"{% endif %}>Admisssion</a>
-          <a href="{% url "achievements" %}"
-             {% if activepage == 'Achievements' %}class="active"{% endif %}>Achievements</a>
-          <a href="{% url "activities" %}"
-             {% if activepage == 'Activities' %}class="active"{% endif %}>Activities</a>
-          <a href="{% url "people" %}"
-             {% if activepage == 'People' %}class="active"{% endif %}>People</a>
-          <a href="{% url "courses" %}"
-             {% if activepage == 'Courses' %}class="active"{% endif %}>Courses</a>
-          <a href="{% url "contact-us" %}"
-             {% if activepage == 'Contact us' %}class="active"{% endif %}>Contact
-            us</a>
+    <div class="wrap-navbar">
+      <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li {% if activepage == 'About' %}class="active"{% endif %}>
+                  <a href="{% url "about" %}">About</a>
+                </li>
+                <li {% if activepage == 'Admisssion' %}class="active"{% endif %}>
+                  <a href="{% url "admission" %}">Admisssion</a>
+                </li>
+                <li {% if activepage == 'Achievements' %}class="active"{% endif %}>
+                  <a href="{% url "achievements" %}">Achievements</a>
+                </li>
+                <li {% if activepage == 'Activities' %}class="active"{% endif %}>
+                  <a href="{% url "activities" %}">Activities</a>
+                </li>
+                <li {% if activepage == 'People' %}class="active"{% endif %}>
+                  <a href="{% url "people" %}">People</a>
+                </li>
+                <li {% if activepage == 'Courses' %}class="active"{% endif %}>
+                  <a href="{% url "courses" %}">Courses</a>
+                </li>
+                <li {% if activepage == 'Contact us' %}class="active"{% endif %}>
+                  <a href="{% url "contact-us" %}">Contact us</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://www.facebook.com/FAF.UTM" target="blank" class="fb">Follow us on</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
         </nav>
       </div>
     </div>
   </header>
-  <div id="site_body">
-    {% block content %}
-    {% endblock %}
-  </div>
+  {% block content %}
+  {% endblock %}
   <div class="clearfix"></div>
   <div id="footer-placeholder"></div>
 </div>
 <footer>
   <div class="container">
     <div class="row">
-      <div class="span6">
-        &copy; {% now "Y" %} <a href="{% url "index" %}">FAF</a> - English taught Honor's Program in Computer Science
+      <div class="col-sm-6">
+        &copy; 2003 - {% now "Y" %} <a href="{% url "index" %}">FAF</a> - English taught Honors Program in Computer Science
       </div>
-      <div class="span6 text-right">
-        <a href="http://utm.md/" target="_blank"><img
-          src="{% static "images/utm-logo.png" %}" alt=""></a>
-        <a href="http://utm.md/" target="_blank">Technical
-          University of Moldova</a>
+      <div class="col-sm-6 text-right">
+        <a href="http://utm.md/" target="_blank"><img src="{% static "images/utm-logo.png" %}" alt=""></a>
+        <a href="http://utm.md/" target="_blank">Technical University of Moldova</a>
       </div>
     </div>
   </div>
