@@ -49,21 +49,21 @@ gulp.task('development-style', ['development-stylus-full'])
 gulp.task('development-stylus-full', ['development-bootstrap'], function(){
   // Stylesheet
   return gulp.src('./src/style/style.styl')
-    .pipe(stylus({use: ['nib'], set: ['include css', 'linenos']}))
+    .pipe(stylus({use: ['nib'], set: ['include css', 'linenos']}).on('error', gutil.log))
     .pipe(gulp.dest('./fafsite/static/css'))
     .pipe(livereload(server))
 })
 gulp.task('development-stylus', function(){
   // Stylesheet
   return gulp.src('./src/style/style.styl')
-    .pipe(stylus({use: ['nib'], set: ['include css', 'linenos']}))
+    .pipe(stylus({use: ['nib'], set: ['include css', 'linenos']}).on('error', gutil.log))
     .pipe(gulp.dest('./fafsite/static/css'))
     .pipe(livereload(server))
 })
 gulp.task('development-bootstrap', function(){
   // Stylesheet
   return gulp.src('./src/style/bootstrap/bootstrap.less')
-    .pipe(less())
+    .pipe(less().on('error', gutil.log))
     .pipe(gulp.dest('./src/components/bootstrap/dist/css'))
 })
 gulp.task('development-script', function(){
