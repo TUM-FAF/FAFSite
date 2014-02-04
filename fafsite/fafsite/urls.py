@@ -12,8 +12,8 @@ from fafside.views import fafside_index, profile
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', index, name='index'),
     url(r'^index/$', index, name='index'),
+    url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^admission/$', admission, name='admission'),
     url(r'^achievements/$', achievements, name='achievements'),
