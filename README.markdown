@@ -25,7 +25,8 @@ In order to setup and run the project follow the steps:
         $ source env/bin/activate
 
 *  Run `pip install -r requirements.txt`
-*  Copy the stagging settings to a settings file.
+*  Set up MySQL on your machine. Make sure that you have `mysql_config`. If you encouter an error that says that `mysql_config` not found, then you must install `libmysqlclient-dev` for debian systems.
+*  Copy the stagging settings to the settings file.
 
 
         $ cp fafsite/fafsite/staging_settings.py fafsite/fafsite/settings.py
@@ -34,6 +35,7 @@ In order to setup and run the project follow the steps:
 These are the credentials you are going to use for logging in to the admin panel.
 *  Run the wsgi server: `python fafsite/manage.py runserver`
 *  Run the tests: `python fafsite/manage.py test`. Note: please run the tests every time you make a change.
+
 
 Developing front-end
 --------------------
