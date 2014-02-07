@@ -26,34 +26,36 @@ def contact_us(request):
         if form.is_valid():
             cd = form.cleaned_data
             if cd['surname'] != '':
-                return HttpResponseRedirect('/contact-us/sorry/')
+                return submit_error(request)
             name = cd['name']
             email = cd['email']
             message = cd['message']
             save_in_db(name, email, message)
             messageBody = '\n\nFROM: ' + email + '\n\nName: ' + name + '\n\nMessage: ' + message
             try:
-                send_mail('[FAF]Contact us', messageBody, email,
-                          ['ana.balica@gmail.com'], fail_silently=False)
+                send_mail('[FAF]Contact us', messageBody, email, ['ana.balica@gmail.com'], fail_silently=False)
             except:
-                return HttpResponse('Invalid header found.')
-            return HttpResponseRedirect('/contact-us/thanks/')
-    return render(request, "contact-us.html",
-                  {"activepage": "Contact Us",
-                   "form": form})
+                return submit_error(request)
+            return submit_success(request)
+    return render(request, "contact-us.html", {
+        "activepage": "Contact Us",
+        "form": form
+    })
 
 
-def thanks(request):
-    form = ContactForm()
-    response = '<span>*</span> Thank you. We will consider your message as soon as possible and contact you.'
-    return render(request, "contact-us.html",
-                  {"activepage": "Contact Us", "form": form,
-                   "response": response})
+def submit_success(request):
+    return render(request, "contact-us.html", {
+        "activepage": "Contact Us",
+        "form": ContactForm(),
+        "response": "Your message was successfuly sent. We'll review it as soon as possible.",
+        "is_success": True,
+    })
 
 
-def sorry(request):
-    form = ContactForm()
-    response = "Sorry, your form has not been submitted."
-    return render(request, "contact-us.html",
-                  {"activepage": "Contact us", "form": form,
-                   "response": response})
+def submit_error(request):
+    return render(request, "contact-us.html", {
+        "activepage": "Contact us",
+        "form": ContactForm(),
+        "response": "An error occured and your form wasn't submitted. Please try again later.",
+        "is_success": False,
+    })

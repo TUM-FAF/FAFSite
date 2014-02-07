@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from general.views import index, about, admission, thankyou
 from academics.views import courses, about_course, professors, students, alumni
-from fafemail.views import contact_us, thanks, sorry
+from fafemail.views import contact_us
 from blog.views import achievements, activities
 from fafside.views import fafside_index, profile
 
@@ -25,8 +25,6 @@ urlpatterns = patterns('',
     url(r'^people/students/([a-zA-Z0-9]+)/$', students, name='students'),
     url(r'^people/alumni/([a-zA-Z0-9]+)/$', alumni, name='alumni'),
     url(r'^contact-us/$', contact_us, name='contact-us'),
-    url(r'^contact-us/thanks/$', thanks, name='thanks'),
-    url(r'^contact-us/sorry/$', sorry, name='sorry'),
     url(r'^thankyou/$', thankyou, name='thankyou'),
     # fafside - internal system urls
     url(r'^login/$', 'fafauth.views.authenticate', name='login'),

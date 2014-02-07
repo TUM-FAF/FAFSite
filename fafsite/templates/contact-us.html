@@ -1,52 +1,55 @@
 {% extends "index.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}
-    <title>FAF - Contact Us</title>
+  <title>FAF - Contact Us</title>
 {% endblock %}
 
 {% block header %}
-    <script type="text/javascript">
-        $(function () {
-            $('#id_surname').hide();
-            $("[for='id_surname']").hide();
-        });
-    </script>
+  <script type="text/javascript">
+    $(function () {
+      // hide surname input as it is used against spammers
+      $('#div_id_surname').hide()
+    });
+  </script>
 {% endblock %}
 
 {% block content %}
-    <div class="contact">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="boxed">
         {% if response %}
-            <p class='response'>{{ response|safe }}</p>
-        {% else %}
-            <p>If you have any questions or proposals don't hesitate to get in
-                touch with us.</p>
+          {% if is_success %}
+            <div class="alert alert-success">{{ response|safe }}</div>
+          {% else %}
+            <div class="alert alert-warning">{{ response|safe }}</div>
+          {% endif %}
         {% endif %}
-
-        <form action="/contact-us/" method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit">Submit</button>
+        <form role="form" action="/contact-us/" method="POST">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button type="submit" class="btn btn-default">Submit</button>
         </form>
-
-        <section id="articles" class="pull-right">
-            <iframe style="float: right; margin-left: 10px;" width="220"
-                    height="220" frameborder="0" scrolling="no" marginheight="0"
-                    marginwidth="0"
-                    src="https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=47.062152,28.868154&amp;daddr=Strada+Studen%C5%A3ilor,+Chi%C5%9Fin%C4%83u,+Moldova&amp;hl=ro&amp;geocode=%3BCa7wcV0v40lZFaQUzgIdm2q4ASm5ikdLHn3JQDEfWyyVr2k_sg&amp;sll=47.062006,28.8689&amp;sspn=0.002295,0.004823&amp;mra=mift&amp;mrsp=0&amp;sz=18&amp;ie=UTF8&amp;t=m&amp;ll=47.062003,28.868905&amp;spn=0.0019,0.002779&amp;z=17&amp;output=embed"></iframe>
-            </iframe>
-            <article>
-                <dl>
-                    <dt>Address</dt>
-                    <dd>Off. No. 213A, 7, Studentilor St., Block of Study No. 3,
-                        Chisinau, Moldova
-                    </dd>
-                    <dt>Contact Person</dt>
-                    <dd>Viorel Bostan</dd>
-                    <dt>Phone</dt>
-                    <dd>(+373 22) 509-938</dd>
-                </dl>
-            </article>
-        </section>
+      </div>
     </div>
-
+    <div class="col-md-6">
+      <div class="boxed">
+        <iframe style="float: right; margin-left: 10px;" width="220" height="220" frameborder="0" scrolling="no" marginheight="0"
+          marginwidth="0" src="https://maps.google.com/maps?f=d&amp;source=s_d&amp;saddr=47.062152,28.868154&amp;daddr=Strada+Studen%C5%A3ilor,+Chi%C5%9Fin%C4%83u,+Moldova&amp;hl=ro&amp;geocode=%3BCa7wcV0v40lZFaQUzgIdm2q4ASm5ikdLHn3JQDEfWyyVr2k_sg&amp;sll=47.062006,28.8689&amp;sspn=0.002295,0.004823&amp;mra=mift&amp;mrsp=0&amp;sz=17&amp;ie=UTF8&amp;t=m&amp;ll=47.062003,28.868905&amp;spn=0.0019,0.002779&amp;z=17&amp;output=embed"></iframe>
+        </iframe>
+        <dl class="address">
+          <dt>Address</dt>
+          <dd>Of. 317, 7 Studenților Str., Block of Study No. 3, Chișinău, Moldova
+          </dd>
+          <dt>Contact Person</dt>
+          <dd>Viorel Bostan</dd>
+          <dt>Phone</dt>
+          <dd>(+373 22) 509-938</dd>
+        </dl>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
