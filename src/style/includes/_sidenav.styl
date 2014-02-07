@@ -1,0 +1,50 @@
+.sidenav
+  margin 20px 0
+  padding 0
+  display block
+  list-style none
+  li
+    margin 0
+    padding  0
+    display block
+  .title
+    display: block
+    margin:5px 0 5px;
+    padding:5px 18px 7px;
+    border:1px solid #e1e1e1;
+    background:#fff url(../images/bg_article_top.gif) 0 0 repeat-x;
+    font-size:20px;
+    cursor:pointer;
+  .subsidenav
+    margin 0
+    padding 0
+    display block
+    list-style none
+    border:1px solid #e1e1e1;
+    background:white;
+    .subtitle
+      font-size:13px;
+      padding:8px 18px;
+      border-bottom:1px solid #e1e1e1;
+      &:last-child
+        border-bottom 0
+      &.active
+        position relative
+        &:before,
+        &:after
+          content ''
+          display block
+          position absolute
+          top 50%
+          left -17px
+          margin -17px 0 0
+          border-style solid
+          border-color transparent white transparent transparent
+          border-width 17px 17px 17px 0
+        &:before
+          left -18px
+          border-color transparent #e1e1e1 transparent transparent
+        a
+          text-decoration underline
+      a
+        color #555

@@ -1,1 +1,1 @@
-$(function(){return"undefined"!=typeof console&&null!==console?console.log("js loaded"):void 0});
+$(function(){var i,e;return i=$(".sidenav"),i.length&&(e=i.find(".subsidenav"),i.find(".active").length)?(e.addClass("hide"),i.find(".active").closest(".subsidenav").removeClass("hide"),i.find(".title").on("click",function(){var i;return i=$(this),e.addClass("hide"),i.siblings(".subsidenav").removeClass("hide")})):void 0});

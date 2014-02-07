@@ -1,33 +1,33 @@
 {% extends "index.html" %}
 
 {% block title %}
-    <title>FAF - Courses</title>
+  <title>FAF - Courses</title>
 {% endblock %}
 
 {% block content %}
-    <div class="courses">
-        <div class="blank_block"><h2>Courses sorted by semesters</h2></div>
-
-        {% for sem_courses in courses %}
-            {% with semester=sem_courses.0.semester %}
-                {% if semester == 'II' %}
-                    <div class="semester_block_final">
-                {% elif semester == 'V' %}
-                    <div class="semester_block_final">
-                {% else %}
-                    <div class="semester_block">
-                {% endif %}
-            <h4>{{ semester }}</h4>
-            <ul class="subjects_list">
-                {% for course in sem_courses %}
-                    <li class="subjects">
-                        <a href="{% url 'about_course' course.title %}">{{ course.subject_en }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            </div>
-            {% endwith %}
-        {% endfor %}
-
+<div class="container container-courses">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+      <div class="wired">
+        <h4 class="title">Courses sorted by semesters</h4>
+      </div>
+    </div>
+    {% for sem_courses in courses %}
+      {% with semester=sem_courses.0.semester %}
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="boxed">
+          <h4 class="title">{{ semester }}</h4>
+          <ul class="subjects_list">
+            {% for course in sem_courses %}
+              <li class="subjects">
+                <a href="{% url 'about_course' course.title %}">{{ course.subject_en }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
+      </div>
+      {% endwith %}
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
