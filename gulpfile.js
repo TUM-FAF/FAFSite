@@ -3,6 +3,7 @@ var gulp = require('gulp')
   , gutil = require('gulp-util')
   , clean = require('gulp-clean')
   , path = require('path')
+  , watch = require('gulp-watch')
   // styles
   , stylus = require('gulp-stylus')
   , less = require('gulp-less')
@@ -94,6 +95,11 @@ gulp.task('_watch', ['development', 'listen'], function(){
   watcher_script.on('changed', function(e){
     console.log(e.type + '-' + e.path)
   })
+
+  // Watch template changes
+  gulp.src('./fafsite/templates/**/*', {read: false})
+    .pipe(watch())
+    .pipe(livereload(server))
 })
 
 // Listen
