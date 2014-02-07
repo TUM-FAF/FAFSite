@@ -1,39 +1,22 @@
 {% extends "index.html" %}
 
 {% block title %}
-    <title>FAF - About</title>
+<title>FAF - About</title>
 {% endblock %}
 {% load staticfiles %}
 
 {% block content %}
-    <section id="articles">
-        <article id="article_x">
-            <div class="article_body">
-                <h3>About FAF</h3>
-
-                <div class="article_content">
-                    <div class="image pull-left"><img src="{% static "images/faf101.jpg" %}"
-                                                 alt="" width="" height=""/>
-                    </div>
-                    <div class="clearfix"></div>
-                    <p>FAF - Filiera Anglofonă "Computer Science" is a
-                        department founded as an experiment in 2001 at the
-                        Computers, Informatics and Microelectronics Faculty in
-                        the Technical University of Moldova. Basically it
-                        represents an English taught Honor's Program in Computer
-                        Science. At the moment there are 4 groups of FAF totally
-                        counting around 100 students.</p>
-
-                    <p>The courses are taught both in English and in Romanian,
-                        with the natural priority given to English. The FAF
-                        students have access to a small library in cab. 213A,
-                        where they can find Computer Science related books,
-                        Wi-Fi and desks where they can work.</p>
-
-                    <p>The department staff consists of highly qualified
-                        professors from Moldova and UK.</p>
-                </div>
-            </div>
-        </article>
-    </section>
+<div class="container container-article">
+  <div class="row">
+    <article class="col-sm-12">
+      <h2 class="title">About FAF</h2>
+      <div class="image image-full-width">
+        <img src="{% static "images/faf101.jpg" %}" alt="" width="" height=""/>
+      </div>
+      <p>FAF - Filiera Anglofonă "Computer Science" is a department founded as an experiment in 2001 at the Computers, Informatics and Microelectronics Faculty in the Technical University of Moldova. Basically it represents an English taught Honor's Program in Computer Science. At the moment there are 4 groups of FAF totally counting around 100 students.</p>
+      <p>The courses are taught both in English and in Romanian, with the natural priority given to English. The FAF students have access to a small library in cab. 213A, where they can find Computer Science related books, Wi-Fi and desks where they can work.</p>
+      <p>The department staff consists of highly qualified professors from Moldova and UK.</p>
+    </article>
+  </div>
+</div>
 {% endblock %}
