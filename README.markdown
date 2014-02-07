@@ -33,7 +33,7 @@ In order to setup and run the project follow the steps:
 *  Create the tables in the database: `python fafsite/manage.py syncdb`. When prompted for a superuser, create one.
 These are the credentials you are going to use for logging in to the admin panel.
 *  Run the wsgi server: `python fafsite/manage.py runserver`
-*  Run the tests: `python fafsite/manage.py test`. Note: please run the tests every time you make a change.
+*  Run the tests: `cd fafsite; python manage.py test` (if you run the tests from the upper directory, then django-nose can't discover them). Note: please run the tests every time you make a change.
 
 
 Developing front-end

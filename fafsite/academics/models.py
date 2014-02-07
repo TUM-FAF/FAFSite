@@ -227,7 +227,6 @@ class UserExtended():
         try:
             meta_type = UserMetaType.objects.get(key=key)
         except UserMetaType.DoesNotExist:
-            # print(key)
             raise AttributeError("no such meta type")
         except:
             raise AttributeError("unknown error")
