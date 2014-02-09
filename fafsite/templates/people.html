@@ -1,30 +1,41 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <div id="side_menu">
-        <ul class="side_nav people">
-            <li class='title'><a href="{% url "professors" %}">Professors</a></li>
-
-            <li class='title'>Students</li>
-            <ul class='subtitel'>
-                {% for group in student_groups %}
-                    <li><a href="{% url "students" group %}"
-                           {% if group == this_group %}class="active"{% endif %}>  {{ group }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-
-            <li class='title'>Alumni</li>
-            <ul class='subtitel'>
-                {% for group in alumni_groups %}
-                    <li><a href="{% url "alumni" group %}"
-                           {% if group == this_group %}class="active"{% endif %}>{{ group }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </ul>
+<div class="container container-people">
+  <div class="row">
+    <div class="col-md-9 ">
+      <div class="boxed article">
+        {% block about_people %}
+        {% endblock %}
+      </div>
     </div>
-    {% block about_people %}
-    {% endblock %}
+    <div class="col-md-3">
+      <ul class="sidenav">
+        <li><a class="title" href="{% url "professors" %}">Professors</a></li>
 
+        <li>
+          <span class="title">Students</span>
+          <ul class="subsidenav">
+            {% for group in student_groups %}
+              <li class="subtitle{% if group == this_group %} active{% endif %}">
+                <a href="{% url "students" group %}">{{ group }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <li>
+          <span class="title">Alumni</span>
+          <ul class="subsidenav">
+            {% for group in alumni_groups %}
+              <li class="subtitle{% if group == this_group %} active{% endif %}">
+                <a href="{% url "alumni" group %}">{{ group }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 {% endblock %}

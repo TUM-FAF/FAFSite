@@ -266,17 +266,29 @@ class UserExtended():
         except:
             return False
 
-    def getAttributes(self):
+    def getAttributes(self, full=True):
         userMeta = UserMeta.objects.filter(user=self.user)
         userExtended = UserExtended(self.user.id)
         result = {}
         for meta in userMeta:
             if not meta.meta.key in result:
                 value = getattr(userExtended, meta.meta.key)
-                try:
-                    data = json.loads(meta.meta.data)
-                except:
-                    data = meta.meta.data
-                result[meta.meta.key] = {'value': value, 'type': meta.meta.type,
-                                         'data': data}
+
+                if full:
+                    try:
+                        data = json.loads(meta.meta.data)
+                    except:
+                        data = meta.meta.data
+                    result[meta.meta.key] = {'value': value, 'type': meta.meta.type, 'data': data}
+                else:
+                    result[meta.meta.key] = value
+
         return result
+
+    def getAttributesAndValues(self):
+        userAttributes = self.getAttributes(False)
+        for key in self.user._meta.get_all_field_names():
+            if hasattr(self.user, key):
+                userAttributes[key] = getattr(self.user, key)
+
+        return userAttributes

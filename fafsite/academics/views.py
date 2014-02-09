@@ -50,15 +50,17 @@ def professors(request):
     professors = UserMeta.objects.filter(value='professor')
     for professor in professors:
         userID = professor.user_id
-        prof = UserExtended(userID)
-        courses = Course.objects.filter(professors=prof)
-        academics.append([prof, courses])
+        prof = UserExtended(userID).getAttributesAndValues()
+        prof['courses'] = Course.objects.filter(professors=UserExtended(userID))
+        academics.append(prof)
+
     groups = get_groups()
     student_groups = groups[:4]
     alumni_groups = groups[4:]
-    return render(request, "professors.html",
+    return render(request, "people-list.html",
                   {"activepage": "People",
-                   "academics": academics,
+                   "container_title": "Professors",
+                   "people": academics,
                    'student_groups': student_groups,
                    'alumni_groups': alumni_groups})
 
@@ -66,6 +68,7 @@ def professors(request):
 # Lists all the students filtered by the group with all their attributes
 def students(request, group):
     students = []
+    # TODO retrieve students by group
     student_metas = UserMeta.objects.filter(value='student')
     for student in student_metas:
         userID = student.user_id
@@ -78,9 +81,10 @@ def students(request, group):
     groups = get_groups()
     student_groups = groups[:4]
     alumni_groups = groups[4:]
-    return render(request, "students.html",
+    return render(request, "people-list.html",
                   {"activepage": "People",
-                   "students": students, "this_group": group,
+                   "container_title": "Students",
+                   "people": students, "this_group": group,
                    'student_groups': student_groups,
                    'alumni_groups': alumni_groups})
 
@@ -100,8 +104,9 @@ def alumni(request, group):
     groups = get_groups()
     student_groups = groups[:4]
     alumni_groups = groups[4:]
-    return render(request, "alumni.html",
-                  {"activepage": "People", "alumni": alumni,
-                   "this_group": group,
+    return render(request, "people-list.html",
+                  {"activepage": "People",
+                   "container_title": "Alumni",
+                   "people": alumni, "this_group": group,
                    'student_groups': student_groups,
                    'alumni_groups': alumni_groups})

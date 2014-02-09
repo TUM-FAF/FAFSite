@@ -8,48 +8,45 @@
 {% block content %}
 <div class="container container-course">
   <div class="row">
-
     <div class="col-md-9 ">
       <div class="boxed article">
-        <h2 class="title">{{ Course.subject_en }}</h2>
-        <h3 class="subtitle">{{ Course.subject_ro }}</h3>
+        <h2 class="title">{{ Course.subject_en }} <small>{{ Course.subject_ro }}</small></h2>
 
-        <strong>Professors</strong>
-        <p>
-        {% for professor in Course.professors.all %}
-          <a href="#">{{ professor.name }} {{ professor.surname }}</a>
-        {% empty %}
-          Oops, seems that there are no professors assigned to this course.
-        {% endfor %}
-        </p>
+        <dl class="dl-horizontal">
 
-        <strong>Language</strong>
-        <p>
-        {% if Course.language == 'RO' %}
-          Romanian
-        {% else %}
-          English
-        {% endif %}
-        </p>
-
-        {% if Course.labs == 'True' %}
-          <strong>This course has laboratory works</strong>
-        {% endif %}
+          <dt>Professors</dt>
+          <dd>
+            {% for professor in Course.professors.all %}
+              <a href="#">{{ professor.name }} {{ professor.surname }}</a>
+            {% empty %}
+              There are no professors assigned to this course.
+            {% endfor %}
+          </dd>
 
 
-        {% if Course.courseProject == 'True' %}
-          <strong>This course requires a course project at the end of semester.</strong>
-        {% endif %}
+          <dt>Language</dt>
+          <dd>{% if Course.language == 'RO' %}Romanian{% else %}English{% endif %}</dd>
 
-        {% if Course.description %}
-          <strong>Description</strong>
-          <p>{{ Course.description|safe }}</p>
-        {% endif %}
+          {% if Course.labs == True %}
+            <dt>Laboratory Works</dt>
+            <dd>This course has laboratory works</d>
+          {% endif %}
 
-        {% if Course.literature %}
-          <strong>List of literature</strong>
-          <p>{{ Course.literature|safe }}</p>
-        {% endif %}
+          {% if Course.courseProject == True %}
+            <dt>Course Project</dt>
+            <dd>This course requires a course project at the end of semester.</dd>
+          {% endif %}
+
+          {% if Course.description %}
+            <dt>Description</dt>
+            <dd>{{ Course.description|safe }}</dd>
+          {% endif %}
+
+          {% if Course.literature %}
+            <dt>List of literature</dt>
+            <dd>{{ Course.literature|safe }}</dd>
+          {% endif %}
+        </dl>
       </div>
     </div>
     <div class="col-md-3">

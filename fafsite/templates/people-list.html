@@ -1,0 +1,103 @@
+{% extends "people.html" %}
+
+{% block title %}
+  <title>FAF - People - {{ container_title }}</title>
+{% endblock %}
+
+{% block about_people %}
+<h2 class="title">{{ container_title }}</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-with-details">
+    <thead>
+      <tr>
+        <th width="10">#</th>
+        <th>Full name</th>
+        <th width="20">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for man in people %}
+      <tr class="closed">
+        <td>{{ forloop.counter }}</td>
+        <td>
+          <div class="no-details">
+            {{ man.surname }} {{ man.name }}
+          </div>
+          <div class="details hide">
+            <h4 class="subtitle">{{ man.surname }} {{ man.name }} </h4>
+            <dl class="dl-horizontal">
+              {% if man.photo %}
+                <dt>Picture</dt>
+                <dd>
+                  <img src="/media/{{ man.photo }}" alt="">
+                </dd>
+              {% endif %}
+              {% if man.rank %}
+                <dt>Degree</dt>
+                <dd>
+                  {{ man.rank|first }}
+                </dd>
+              {% endif %}
+              {% if man.courses %}
+                <dt>Courses</dt>
+                <dd>
+                  <ul>
+                    {% for course in man.courses %}
+                      <li>
+                        <a href="{% url "about_course" course.title %} ">{{ course.subject_en }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </dd>
+              {% endif %}
+              {% if man.programming_skills %}
+                <dt>Programming</dt>
+                <dd>
+                  {{ man.programming_skills|safe }}
+                </dd>
+              {% endif %}
+              {% if man.projects_involved %}
+                <dt>Projects involved in</dt>
+                <dd>
+                  {{ man.projects_involved|safe }}
+                </dd>
+              {% endif %}
+              {% if man.publications %}
+                <dt>Publications</dt>
+                <dd>
+                  {{ man.publications|safe }}
+                </dd>
+              {% endif %}
+              {% if man.current_job %}
+                <dt>Employeed</dt>
+                <dd>
+                  {{ man.current_job|safe }}
+                </dd>
+              {% endif %}
+              {% if man.phone or man.linkedin or man.facebook or man.googleplus or man.skype %}
+                <dt>Get in touch</dt>
+                <dd>
+                  <ul>
+                    {% if man.phone %}
+                      <li>Phone: {{ man.phone }}</li>{% endif %}
+                    {% if man.linkedin %}
+                      <li><a href="{{ man.linkedin }}" target="_blank">Linkedin</a></li>{% endif %}
+                    {% if man.facebook %}
+                      <li><a href="{{ man.facebook }}" target="_blank">Facebook</a></li>{% endif %}
+                    {% if man.googleplus %}
+                      <li><a href="{{ man.googleplus }}" target="_blank">Google+</a></li>{% endif %}
+                    {% if man.skype %}
+                      <li><a href="{{ man.skype }}" target="_blank">Skype</a></li>{% endif %}
+                  </ul>
+                </dd>
+              {% endif %}
+            </dl>
+          </div>
+        </td>
+        <td><div class="btn btn-default btn-xs" data-opener="true" data-alt-text="Hide details">Show details</div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
