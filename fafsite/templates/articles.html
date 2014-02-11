@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container container-articles">
+  {% for article in articles %}
+  <div class="row">
+    <div class="col-md-12">
+      <article class="article boxed">
+        <header>
+          <time>{{ article.date }}</time><a href="#" class="author">{{ article.author }}</a>
+        </header>
+        <h2 class="title">{{ article.title }}</h2>
+        {{ article.preview|safe }}{{article.id_category}}
+        <a href="{{ article.id }}/" class="btn btn-sm btn-info pull-right">Read full article <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <div class="clearfix"></div>
+      </article>
+    </div>
+  </div>
+  {% empty %}
+  <div class="row">
+    <div class="col-md-12">
+      <div class="boxed">
+        <p>Keep calm.</p>
+        <p>There are no articles yet in this section.</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

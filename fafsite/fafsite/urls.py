@@ -5,7 +5,7 @@ from django.contrib import admin
 from general.views import index, about, admission, thankyou
 from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us
-from blog.views import achievements, activities
+from blog.views import achievements, activities, article
 from fafside.views import fafside_index, profile
 
 
@@ -16,7 +16,9 @@ urlpatterns = patterns('',
     url(r'^$', index, name='index'),
     url(r'^about/$', about, name='about'),
     url(r'^admission/$', admission, name='admission'),
+    url(r'^achievements/([0-9]+)/$', article, name='article'),
     url(r'^achievements/$', achievements, name='achievements'),
+    url(r'^activities/([0-9]+)/$', article, name='article'),
     url(r'^activities/$', activities, name='activities'),
     url(r'^courses/$', courses, name='courses'),
     url(r'^courses/([a-zA-Z-]+)/$', about_course, name='about_course'),

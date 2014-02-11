@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <article class="article boxed">
+        <header>
+          <time>{{ article.date }}</time><a href="#" class="author">{{ article.author }}</a>
+        </header>
+        <h2 class="title">{{ article.title }}</h2>
+        {{ article.content|safe }}
+      </article>
+    </div>
+  </div>
+</div>
+{% endblock %}
