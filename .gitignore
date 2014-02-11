@@ -17,7 +17,7 @@ settings.py
 
 # media staging files #
 #######################
-/media/photos/
+/media/
 
 # virtual env #
 ###############
