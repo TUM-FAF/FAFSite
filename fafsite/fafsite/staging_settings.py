@@ -140,7 +140,9 @@ INSTALLED_APPS = (
     'tinymce',
     'blog',
     'fafemail',
+    'fafauth',
     'fafside',
+    'faflabs',
     'grappelli',
     'django_pdb',
     'django.contrib.admin',
@@ -153,7 +155,6 @@ INSTALLED_APPS = (
 
 # Google Auth Keys
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.google.GoogleOAuth2Backend',
     'django.contrib.auth.backends.ModelBackend',
 )
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google-oauth2')
