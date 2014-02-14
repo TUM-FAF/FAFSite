@@ -26,6 +26,20 @@ LANGUAGES = (
     ('RO', 'Romanian'),
 )
 
+GROUPS = (
+    ('FAF131', 'FAF131'),
+    ('FAF121', 'FAF121'),
+    ('FAF111', 'FAF111'),
+    ('FAF101', 'FAF101'),
+    ('FAF091', 'FAF091'),
+    ('FAF081', 'FAF081'),
+    ('FAF071', 'FAF071'),
+    ('FAF061', 'FAF061'),
+    ('FAF051', 'FAF051'),
+    ('FAF041', 'FAF041'),
+    ('FAF031', 'FAF031'),
+)
+
 
 class User(models.Model):
     name = models.CharField(max_length=15)
@@ -33,6 +47,7 @@ class User(models.Model):
     email = models.EmailField()
     group = models.CharField(blank=True, max_length=15)
     photo = models.ImageField(blank=True, upload_to="photos")
+    auth_user_id = models.IntegerField(blank=True)
 
     def __unicode__(self):
         return u'%s %s' % (self.name, self.surname)

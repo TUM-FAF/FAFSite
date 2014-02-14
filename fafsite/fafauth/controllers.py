@@ -2,6 +2,8 @@ import re
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from academics.helpers import link_auth_user
+from academics.models import GROUPS
 
 """
 Based on
@@ -35,13 +37,16 @@ class ExtendedUserCreationForm(UserCreationForm):
 
   username = forms.CharField(required = False, max_length = 30)
   email = UniqueUserEmailField(required = True, label = 'Email address')
+  name = forms.CharField(required=True, max_length=127)
+  surname = forms.CharField(required=True, max_length=127)
+  group = forms.ChoiceField(required=True, choices=GROUPS)
 
   def __init__(self, *args, **kwargs):
     """
     Changes the order of fields, and removes the username field.
     """
     super(UserCreationForm, self).__init__(*args, **kwargs)
-    self.fields.keyOrder = ['email', 'password1', 'password2']
+    self.fields.keyOrder = ['email', 'password1', 'password2', 'name', 'surname', 'group']
 
   def clean(self, *args, **kwargs):
     """
@@ -54,8 +59,8 @@ class ExtendedUserCreationForm(UserCreationForm):
 
   def save(self, commit=True):
     """
-    Saves the email, first_name and last_name properties, after the normal
-    save behavior is complete.
+    Saves the email after the normal save behavior is complete.
+    Create academics user if everything is successful
     """
     user = super(UserCreationForm, self).save(commit)
     if user:
@@ -63,6 +68,7 @@ class ExtendedUserCreationForm(UserCreationForm):
       user.set_password(self.cleaned_data['password1'])
       if commit:
         user.save()
+        link_auth_user(user, self.cleaned_data)
     return user
 
 class ExtendedAuthenticationForm(AuthenticationForm):
