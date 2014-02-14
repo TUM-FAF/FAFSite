@@ -6,7 +6,7 @@ from general.views import index, about, admission, thankyou
 from academics.views import courses, about_course, professors, students, alumni
 from fafemail.views import contact_us
 from blog.views import achievements, activities, article
-from fafauth.views import login_view, logout_view, register_view, passwordreset_view,
+from fafauth.views import login_view, logout_view, register_view, passwordreset_view, \
     passwordreset_initiated, passwordreset_success, passwordreset_confirm
 from fafside.views import fafside_index, profile
 
