@@ -2,8 +2,8 @@ import re
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from academics.helpers import link_auth_user
-from academics.models import GROUPS
+from general.models import GROUPS
+from general.helpers import link_auth_user
 
 """
 Based on
@@ -37,8 +37,8 @@ class ExtendedUserCreationForm(UserCreationForm):
 
   username = forms.CharField(required = False, max_length = 30)
   email = UniqueUserEmailField(required = True, label = 'Email address')
-  name = forms.CharField(required=True, max_length=127)
-  surname = forms.CharField(required=True, max_length=127)
+  name = forms.CharField(required=True, max_length=127, help_text='Alex, Alexandr or Alexandru')
+  surname = forms.CharField(required=True, max_length=127, help_text='Ololovich, Turturenco')
   group = forms.ChoiceField(required=True, choices=GROUPS)
 
   def __init__(self, *args, **kwargs):
