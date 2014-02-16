@@ -2,6 +2,7 @@ import json
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.contrib.auth.models import User
 
 META_TYPES = (
     ('number', 'Number'),
@@ -45,7 +46,7 @@ class FAFUser(models.Model):
   last_name = models.CharField(max_length=31)
   group = models.CharField(blank=True, max_length=15)
   photo = models.ImageField(blank=True, upload_to="photos")
-  auth_user_id = models.IntegerField(blank=True)
+  auth_user = models.ForeignKey(User, blank=True, null=True)
 
   def __unicode__(self):
     return u'%s %s' % (self.first_name, self.last_name)
@@ -125,11 +126,17 @@ class UserExtended():
         self.user = FAFUser()
 
   def __setattr__(self, key, value):
-    if key == "user":
+    if key == "user" or key == "auth_user":
+      # set user or auth_user
       self.__dict__[key] = value
     elif hasattr(self.user, key):
+      # update user attribute
       setattr(self.user, key, value)
       self.user.save()
+      # update name of auth_user
+      if self.user.auth_user and hatattr(self.user.auth_user, key):
+        setattr(self.user.auth_user, key, value)
+        self.user.auth_user.save()
     else:
       return self.setMeta(key, value)
 
@@ -137,7 +144,11 @@ class UserExtended():
     return self.user.id
 
   def __getattr__(self, key):
-    if hasattr(self.user, key):
+    if key != "id" and self.user.auth_user and hasattr(self.user.auth_user, key):
+      # get attribute from auth_user
+      return getattr(self.user.auth_user, key)
+    elif hasattr(self.user, key):
+      # get attribute from user
       return getattr(self.user, key)
     else:
       return self.getMeta(key)
