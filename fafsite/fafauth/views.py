@@ -5,6 +5,8 @@ from django.contrib.auth.views import password_reset, password_reset_confirm
 from .controllers import ExtendedUserCreationForm, ExtendedAuthenticationForm
 from django.core.urlresolvers import reverse
 from django.conf import settings
+from general.models import UserExtended
+from general.helpers import get_faf_user_by_auth_user
 
 
 def login_view(request):
@@ -85,3 +87,11 @@ def passwordreset_initiated(request):
 
 def passwordreset_success(request):
   return render(request, 'fafauth/passwordreset_success.html')
+
+def account_view(request):
+  user = get_faf_user_by_auth_user(request.user.id)
+
+  return render(request, 'fafauth/account.html', {
+      "user": user
+    , "activepage": "Account"
+    })

@@ -37,8 +37,8 @@ class ExtendedUserCreationForm(UserCreationForm):
 
   username = forms.CharField(required = False, max_length = 30)
   email = UniqueUserEmailField(required = True, label = 'Email address')
-  name = forms.CharField(required=True, max_length=127, help_text='Alex, Alexandr or Alexandru')
-  surname = forms.CharField(required=True, max_length=127, help_text='Ololovich, Turturenco')
+  first_name = forms.CharField(required=True, max_length=127, help_text='Alex, Alexandr or Alexandru')
+  last_name = forms.CharField(required=True, max_length=127, help_text='Ololovich, Turturenco')
   group = forms.ChoiceField(required=True, choices=GROUPS)
 
   def __init__(self, *args, **kwargs):
@@ -46,7 +46,7 @@ class ExtendedUserCreationForm(UserCreationForm):
     Changes the order of fields, and removes the username field.
     """
     super(UserCreationForm, self).__init__(*args, **kwargs)
-    self.fields.keyOrder = ['email', 'password1', 'password2', 'name', 'surname', 'group']
+    self.fields.keyOrder = ['email', 'password1', 'password2', 'first_name', 'last_name', 'group']
 
   def clean(self, *args, **kwargs):
     """
@@ -65,6 +65,8 @@ class ExtendedUserCreationForm(UserCreationForm):
     user = super(UserCreationForm, self).save(commit)
     if user:
       user.email = self.cleaned_data['email']
+      user.first_name = self.cleaned_data['first_name']
+      user.last_name = self.cleaned_data['last_name']
       user.set_password(self.cleaned_data['password1'])
       if commit:
         user.save()

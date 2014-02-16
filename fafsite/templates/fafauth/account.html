@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>FAF - Account</title>
+{% endblock %}
+
+{% block message %}
+  {% if form.errors %}
+    {% for error in form.non_field_errors %}
+      <div class="alert alert-warning">{{error}}</div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="boxed">
+        <dl class="dl-horizontal">
+          <dt>First name:</dt>
+          <dd>{{ user.first_name }}</dd>
+
+          <dt>Last name:</dt>
+          <dd>{{ user.last_name }}</dd>
+
+          <dt>Email:</dt>
+          <dd>{{ user.email }}</dd>
+
+          <dt>Group:</dt>
+          <dd>{{ user.group }}</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="boxed">
+        <dl class="dl-horizontal">
+          <dt>Github account</dt>
+          <dd><a href="#">bumbu</a></dd>
+        </dl>
+        <a href="#" class="btn btn-primary">Link your Github account</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
