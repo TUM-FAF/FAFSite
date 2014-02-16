@@ -41,15 +41,14 @@ GROUPS = (
 )
 
 class FAFUser(models.Model):
-  name = models.CharField(max_length=15)
-  surname = models.CharField(max_length=31)
-  email = models.EmailField()
+  first_name = models.CharField(max_length=15)
+  last_name = models.CharField(max_length=31)
   group = models.CharField(blank=True, max_length=15)
   photo = models.ImageField(blank=True, upload_to="photos")
   auth_user_id = models.IntegerField(blank=True)
 
   def __unicode__(self):
-    return u'%s %s' % (self.name, self.surname)
+    return u'%s %s' % (self.first_name, self.last_name)
 
 
 '''

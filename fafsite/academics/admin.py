@@ -47,8 +47,8 @@ class UserAdminForm(forms.ModelForm):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname')
-    search_fields = ('name', 'surname')
+    list_display = ('first_name', 'last_name')
+    search_fields = ('first_name', 'last_name')
     form = UserAdminForm
 
     def save_model(self, request, obj, form, change):

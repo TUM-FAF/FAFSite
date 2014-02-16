@@ -21,10 +21,10 @@
         <td>{{ forloop.counter }}</td>
         <td>
           <div class="no-details">
-            {{ man.surname }} {{ man.name }}
+            {{ man.first_name }} {{ man.last_name }}
           </div>
           <div class="details hide">
-            <h4 class="subtitle">{{ man.surname }} {{ man.name }} </h4>
+            <h4 class="subtitle">{{ man.first_name }} {{ man.last_name }} </h4>
             <dl class="dl-horizontal">
               {% if man.photo %}
                 <dt>Picture</dt>
