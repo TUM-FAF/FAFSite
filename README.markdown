@@ -51,7 +51,7 @@ In order to be able to build front-end you'll need:
 
 1. Node.js [how to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 *  Install Gulp globally (one time) `npm install -g gulp gulp-util`
-*  Install Bower globally (one time) `npm insatll -g bower`
+*  Install Bower globally (one time) `npm install -g bower`
 *  Go to project folder in your favorite terminal `cd fafsite`
 *  Install packages `npm install`
 *  Install bower components `bower install`
