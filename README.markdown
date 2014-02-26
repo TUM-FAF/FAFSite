@@ -26,7 +26,7 @@ In order to setup and run the project follow the steps:
 *  Run `pip install -r requirements.txt`
 *  Set up MySQL on your machine. Make sure that you have `mysql_config`. If you encouter an error that says that `mysql_config` not found, then you must install `libmysqlclient-dev` for debian systems. Also you may need `python-dev`.
 *  Install system wide [tinymce](http://www.tinymce.com/) - a web based JavaScript HTML WYSIWYG editor.
-*  Copy the stagging settings to the settings file.
+*  Copy the stagging settings to the settings file and edit if necessary.
 
 
         $ cp fafsite/fafsite/staging_settings.py fafsite/fafsite/settings.py
