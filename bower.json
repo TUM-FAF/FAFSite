@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "dependencies": {},
   "devDependencies": {
-    "bootstrap": "~3.1.0"
+    "bootstrap": "3.1.1"
   }
 }
