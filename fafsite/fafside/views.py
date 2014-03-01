@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-from academics.models import User
+from general.models import FAFUser
 from .forms import Profile
 
 
@@ -16,7 +16,7 @@ def profile(request):
     # email = request.user.email
     email = "ana.balica@gmail.com"
     try:
-        user = User.objects.get(email=email)
+        user = FAFUser.objects.get(email=email)
         param_dict = {"user": user}
     except DoesNotExist:
         param_dict = {}

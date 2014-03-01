@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 from .models import *
 from .forms import ContactForm
@@ -33,7 +34,7 @@ def contact_us(request):
             save_in_db(name, email, message)
             messageBody = '\n\nFROM: ' + email + '\n\nName: ' + name + '\n\nMessage: ' + message
             try:
-                send_mail('[FAF]Contact us', messageBody, email, ['ana.balica@gmail.com'], fail_silently=False)
+                send_mail('[FAF]Contact us', messageBody, email, [settings.EMAIL_HOST_USER], fail_silently=False)
             except:
                 return submit_error(request)
             return submit_success(request)

@@ -3,7 +3,8 @@ import operator
 from django.shortcuts import render
 from django.http import Http404
 
-from .models import Course, User, UserMeta, UserExtended
+from .models import Course
+from general.models import FAFUser, UserMeta, UserExtended
 
 
 def getCourses():
@@ -35,7 +36,7 @@ def about_course(request, course):
 # Main page of people
 # Ge a list of all distinct groups
 def get_groups():
-    group_dict = User.objects.values('group').distinct()
+    group_dict = FAFUser.objects.values('group').distinct()
     groups = []
     for group in group_dict:
         if group['group'] != '' and group['group'] not in groups:
@@ -51,8 +52,11 @@ def professors(request):
     for professor in professors:
         userID = professor.user_id
         prof = UserExtended(userID).getAttributesAndValues()
-        prof['courses'] = Course.objects.filter(professors=UserExtended(userID))
+        prof['courses'] = Course.objects.filter(professors=userID)
+        # print(prof['courses'])
         academics.append(prof)
+    print('hi')
+    print(professors)
 
     groups = get_groups()
     student_groups = groups[:4]

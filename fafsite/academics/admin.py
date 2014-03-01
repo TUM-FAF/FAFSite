@@ -2,7 +2,8 @@ import json
 
 from django.contrib import admin
 from django import forms
-from .models import User, UserMetaType, UserMeta, UserExtended, Course
+from .models import Course
+from general.models import FAFUser, UserMetaType, UserMeta, UserExtended
 
 
 def getMetaTypes():
@@ -21,13 +22,13 @@ class UserAdminForm(forms.ModelForm):
     userExtended = None
 
     class Meta:
-        model = User
+        model = FAFUser
 
     def __init__(self, *args, **kwargs):
         super(UserAdminForm, self).__init__(*args, **kwargs)
         # Set the form fields based on the model object
         if 'instance' in kwargs:
-            instance = kwargs['instance']   # User instance
+            instance = kwargs['instance']   # FAFUser instance
             self.userExtended = UserExtended(instance.id)
 
     def getAdditionalFieldsets(self):
@@ -46,12 +47,12 @@ class UserAdminForm(forms.ModelForm):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname')
-    search_fields = ('name', 'surname')
+    list_display = ('first_name', 'last_name')
+    search_fields = ('first_name', 'last_name')
     form = UserAdminForm
 
     def save_model(self, request, obj, form, change):
-        obj.save()  # User save
+        obj.save()  # FAFUser save
         userExtended = UserExtended(obj.id)
         for userMetaType in UserMetaType.objects.all():
             if userMetaType.key in request.POST and request.POST[userMetaType.key] != '':
@@ -93,7 +94,7 @@ class CourseForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CourseForm, self).__init__(*args, **kwargs)
-        users = User.objects.all()
+        users = FAFUser.objects.all()
         usersExtended = []
         for user in users:
             usersExtended.append(UserExtended(user.id))
@@ -104,7 +105,7 @@ class CourseForm(forms.ModelForm):
             type = userExtended.type
             if type:
                 if set(filter).issubset(set(type)):
-                    userId = User.objects.get(id=userExtended.id)
+                    userId = FAFUser.objects.get(id=userExtended.id)
                     choices.append((userId.id, userId))
         w = self.fields['professors'].widget
         w.choices = choices
@@ -117,7 +118,7 @@ class CourseAdmin(admin.ModelAdmin):
     form = CourseForm
 
 
-admin.site.register(User, UserAdmin)
+admin.site.register(FAFUser, UserAdmin)
 admin.site.register(UserMetaType, UserMetaTypeAdmin)
 admin.site.register(UserMeta, UserMetaAdmin)
 admin.site.register(Course, CourseAdmin)

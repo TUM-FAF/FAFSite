@@ -140,14 +140,16 @@ INSTALLED_APPS = (
     'tinymce',
     'blog',
     'fafemail',
+    'fafauth',
     'fafside',
+    'faflabs',
     'grappelli',
     'django_pdb',
     'django.contrib.admin',
     'django_nose',
     'south',
     'social_auth',
-    'crispy_forms'
+    'crispy_forms',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -156,7 +158,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Google Auth Keys
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.google.GoogleOAuth2Backend',
     'django.contrib.auth.backends.ModelBackend',
 )
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google-oauth2')

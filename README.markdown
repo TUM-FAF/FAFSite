@@ -49,7 +49,7 @@ In order to automate front-end building and keep it cross-platform we use [Gulp.
 
 In order to be able to build front-end you'll need:
 
-1. Node.js [how to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
+1. Node.js [how to install](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager). If it is already installed then ensure that you have latest version
 *  Install Gulp globally (one time) `npm install -g gulp gulp-util`
 *  Install Bower globally (one time) `npm install -g bower`
 *  Go to project folder in your favorite terminal `cd fafsite`
