@@ -147,9 +147,12 @@ INSTALLED_APPS = (
     'django_nose',
     'south',
     'social_auth',
+    'crispy_forms'
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Google Auth Keys
 AUTHENTICATION_BACKENDS = (
