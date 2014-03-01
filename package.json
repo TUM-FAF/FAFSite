@@ -1,6 +1,10 @@
 {
   "name": "fafsite",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/TUM-FAF/fafsite"
+  },
   "devDependencies": {
     "gulp-util": "~2.2.13",
     "gulp": "~3.5.0",
